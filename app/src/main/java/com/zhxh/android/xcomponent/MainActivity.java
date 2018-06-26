@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TimeTextView tv_countdown_time;
-        tv_countdown_time = (TimeTextView) findViewById(R.id.tv_countdown_time);
+        tv_countdown_time = findViewById(R.id.tv_countdown_time);
         tv_countdown_time.setTimes(100);
         tv_countdown_time.setOnFinish(() -> {
             Toast.makeText(MainActivity.this,"倒计时结束",Toast.LENGTH_LONG).show();

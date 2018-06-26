@@ -29,8 +29,8 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView im
             return;
         }
         mPaint = new Paint();
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
-        a.recycle();
+        //TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
+        //a.recycle();
     }
 
     public TimeTextView(Context context, AttributeSet attrs, int defStyle) {
@@ -39,8 +39,8 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView im
             return;
         }
         mPaint = new Paint();
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
-        a.recycle();
+        //TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
+        //a.recycle();
 
     }
 
