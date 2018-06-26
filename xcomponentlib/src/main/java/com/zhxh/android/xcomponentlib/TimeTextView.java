@@ -30,7 +30,7 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView im
         }
 
         mPaint = new Paint();
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.timeTextView);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
 
         array.recycle();
 
@@ -43,7 +43,7 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView im
         }
 
         mPaint = new Paint();
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.timeTextView);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TimeTextView);
 
         array.recycle();
     }
