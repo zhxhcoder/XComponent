@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.zhxh.android.xcomponentlib.TimeTextView
+    <com.zhxh.xcomponentlib.TimeTextView
         android:id="@+id/tv_countdown_time"
         android:layout_width="289dp"
         android:layout_height="50dp"

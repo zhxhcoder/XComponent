@@ -1,10 +1,10 @@
-package com.zhxh.android.xcomponent;
+package com.zhxh.xcomponent;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.zhxh.android.xcomponentlib.TimeTextView;
+import com.zhxh.xcomponentlib.TimeTextView;
 
 
 public class MainActivity extends AppCompatActivity {
