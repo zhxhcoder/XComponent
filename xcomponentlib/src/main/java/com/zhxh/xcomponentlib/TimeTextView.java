@@ -1,4 +1,4 @@
-package com.zhxh.android.xcomponentlib;
+package com.zhxh.xcomponentlib;
 
 import android.content.Context;
 import android.content.res.TypedArray;

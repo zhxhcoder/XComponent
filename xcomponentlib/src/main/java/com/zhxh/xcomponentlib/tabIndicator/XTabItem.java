@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-
 /**
  * Created by zhxh on 2018/7/2
  */
@@ -24,10 +23,10 @@ public class XTabItem extends View {
         super(context, attrs);
 
         final TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.XTabItem, 0, 0);
-        mText = a.getText(R.styleable.XTabItem_android_text);
-        mIcon = a.getDrawable(R.styleable.XTabItem_android_icon);
-        mCustomLayout = a.getResourceId(R.styleable.XTabItem_android_layout, 0);
+                com.zhxh.xcomponentlib.R.styleable.XTabItem, 0, 0);
+        mText = a.getText(com.zhxh.xcomponentlib.R.styleable.XTabItem_android_text);
+        mIcon = a.getDrawable(com.zhxh.xcomponentlib.R.styleable.XTabItem_android_icon);
+        mCustomLayout = a.getResourceId(com.zhxh.xcomponentlib.R.styleable.XTabItem_android_layout, 0);
         a.recycle();
     }
 }
