@@ -61,6 +61,7 @@ task copyApk {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:26.1.0'
 }
 
 def siteUrl = 'https://github.com/zhxhcoder/XComponent'   //项目的主页
