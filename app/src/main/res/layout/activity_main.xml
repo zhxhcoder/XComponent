@@ -24,6 +24,7 @@
     <com.zhxh.xcomponentlib.SineWaveView
         android:layout_width="match_parent"
         android:layout_height="15dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintTop_toBottomOf="@+id/tv_countdown_time" />
 
 </android.support.constraint.ConstraintLayout>
