@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ad_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhxh.xcomponentlib.carousel.LoopViewPager
+        android:id="@+id/carousel_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/viewGroupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</RelativeLayout>
