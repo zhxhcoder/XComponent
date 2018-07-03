@@ -34,5 +34,9 @@
         <attr name="xy_tabPaddingBottom" format="dimension"/>
         <attr name="xy_tabPadding" format="dimension"/>
     </declare-styleable>
-
+    <declare-styleable name="StickyScrollView">
+        <attr name="stuckShadowHeight" format="dimension"/>
+        <attr name="stuckShadowDrawable" format="reference"/>
+        <attr name="mode" format="integer"/>
+    </declare-styleable>
 </resources>
