@@ -39,4 +39,8 @@
         <attr name="stuckShadowDrawable" format="reference"/>
         <attr name="mode" format="integer"/>
     </declare-styleable>
+    <declare-styleable name="ParallaxView">
+        <attr name="speed" format="dimension" />
+        <attr name="src" format="reference" />
+    </declare-styleable>
 </resources>
