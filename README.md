@@ -11,3 +11,6 @@ XComponent including of all kinds of Android Component
 
 高效的工具方法
 提供高效的工具方法，包括设备信息、屏幕信息、键盘管理、状态栏管理等，可以解决各种常见场景并大幅度提升开发效率。
+
+# 部分展示效果
+![](https://github.com/zhxhcoder/XComponent/blob/master/screenshots/xcomponent.gif)
