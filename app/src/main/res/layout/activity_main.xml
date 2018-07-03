@@ -22,9 +22,26 @@
 
 
     <com.zhxh.xcomponentlib.SineWaveView
+        android:id="@+id/sineView"
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintTop_toBottomOf="@+id/tv_countdown_time" />
+
+    <com.zhxh.xcomponentlib.xstickyhorizon.CYStickyNavLayouts
+        android:id="@+id/head_home_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/sineView">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/head_home_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+    </com.zhxh.xcomponentlib.xstickyhorizon.CYStickyNavLayouts>
 
 </android.support.constraint.ConstraintLayout>
