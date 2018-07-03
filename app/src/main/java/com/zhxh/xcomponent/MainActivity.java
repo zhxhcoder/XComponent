@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.zhxh.xcomponentlib.TimeTextView;
-import com.zhxh.xcomponentlib.xstickyhorizon.CYStickyNavLayouts;
+import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
 
 
 /**
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        CYStickyNavLayouts layout = findViewById(R.id.head_home_layout);
+        XStickyNavContainer layout = findViewById(R.id.head_home_layout);
 
         layout.setOnStartActivity(() -> {
             Toast.makeText(MainActivity.this, "hahahahahaha", Toast.LENGTH_LONG).show();

@@ -28,7 +28,7 @@
         android:background="@color/colorPrimaryDark"
         app:layout_constraintTop_toBottomOf="@+id/tv_countdown_time" />
 
-    <com.zhxh.xcomponentlib.xstickyhorizon.CYStickyNavLayouts
+    <com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
         android:id="@+id/head_home_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +42,6 @@
             android:overScrollMode="never"
             android:scrollbars="none" />
 
-    </com.zhxh.xcomponentlib.xstickyhorizon.CYStickyNavLayouts>
+    </com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer>
 
 </android.support.constraint.ConstraintLayout>

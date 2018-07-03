@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
  * 给RecyclerView提供伸缩效果
  */
 
-public class CYStickyNavLayouts extends LinearLayout implements NestedScrollingParent {
+public class XStickyNavContainer extends LinearLayout implements NestedScrollingParent {
 
     private NestedScrollingParentHelper mParentHelper;
     private View mHeaderView;
@@ -40,7 +40,7 @@ public class CYStickyNavLayouts extends LinearLayout implements NestedScrollingP
         mlistener = l;
     }
 
-    public CYStickyNavLayouts(Context context, AttributeSet attrs) {
+    public XStickyNavContainer(Context context, AttributeSet attrs) {
         super(context, attrs);
         mHeaderView = new View(context);
         mHeaderView.setBackgroundColor(0xffFFFFFF);

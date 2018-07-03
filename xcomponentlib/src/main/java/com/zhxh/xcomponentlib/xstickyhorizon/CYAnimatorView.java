@@ -67,13 +67,13 @@ public class CYAnimatorView extends RelativeLayout {
         mMove += width;
         if (mMove < 0) {
             mMove = 0;
-        } else if (mMove > CYStickyNavLayouts.maxWidth) {
-            mMove = CYStickyNavLayouts.maxWidth;
+        } else if (mMove > XStickyNavContainer.maxWidth) {
+            mMove = XStickyNavContainer.maxWidth;
         }
         mView.getLayoutParams().width = mMove;
         mView.getLayoutParams().height = LinearLayout.LayoutParams.MATCH_PARENT;
 
-        if (mMove > CYStickyNavLayouts.maxWidth / 2) {
+        if (mMove > XStickyNavContainer.maxWidth / 2) {
             animator_text.setText("释放查看更多");
             animator_arrow.setImageResource(R.drawable.tactics_more_right);
         } else {
