@@ -61,8 +61,9 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         titleList.add("榜单");
         titleList.add("收益榜");
         titleList.add("热门收益榜");
+        titleList.add("热门榜");
 
-/*        for (int i = 0; i < titleList.size(); i++) {
+        /*for (int i = 0; i < titleList.size(); i++) {
             //从源码上看这个不起作用 起作用的是getPageTitle
             tabLayout1.addTab(tabLayout1.newTab().setText("tab" + i));
         }*/
