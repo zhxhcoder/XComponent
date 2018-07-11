@@ -1,5 +1,6 @@
 package com.zhxh.xcomponent;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,9 +10,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.zhxh.xcomponent.dummy.ChartData;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +71,15 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         tabLayout1.setupWithViewPager(mViewPager);
         tabLayout2.setupWithViewPager(mViewPager);
 
+
+        tabLayout2.post(new Runnable() {
+            @Override
+            public void run() {
+                //通过反射方法改变
+                setIndicator(tabLayout2, 10, 10);
+            }
+        });
+
     }
 
     @Override
@@ -94,5 +108,38 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         public int getCount() {
             return titleList.size();
         }
+    }
+
+    public void setIndicator(TabLayout tabs, int leftDip, int rightDip) {
+        Class<?> tabLayout = tabs.getClass();
+        Field tabStrip = null;
+        try {
+            tabStrip = tabLayout.getDeclaredField("mTabStrip");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+        tabStrip.setAccessible(true);
+        LinearLayout llTab = null;
+        try {
+            llTab = (LinearLayout) tabStrip.get(tabs);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        int left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, leftDip, Resources.getSystem().getDisplayMetrics());
+        int right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rightDip, Resources.getSystem().getDisplayMetrics());
+
+        for (int i = 0; i < llTab.getChildCount(); i++) {
+            View child = llTab.getChildAt(i);
+            child.setPadding(0, 0, 0, 0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+            params.leftMargin = left;
+            params.rightMargin = right;
+            child.setLayoutParams(params);
+            child.invalidate();
+        }
+
+
     }
 }

@@ -46,7 +46,7 @@
             app:tabGravity="center"
             app:tabIndicatorColor="@color/C12"
             app:tabMode="scrollable"
-            app:tabPadding="10dp"
+            app:tabPadding="0dp"
             app:tabSelectedTextColor="@color/C1"
             app:tabTextAppearance="@style/TabLayoutSmallTextStyle"
             app:tabTextColor="@color/C4" />
