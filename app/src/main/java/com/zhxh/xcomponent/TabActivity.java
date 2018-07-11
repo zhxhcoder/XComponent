@@ -72,12 +72,9 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         tabLayout2.setupWithViewPager(mViewPager);
 
 
-        tabLayout2.post(new Runnable() {
-            @Override
-            public void run() {
-                //通过反射方法改变
-                setIndicator(tabLayout2, 10, 10);
-            }
+        tabLayout2.post(() -> {
+            //通过反射方法改变
+            setIndicator(tabLayout2, 10, 10);
         });
 
     }
