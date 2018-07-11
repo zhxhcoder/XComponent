@@ -38,6 +38,7 @@
             app:tabSelectedTextColor="@color/C1"
             app:tabTextAppearance="@style/TabLayoutSmallTextStyle"
             app:tabTextColor="@color/C4" />
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout2"
             android:layout_width="match_parent"
@@ -50,6 +51,18 @@
             app:tabSelectedTextColor="@color/C1"
             app:tabTextAppearance="@style/TabLayoutSmallTextStyle"
             app:tabTextColor="@color/C4" />
+
+        <com.zhxh.xcomponentlib.XPagerTabStrip
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/C8"
+            android:visibility="gone"
+            app:XptsNewStyle="true"
+            app:XptsTabSelectedTextSize="16"
+            app:XptsTabTextColor="@color/C4"
+            app:XptsTabTextColorSelected="@color/C1"
+            app:XptsTabTextSize="14" />
     </android.support.design.widget.AppBarLayout>
 
 

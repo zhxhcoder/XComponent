@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.zhxh.xcomponent.dummy.ChartData;
+import com.zhxh.xcomponentlib.XPagerTabStrip;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
     private TabLayout tabLayout1;
     private TabLayout tabLayout2;
 
+    private XPagerTabStrip tabs;
 
     private List<String> titleList = new ArrayList<>();
 
@@ -51,6 +53,8 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         tabLayout1 = findViewById(R.id.tabLayout1);
         tabLayout2 = findViewById(R.id.tabLayout2);
         mViewPager = findViewById(R.id.mViewPager);
+
+        tabs = findViewById(R.id.tabs);
 
         titleList.add("总收益榜");
         titleList.add("本周收益榜");
@@ -70,6 +74,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
 
         tabLayout1.setupWithViewPager(mViewPager);
         tabLayout2.setupWithViewPager(mViewPager);
+        tabs.setViewPager(mViewPager);
 
 
         tabLayout2.post(() -> {

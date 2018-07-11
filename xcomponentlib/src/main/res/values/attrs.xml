@@ -58,4 +58,26 @@
         <attr name="XisShaderAnim" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="XPagerTabStrip">
+        <attr name="XptsIndicatorColor" format="color" />
+        <attr name="XptsUnderlineColor" format="color" />
+        <attr name="XptsDividerColor" format="color" />
+        <attr name="XptsTabTextColor" format="color" />
+        <attr name="XptsTabTextNightColor" format="color" />
+        <attr name="XptsTabTextColorSelected" format="color" />
+        <attr name="XptsTabTextNightColorSelected" format="color" />
+        <attr name="XptsIndicatorHeight" format="dimension" />
+        <attr name="XptsUnderlineHeight" format="dimension" />
+        <attr name="XptsDividerPadding" format="dimension" />
+        <attr name="XptsTabPaddingLeftRight" format="dimension" />
+        <attr name="XptsScrollOffset" format="dimension" />
+        <attr name="XptsTabBackground" format="reference" />
+        <attr name="XptsShouldExpand" format="boolean" />
+        <attr name="XptsTextAllCaps" format="boolean" />
+        <attr name="XptsNewStyle" format="boolean" />
+        <attr name="XptsTabTextSize" format="integer" />
+        <attr name="XptsTabSelectedTextSize" format="integer" />
+        <attr name="XptsSkinMode" format="boolean" />
+    </declare-styleable>
+
 </resources>
