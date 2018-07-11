@@ -45,9 +45,11 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         tabLayout = findViewById(R.id.tabLayout);
         mViewPager = findViewById(R.id.mViewPager);
 
-        for (int i = 0; i < 5; i++) {
-            titleList.add("收益榜" + i);
-        }
+        titleList.add("总收益榜");
+        titleList.add("本周收益榜");
+        titleList.add("榜单");
+        titleList.add("收益榜");
+        titleList.add("热门收益榜");
 
         for (int i = 0; i < titleList.size(); i++) {
             //从源码上看这个不起作用 起作用的是getPageTitle
