@@ -1,4 +1,4 @@
-package com.zhxh.xcomponentlib.StickyScroll;
+package com.zhxh.xcomponentlib.stickyscroll;
 
 import android.content.Context;
 import android.content.res.TypedArray;
