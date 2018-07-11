@@ -236,7 +236,7 @@ public final class XTabLayout extends HorizontalScrollView {
         super.addView(mTabStrip, 0, new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 
-   /*     TypedArray a = context.obtainStyledAttributes(attrs, android.support.design.R.styleable.TabLayout,
+        /*TypedArray a = context.obtainStyledAttributes(attrs, android.support.design.R.styleable.TabLayout,
                 defStyleAttr, android.support.design.R.style.Widget_Design_TabLayout);*/
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XTabLayout,
                 defStyleAttr, android.support.design.R.style.Widget_Design_TabLayout);
