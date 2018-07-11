@@ -37,7 +37,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
     private TabLayout tabLayout1;
     private TabLayout tabLayout2;
 
-    private XPagerTabStrip tabs;
+    private XPagerTabStrip xPagerTabStrip1;
 
     private List<String> titleList = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         tabLayout2 = findViewById(R.id.tabLayout2);
         mViewPager = findViewById(R.id.mViewPager);
 
-        tabs = findViewById(R.id.tabs);
+        xPagerTabStrip1 = findViewById(R.id.xPagerTabStrip1);
 
         titleList.add("总收益榜");
         titleList.add("本周收益榜");
@@ -74,7 +74,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
 
         tabLayout1.setupWithViewPager(mViewPager);
         tabLayout2.setupWithViewPager(mViewPager);
-        tabs.setViewPager(mViewPager);
+        xPagerTabStrip1.setViewPager(mViewPager);
 
 
         tabLayout2.post(() -> {

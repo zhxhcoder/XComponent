@@ -53,13 +53,13 @@
             app:tabTextColor="@color/C4" />
 
         <com.zhxh.xcomponentlib.XPagerTabStrip
-            android:id="@+id/tabs"
+            android:id="@+id/xPagerTabStrip1"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/C8"
-            android:visibility="gone"
+            android:background="@color/C9"
+            android:visibility="visible"
             app:XptsNewStyle="true"
-            app:XptsTabSelectedTextSize="16"
+            app:XptsTabSelectedTextSize="15"
             app:XptsTabTextColor="@color/C4"
             app:XptsTabTextColorSelected="@color/C1"
             app:XptsTabTextSize="14" />
