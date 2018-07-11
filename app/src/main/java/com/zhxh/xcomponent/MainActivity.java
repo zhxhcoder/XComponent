@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.zhxh.xcomponentlib.TimeTextView;
@@ -42,4 +45,32 @@ public class MainActivity extends AppCompatActivity {
         HomeAdapters mHomeAdapter = new HomeAdapters();
         mHeadRecyclerView.setAdapter(mHomeAdapter);
     }
+
+
+    public class HomeAdapters extends RecyclerView.Adapter<HomeAdapters.ViewHolder> {
+
+        @Override
+        public HomeAdapters.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_homes, parent, false);
+            return new HomeAdapters.ViewHolder(mView);
+        }
+
+        @Override
+        public void onBindViewHolder(HomeAdapters.ViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 6;
+        }
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+
+            ViewHolder(View view) {
+                super(view);
+            }
+        }
+    }
+
 }
