@@ -27,5 +27,4 @@ class ViewUtilsLollipop {
             view.setOutlineProvider(ViewOutlineProvider.BOUNDS);
         }
     }
-
 }

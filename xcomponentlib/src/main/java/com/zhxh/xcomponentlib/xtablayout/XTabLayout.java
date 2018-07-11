@@ -63,7 +63,7 @@ import static android.support.v4.view.ViewPager.SCROLL_STATE_IDLE;
 import static android.support.v4.view.ViewPager.SCROLL_STATE_SETTLING;
 import static android.support.v7.widget.AppCompatDrawableManager.get;
 
-public class XTabLayout extends HorizontalScrollView {
+public final class XTabLayout extends HorizontalScrollView {
 
     private static final int DEFAULT_HEIGHT_WITH_TEXT_ICON = 72; // dps
     private static final int DEFAULT_GAP_TEXT_ICON = 8; // dps
@@ -330,18 +330,15 @@ public class XTabLayout extends HorizontalScrollView {
      * 添加分割线
      */
     private void addDivider() {
-        post(new Runnable() {
-            @Override
-            public void run() {
-                if (dividerWidth > 0) {
-                    LinearLayout linearLayout = (LinearLayout) getChildAt(0);
-                    linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-                    DividerDrawable dividerDrawable = new DividerDrawable(getContext());
-                    dividerDrawable.setDividerSize(dividerWidth, dividerHeight);
-                    dividerDrawable.setColor(dividerColor);
-                    dividerDrawable.setGravity(dividerGravity);
-                    linearLayout.setDividerDrawable(dividerDrawable);
-                }
+        post(() -> {
+            if (dividerWidth > 0) {
+                LinearLayout linearLayout = (LinearLayout) getChildAt(0);
+                linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+                DividerDrawable dividerDrawable = new DividerDrawable(getContext());
+                dividerDrawable.setDividerSize(dividerWidth, dividerHeight);
+                dividerDrawable.setColor(dividerColor);
+                dividerDrawable.setGravity(dividerGravity);
+                linearLayout.setDividerDrawable(dividerDrawable);
             }
         });
     }
