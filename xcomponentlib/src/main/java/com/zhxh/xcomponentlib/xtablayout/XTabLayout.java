@@ -63,6 +63,9 @@ import static android.support.v4.view.ViewPager.SCROLL_STATE_IDLE;
 import static android.support.v4.view.ViewPager.SCROLL_STATE_SETTLING;
 import static android.support.v7.widget.AppCompatDrawableManager.get;
 
+/**
+ * 重写了TabLayout
+ */
 public final class XTabLayout extends HorizontalScrollView {
 
     private static final int DEFAULT_HEIGHT_WITH_TEXT_ICON = 72; // dps
@@ -72,7 +75,7 @@ public final class XTabLayout extends HorizontalScrollView {
     private static final int TAB_MIN_WIDTH_MARGIN = 56; //dps
     private static final int FIXED_WRAP_GUTTER_MIN = 16; //dps
     //当Tab被选中时文本长度大于等于Tab的宽度时，
-    // Tab会另外增加SELECT_TAB_SELECTED_ADD_WIDTH的长度
+    //Tab会另外增加SELECT_TAB_SELECTED_ADD_WIDTH的长度
     private static final int SELECTED_TAB_ADD_WIDTH = 20; //dps
     private static final int MOTION_NON_ADJACENT_OFFSET = 24;
 
