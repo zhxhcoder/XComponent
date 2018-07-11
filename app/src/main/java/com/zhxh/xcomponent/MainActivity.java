@@ -1,5 +1,6 @@
 package com.zhxh.xcomponent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         XStickyNavContainer layout = findViewById(R.id.head_home_layout);
 
         layout.setOnStartActivity(() -> {
-            Toast.makeText(MainActivity.this, "hahahahahaha", Toast.LENGTH_LONG).show();
-            Toast.makeText(MainActivity.this, "heihehiehiee", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, TabActivity.class));
+
         });
         RecyclerView mHeadRecyclerView = findViewById(R.id.head_home_recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
