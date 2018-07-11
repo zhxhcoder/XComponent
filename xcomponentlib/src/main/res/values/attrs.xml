@@ -9,33 +9,6 @@
         <attr name="android:layout" />
     </declare-styleable>
 
-    <declare-styleable name="XTabLayout">
-        <attr name="indicatorPadding" format="dimension" />
-        <attr name="xy_tabIndicatorColor" format="color" />
-        <attr name="xy_tabIndicatorHeight" format="dimension" />
-        <attr name="xy_tabIndicatorWidth" format="dimension" />
-        <attr name="xy_tabContentStart" format="dimension" />
-        <attr name="xy_tabBackground" format="reference" />
-        <attr name="xy_tabMode">
-            <enum name="scrollable" value="0" />
-            <enum name="fixed" value="1" />
-        </attr>
-        <attr name="xy_tabGravity">
-            <enum name="fill" value="0" />
-            <enum name="center" value="1" />
-        </attr>
-        <attr name="xy_tabMinWidth" format="dimension" />
-        <attr name="xy_tabMaxWidth" format="dimension" />
-        <attr name="xy_tabTextAppearance" format="reference" />
-        <attr name="xy_tabTextColor" format="color" />
-        <attr name="xy_tabSelectedTextColor" format="color" />
-        <attr name="xy_tabPaddingStart" format="dimension" />
-        <attr name="xy_tabPaddingTop" format="dimension" />
-        <attr name="xy_tabPaddingEnd" format="dimension" />
-        <attr name="xy_tabPaddingBottom" format="dimension" />
-        <attr name="xy_tabPadding" format="dimension" />
-    </declare-styleable>
-
     <declare-styleable name="StickyScrollView">
         <attr name="stuckShadowHeight" format="dimension" />
         <attr name="stuckShadowDrawable" format="reference" />
@@ -78,6 +51,47 @@
         <attr name="XptsTabTextSize" format="integer" />
         <attr name="XptsTabSelectedTextSize" format="integer" />
         <attr name="XptsSkinMode" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="XTabLayout">
+        <attr name="XtabIndicatorHeight" format="dimension" />
+        <attr name="XtabIndicatorWidth" format="dimension" />
+        <attr name="XtabIndicatorColor" format="color" />
+        <attr name="XtabPadding" format="dimension" />
+        <attr name="XtabPaddingStart" format="dimension" />
+        <attr name="XtabPaddingTop" format="dimension" />
+        <attr name="XtabPaddingEnd" format="dimension" />
+        <attr name="XtabPaddingBottom" format="dimension" />
+        <attr name="XtabTextAppearance" format="reference" />
+        <attr name="XtabTextColor" format="color" />
+        <attr name="XtabSelectedTextColor" format="color" />
+        <attr name="XtabMinWidth" format="dimension" />
+        <attr name="XtabMaxWidth" format="dimension" />
+        <attr name="XtabBackgroundColor" format="reference|color" />
+        <attr name="XtabSelectedBackgroundColor" format="reference|color" />
+        <attr name="XtabContentStart" format="dimension" />
+        <attr name="XtabMode">
+            <enum name="scrollable" value="0x00000000" />
+            <enum name="fixed" value="0x00000001" />
+        </attr>
+        <attr name="XtabGravity" format="integer" />
+
+        <attr name="XtabTextSize" format="dimension" />
+        <attr name="XtabTextBold" format="boolean" />
+        <attr name="XtabSelectedTextSize" format="dimension" />
+        <attr name="XtabTextSelectedBold" format="boolean" />
+        <attr name="XtabDisplayNum" format="integer" />
+        <attr name="XtabTextAllCaps" format="boolean" />
+
+        <attr name="XtabDividerHeight" format="dimension" />
+        <attr name="XtabDividerWidth" format="dimension" />
+        <attr name="XtabDividerWidthWidthText" format="boolean" />
+        <attr name="XtabDividerColor" format="color" />
+        <attr name="XtabDividerGravity">
+            <enum name="top" value="0x00000000" />
+            <enum name="center" value="0x00000001" />
+            <enum name="bottom" value="0x00000002" />
+        </attr>
     </declare-styleable>
 
 </resources>
