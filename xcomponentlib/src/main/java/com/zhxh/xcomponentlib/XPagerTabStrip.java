@@ -35,7 +35,7 @@ import java.util.Locale;
 public final class XPagerTabStrip extends HorizontalScrollView {
 
     public interface IconTabProvider {
-        public int getPageIconResId(int position);
+        int getPageIconResId(int position);
     }
 
     // @formatter:off
@@ -44,7 +44,6 @@ public final class XPagerTabStrip extends HorizontalScrollView {
             android.R.attr.textColor
     };
     // @formatter:on
-
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
 
@@ -85,9 +84,6 @@ public final class XPagerTabStrip extends HorizontalScrollView {
      * 选中字体大小
      */
     private int tabSelectedTextSize;
-    //	private int tabTextColor = 0xFF999999;
-//	/**选中文字颜色*/
-//	private int tabTextColorSelected = 0xFF000000;
     private int tabTextColor = 0xFF333333;
     public int tabTextColorSelected = 0xFFef3c3c;
 
@@ -213,7 +209,6 @@ public final class XPagerTabStrip extends HorizontalScrollView {
                 public void onGlobalLayout() {
                     getViewTreeObserver().removeGlobalOnLayoutListener(this);
                     controlWidth = getWidth();
-
 
                     notifyDataSetChanged(0);
                 }
