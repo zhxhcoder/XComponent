@@ -27,7 +27,19 @@
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/tabLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/C9"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/C12"
+            app:tabMode="scrollable"
+            app:tabPadding="10dp"
+            app:tabSelectedTextColor="@color/C1"
+            app:tabTextAppearance="@style/TabLayoutSmallTextStyle"
+            app:tabTextColor="@color/C4" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/C9"

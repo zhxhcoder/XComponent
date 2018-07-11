@@ -28,7 +28,8 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
-    private TabLayout tabLayout;
+    private TabLayout tabLayout1;
+    private TabLayout tabLayout2;
 
 
     private List<String> titleList = new ArrayList<>();
@@ -42,7 +43,8 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         setSupportActionBar(toolbar);
 
 
-        tabLayout = findViewById(R.id.tabLayout);
+        tabLayout1 = findViewById(R.id.tabLayout1);
+        tabLayout2 = findViewById(R.id.tabLayout2);
         mViewPager = findViewById(R.id.mViewPager);
 
         titleList.add("总收益榜");
@@ -51,17 +53,18 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
         titleList.add("收益榜");
         titleList.add("热门收益榜");
 
-        for (int i = 0; i < titleList.size(); i++) {
+/*        for (int i = 0; i < titleList.size(); i++) {
             //从源码上看这个不起作用 起作用的是getPageTitle
-            tabLayout.addTab(tabLayout.newTab().setText("tab" + i));
-        }
+            tabLayout1.addTab(tabLayout1.newTab().setText("tab" + i));
+        }*/
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(0);
 
-        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout1.setupWithViewPager(mViewPager);
+        tabLayout2.setupWithViewPager(mViewPager);
 
     }
 
