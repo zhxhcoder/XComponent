@@ -22,7 +22,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
+public class TabHomeActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -46,7 +46,7 @@ public class TabActivity extends AppCompatActivity implements ItemFragment.OnLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
+        setContentView(R.layout.activity_tab_home);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

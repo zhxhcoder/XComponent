@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         XStickyNavContainer layout = findViewById(R.id.head_home_layout);
 
         layout.setOnStartActivity(() -> {
-            startActivity(new Intent(MainActivity.this, TabActivity.class));
+            startActivity(new Intent(MainActivity.this, TabHomeActivity.class));
 
         });
         RecyclerView mHeadRecyclerView = findViewById(R.id.head_home_recyclerview);

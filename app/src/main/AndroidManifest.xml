@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TabActivity"
+            android:name=".TabHomeActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
