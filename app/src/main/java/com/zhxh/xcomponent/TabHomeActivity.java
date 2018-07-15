@@ -40,8 +40,10 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
     private XPagerTabStrip xPagerTabStrip1;
     private XTabLayout xTabLayout1;
+    private XTabLayout xTabLayout2;
 
     private List<String> titleList = new ArrayList<>();
+    private List<String> titleList2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
         xPagerTabStrip1 = findViewById(R.id.xPagerTabStrip1);
         xTabLayout1 = findViewById(R.id.xTabLayout1);
+        xTabLayout2 = findViewById(R.id.xTabLayout2);
 
         titleList.add("总收益榜");
         titleList.add("本周收益榜");
@@ -65,6 +68,12 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
         titleList.add("收益榜");
         titleList.add("热门收益榜");
         titleList.add("热门榜");
+
+        titleList2.add("热门");
+        titleList2.add("热门");
+        titleList2.add("热门");
+        titleList2.add("热门");
+        titleList2.add("热门");
 
         /*for (int i = 0; i < titleList.size(); i++) {
             //从源码上看这个不起作用 起作用的是getPageTitle
@@ -80,6 +89,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
         tabLayout2.setupWithViewPager(mViewPager);
         xPagerTabStrip1.setViewPager(mViewPager);
         xTabLayout1.setupWithViewPager(mViewPager);
+        xTabLayout2.setupWithViewPager(mViewPager);
 
 
         tabLayout2.post(() -> {

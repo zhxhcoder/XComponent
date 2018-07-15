@@ -84,6 +84,25 @@
             app:XtabTextColor="@color/C4"
             app:XtabTextSize="14sp" />
 
+        <com.zhxh.xcomponentlib.xtablayout.XTabLayout
+            android:id="@+id/xTabLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/C9"
+            app:XtabBackgroundColor="@color/C9"
+            app:XtabDisplayNum="5"
+            app:XtabDividerColor="#00000000"
+            app:XtabDividerHeight="15dp"
+            app:XtabDividerWidth="1dp"
+            app:XtabDividerWidthWidthText="true"
+            app:XtabIndicatorColor="@color/C12"
+            app:XtabIndicatorHeight="2dp"
+            app:XtabMode="scrollable"
+            app:XtabSelectedTextColor="@color/C1"
+            app:XtabSelectedTextSize="14sp"
+            app:XtabTextColor="@color/C4"
+            app:XtabTextSize="14sp" />
+
     </android.support.design.widget.AppBarLayout>
 
 
