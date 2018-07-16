@@ -11,7 +11,7 @@ import android.view.MotionEvent;
  * 在edittext中可以点击的drawable
  * Created by zhxh on 2018/7/16
  */
-public class XEditText extends AppCompatEditText {
+public final class XEditText extends AppCompatEditText {
 
     private Drawable drawableRight;
     private Drawable drawableLeft;
