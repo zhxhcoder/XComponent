@@ -22,7 +22,7 @@ public class XEditText extends AppCompatEditText {
 
     private onDrawableClickListener onDrawableClickListener;
 
-    enum DrawablePosition {
+    public enum DrawablePosition {
         LEFT,
         RIGHT
     }
