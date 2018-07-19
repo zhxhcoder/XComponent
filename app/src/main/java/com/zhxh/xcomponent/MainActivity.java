@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.zhxh.xcomponentlib.TimeTextView;
+import com.zhxh.xcomponentlib.XEditText;
 import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
 
 
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         mHeadRecyclerView.setLayoutManager(layoutManager);
         HomeAdapters mHomeAdapter = new HomeAdapters();
         mHeadRecyclerView.setAdapter(mHomeAdapter);
+
+        XEditText xEditText = findViewById(R.id.xEditText);
+        xEditText.setDrawableClickListener(target -> Toast.makeText(MainActivity.this, "点击的是右面的眼睛", Toast.LENGTH_LONG).show());
+
     }
 
 
