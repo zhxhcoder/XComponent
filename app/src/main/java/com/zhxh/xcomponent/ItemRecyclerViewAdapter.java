@@ -11,12 +11,12 @@ import com.zhxh.xchartlib.LineChart;
 
 import java.util.List;
 
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<ChartData> mValues;
     private final ItemFragment.OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<ChartData> items, ItemFragment.OnListFragmentInteractionListener listener) {
+    public ItemRecyclerViewAdapter(List<ChartData> items, ItemFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
