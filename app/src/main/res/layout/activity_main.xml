@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:slideswitch="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -57,5 +58,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/head_home_layout"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.zhxh.xcomponentlib.SlideSwitch
+        android:id="@+id/slideswitch"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xEditText"
+        slideswitch:isOpen="true"
+        slideswitch:shape="rectangle"
+        slideswitch:themeColor="#ffee3a00">
+
+    </com.zhxh.xcomponentlib.SlideSwitch>
 
 </android.support.constraint.ConstraintLayout>
