@@ -8,8 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.zhxh.xcomponentlib.ExpansionFrame;
+import com.zhxh.xcomponentlib.SlideSwitch;
 import com.zhxh.xcomponentlib.TimeTextView;
 import com.zhxh.xcomponentlib.XEditText;
 import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
@@ -49,6 +52,32 @@ public class MainActivity extends AppCompatActivity {
 
         XEditText xEditText = findViewById(R.id.xEditText);
         xEditText.setDrawableClickListener(target -> Toast.makeText(MainActivity.this, "点击的是右面的眼睛", Toast.LENGTH_LONG).show());
+
+
+        ImageView expand_arrow = findViewById(R.id.expand_arrow);
+
+        ExpansionFrame expansionFrame = findViewById(R.id.expansionFrame);
+        expansionFrame.setOnExpansionUpdateListener(new ExpansionFrame.OnExpansionUpdateListener() {
+            @Override
+            public void onExpansionUpdate(float expansionFraction) {
+                expand_arrow.setRotation(expansionFraction * 180);
+            }
+        });
+
+
+        SlideSwitch slideSwitch = findViewById(R.id.slideSwitch);
+        slideSwitch.setSlideListener(new SlideSwitch.SlideListener() {
+            @Override
+            public void open() {
+                expansionFrame.toggle();
+            }
+
+            @Override
+            public void close() {
+                expansionFrame.toggle();
+            }
+        });
+
 
     }
 
