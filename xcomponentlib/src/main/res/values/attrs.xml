@@ -102,4 +102,13 @@
             <enum name="circle" value="2" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="ExpansionFrame">
+        <attr name="Xduration" format="integer" />
+        <attr name="Xexpanded" format="boolean" />
+        <attr name="Xparallax" format="float" />
+        <attr name="Xtranslate_children" format="boolean"  />
+        <attr name="layout_expandable" format="boolean" />
+        <attr name="android:orientation"/>
+    </declare-styleable>
 </resources>
