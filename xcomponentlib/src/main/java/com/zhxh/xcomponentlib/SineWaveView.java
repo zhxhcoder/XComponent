@@ -13,7 +13,7 @@ import android.view.View;
 /**
  * Created by zhxh on 2018/7/2
  */
-public class SineWaveView extends View {
+public final class SineWaveView extends View {
 
     private Path mAbovePath,mBelowWavePath;
     private Paint mAboveWavePaint,mBelowWavePaint;

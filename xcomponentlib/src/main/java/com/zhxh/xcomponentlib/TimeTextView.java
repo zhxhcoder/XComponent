@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TimeTextView extends android.support.v7.widget.AppCompatTextView implements Runnable {
+public final class TimeTextView extends android.support.v7.widget.AppCompatTextView implements Runnable {
 
     Paint mPaint;
 

@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 /**
  * Created by zhxh on 2018/7/27
  */
-public class ExpansionFrame extends FrameLayout {
+public final class ExpansionFrame extends FrameLayout {
 
     private static final int IDLE = 0;
     private static final int EXPANDING = 1;

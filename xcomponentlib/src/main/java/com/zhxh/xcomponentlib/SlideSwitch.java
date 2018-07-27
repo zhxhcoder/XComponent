@@ -22,7 +22,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 /**
  * Created by zhxh on 2018/7/25
  */
-public class SlideSwitch extends View {
+public final class SlideSwitch extends View {
 
     public static final int SHAPE_RECT = 1;
     public static final int SHAPE_CIRCLE = 2;
