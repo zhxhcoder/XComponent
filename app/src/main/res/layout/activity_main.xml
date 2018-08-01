@@ -102,13 +102,14 @@
                 app:autoSizeStepGranularity="5sp"
                 app:autoSizeTextType="uniform" />
 
-
             <com.zhxh.xcomponentlib.SingleFitTextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="哈哈哈哈我不是在说" />
-
+                android:background="@color/colorAccent"
+                android:text="哈哈6854是d11 6在说"
+                android:textColor="@color/C9"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
