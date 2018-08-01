@@ -90,13 +90,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:text="这是扩展的后展示的文字看下效果如何吧\n这是扩展的后展示的文字看下效果如何吧"
-                />
-
+                app:autoSizeMaxTextSize="60sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeStepGranularity="5sp"
+                app:autoSizeTextType="uniform" />
 
 
         </LinearLayout>
@@ -106,15 +110,14 @@
 
     <ImageView
         android:id="@+id/expand_arrow"
-        android:padding="4dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="4dp"
+        android:src="@mipmap/ic_arrow_small_expand"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expansionFrame"
-        android:src="@mipmap/ic_arrow_small_expand"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/expansionFrame" />
 
 
 </android.support.constraint.ConstraintLayout>
