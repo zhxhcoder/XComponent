@@ -33,9 +33,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.google.code.gson:gson:2.8.2'
-    //implementation project(':xcomponentlib')
+    implementation project(':xcomponentlib')
     //implementation(name: 'xcomponent', ext: 'aar')
-    implementation 'com.zhxh:xcomponentlib:2.4'
+    //implementation 'com.zhxh:xcomponentlib:2.4'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.zhxh:xchartlib:2.7'
