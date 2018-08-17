@@ -1,30 +1,25 @@
 package com.zhxh.xcomponentlib;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.zhxh.xcomponentlib.utils.DensityUtil;
+import java.util.List;
 
 /**
  * Created by zhxh on 2018/8/17
  */
 public final class XPagerAdapter extends PagerAdapter {
 
-    private Context mContext;
-    private int[] mImages;
+    private List<View> views;
 
-    public XPagerAdapter(Context context, int[] images) {
-        this.mContext = context;
-        this.mImages = images;
+    public XPagerAdapter(List<View> views) {
+        this.views = views;
     }
 
     @Override
     public int getCount() {
-        return mImages.length;
+        return views.size();
     }
 
     @Override
@@ -34,12 +29,8 @@ public final class XPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ImageView imageView = new ImageView(mContext);
-        imageView.setLayoutParams(new ViewGroup.LayoutParams(DensityUtil.dip2px(mContext, 200), DensityUtil.dip2px(mContext, 400)));
-        imageView.setImageResource(mImages[position]);
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        container.addView(imageView);
-        return imageView;
+        container.addView(views.get(position));
+        return views.get(position);
     }
 
     @Override
