@@ -23,6 +23,7 @@
     <declare-styleable name="XButton">
         <attr name="XpressedColor" format="color" />
         <attr name="XpressedTextColor" format="color" />
+        <attr name="XclickTextColor" format="color" />
         <attr name="XsolidColor" format="color" />
         <attr name="XstrokeColor" format="color" />
         <attr name="XangleCorner" format="dimension" />
@@ -107,8 +108,8 @@
         <attr name="Xduration" format="integer" />
         <attr name="Xexpanded" format="boolean" />
         <attr name="Xparallax" format="float" />
-        <attr name="Xtranslate_children" format="boolean"  />
+        <attr name="Xtranslate_children" format="boolean" />
         <attr name="layout_expandable" format="boolean" />
-        <attr name="android:orientation"/>
+        <attr name="android:orientation" />
     </declare-styleable>
 </resources>
