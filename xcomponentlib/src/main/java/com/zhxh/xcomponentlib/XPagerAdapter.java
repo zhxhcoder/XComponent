@@ -41,16 +41,16 @@ public final class XPagerAdapter extends PagerAdapter {
 
     public static class GalleryTransformer implements ViewPager.PageTransformer {
 
-        private float MAX_ALPHA = 0.5f;
-        private float MAX_SCALE = 0.9f;
+        private float alpha = 0.5f;
+        private float scale = 0.9f;
 
-        public GalleryTransformer(float MAX_ALPHA, float MAX_SCALE) {
-            this.MAX_ALPHA = MAX_ALPHA;
-            this.MAX_SCALE = MAX_SCALE;
+        public GalleryTransformer(float alpha, float scale) {
+            this.alpha = alpha;
+            this.scale = scale;
         }
 
-        public GalleryTransformer(float MAX_SCALE) {
-            this.MAX_SCALE = MAX_SCALE;
+        public GalleryTransformer(float scale) {
+            this.scale = scale;
         }
 
         public GalleryTransformer() {
@@ -60,20 +60,20 @@ public final class XPagerAdapter extends PagerAdapter {
         public void transformPage(View page, float position) {
             if (position < -1 || position > 1) {
                 //不可见区域
-                page.setAlpha(MAX_ALPHA);
-                page.setScaleX(MAX_SCALE);
-                page.setScaleY(MAX_SCALE);
+                page.setAlpha(alpha);
+                page.setScaleX(scale);
+                page.setScaleY(scale);
             } else {
                 //透明度效果
                 if (position <= 0) {
                     //pos区域[-1,0)
-                    page.setAlpha(MAX_ALPHA + MAX_ALPHA * (1 + position));
+                    page.setAlpha(alpha + alpha * (1 + position));
                 } else {
                     //pos区域[0,1]
-                    page.setAlpha(MAX_ALPHA + MAX_ALPHA * (1 - position));
+                    page.setAlpha(alpha + alpha * (1 - position));
                 }
                 //缩放效果
-                float scale = Math.max(MAX_SCALE, 1 - Math.abs(position));
+                float scale = Math.max(this.scale, 1 - Math.abs(position));
                 page.setScaleX(scale);
                 page.setScaleY(scale);
             }
