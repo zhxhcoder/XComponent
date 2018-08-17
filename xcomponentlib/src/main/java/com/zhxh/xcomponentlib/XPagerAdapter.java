@@ -12,7 +12,7 @@ import com.zhxh.xcomponentlib.utils.DensityUtil;
 /**
  * Created by zhxh on 2018/8/17
  */
-public class XPagerAdapter extends PagerAdapter {
+public final class XPagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private int[] mImages;
@@ -47,7 +47,7 @@ public class XPagerAdapter extends PagerAdapter {
         container.removeView((View) object);
     }
 
-    public class GalleryTransformer implements ViewPager.PageTransformer {
+    public static class GalleryTransformer implements ViewPager.PageTransformer {
 
         private static final float MAX_ALPHA = 0.5f;
         private static final float MAX_SCALE = 0.9f;
@@ -76,7 +76,7 @@ public class XPagerAdapter extends PagerAdapter {
         }
     }
 
-    public class CardTransformer implements ViewPager.PageTransformer {
+    public static class CardTransformer implements ViewPager.PageTransformer {
 
         private int mOffset = 60;
 

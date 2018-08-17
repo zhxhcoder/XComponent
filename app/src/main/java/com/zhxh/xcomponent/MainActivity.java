@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
+        tv_countdown_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GalleryActivity.class));
+            }
+        });
+
 
         XStickyNavContainer layout = findViewById(R.id.head_home_layout);
 
