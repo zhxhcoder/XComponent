@@ -46,7 +46,7 @@ public class GalleryActivity extends AppCompatActivity {
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setPageMargin(30);
         mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPager.setPageTransformer(false, new XPagerAdapter.GalleryTransformer());
+        mViewPager.setPageTransformer(false, new XPagerAdapter.GalleryTransformer(1f));
 
         //事件分发，处理页面滑动问题
         mRelativeLayout.setOnTouchListener((v, event) -> mViewPager.dispatchTouchEvent(event));

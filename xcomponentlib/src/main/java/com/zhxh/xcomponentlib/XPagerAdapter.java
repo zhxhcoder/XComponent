@@ -4,6 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
 
 /**
@@ -40,8 +41,20 @@ public final class XPagerAdapter extends PagerAdapter {
 
     public static class GalleryTransformer implements ViewPager.PageTransformer {
 
-        private static final float MAX_ALPHA = 0.5f;
-        private static final float MAX_SCALE = 0.9f;
+        private float MAX_ALPHA = 0.5f;
+        private float MAX_SCALE = 0.9f;
+
+        public GalleryTransformer(float MAX_ALPHA, float MAX_SCALE) {
+            this.MAX_ALPHA = MAX_ALPHA;
+            this.MAX_SCALE = MAX_SCALE;
+        }
+
+        public GalleryTransformer(float MAX_SCALE) {
+            this.MAX_SCALE = MAX_SCALE;
+        }
+
+        public GalleryTransformer() {
+        }
 
         @Override
         public void transformPage(View page, float position) {
@@ -70,6 +83,13 @@ public final class XPagerAdapter extends PagerAdapter {
     public static class CardTransformer implements ViewPager.PageTransformer {
 
         private int mOffset = 60;
+
+        public CardTransformer(int mOffset) {
+            this.mOffset = mOffset;
+        }
+
+        public CardTransformer() {
+        }
 
         @Override
         public void transformPage(View page, float position) {
