@@ -17,7 +17,6 @@ import com.zhxh.xcomponentlib.TimeTextView;
 import com.zhxh.xcomponentlib.XEditText;
 import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
 
-
 /**
  * Created by zhxh on 2018/6/3
  */
