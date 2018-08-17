@@ -16,8 +16,8 @@
     </declare-styleable>
 
     <declare-styleable name="ParallaxView">
-        <attr name="speed" format="dimension" />
-        <attr name="src" format="reference" />
+        <attr name="pvSpeed" format="dimension" />
+        <attr name="pvSrc" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="XButton">
@@ -95,7 +95,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="slideswitch">
+    <declare-styleable name="SlideSwitch">
         <attr name="themeColor" format="color" />
         <attr name="isOpen" format="boolean" />
         <attr name="shape">

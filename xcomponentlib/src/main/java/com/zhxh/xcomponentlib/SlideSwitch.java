@@ -60,11 +60,11 @@ public final class SlideSwitch extends View {
         paint = new Paint();
         paint.setAntiAlias(true);
         TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.slideswitch);
-        color_theme = a.getColor(R.styleable.slideswitch_themeColor,
+                R.styleable.SlideSwitch);
+        color_theme = a.getColor(R.styleable.SlideSwitch_themeColor,
                 DEFAULT_COLOR_THEME);
-        isOpen = a.getBoolean(R.styleable.slideswitch_isOpen, false);
-        shape = a.getInt(R.styleable.slideswitch_shape, SHAPE_RECT);
+        isOpen = a.getBoolean(R.styleable.SlideSwitch_isOpen, false);
+        shape = a.getInt(R.styleable.SlideSwitch_shape, SHAPE_RECT);
         a.recycle();
     }
 

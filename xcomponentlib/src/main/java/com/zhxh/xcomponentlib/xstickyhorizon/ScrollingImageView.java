@@ -31,8 +31,8 @@ public class ScrollingImageView extends View {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ParallaxView, 0, 0);
         try {
-            speed = ta.getDimensionPixelSize(R.styleable.ParallaxView_speed, 10);
-            bitmap = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_src, 0));
+            speed = ta.getDimensionPixelSize(R.styleable.ParallaxView_pvSpeed, 10);
+            bitmap = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.ParallaxView_pvSrc, 0));
         } finally {
             ta.recycle();
         }
