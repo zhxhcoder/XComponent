@@ -2,6 +2,35 @@
 
 XComponent 集合多种android自定义控件
 
+
+# 使用方法
+
+引用    implementation 'com.zhxh:xcomponentlib:2.8'
+
+
+        <com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
+            android:id="@+id/xStickynavlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/xRecyclerview"
+                android:layout_width="fill_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_white"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+        </com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer>
+        
+        
+       xStickynavlayout.setOnStartActivity(() -> RequestManager.toQuantTacticsReverse(strategyId, pageTitle));
+
+
+
 辅助快速搭建一个具备基本设计还原效果的 Android 项目，同时利用自身提供的丰富控件及兼容处理，让开发者能专注于业务需求而无需耗费精力在基础代码的设计上。
 不管是新项目的创建，或是已有项目的维护，均可使开发效率和项目质量得到大幅度提升。
 
