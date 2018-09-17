@@ -2,5 +2,6 @@
 <resources>
     <drawable name="transparent_background">#00000000</drawable>
     <color name="background_tab_pressed">#00000000</color>
-
+    <color name="main_color">#FA7C20</color>
+    <color name="gray">#333333</color>
 </resources>

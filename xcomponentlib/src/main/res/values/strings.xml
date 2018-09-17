@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">xcomponentlib</string>
+    <string name="expand">展开</string>
+    <string name="collapse">收起</string>
 </resources>
