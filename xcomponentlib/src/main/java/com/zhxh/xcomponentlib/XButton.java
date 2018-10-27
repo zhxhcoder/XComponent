@@ -99,6 +99,13 @@ public final class XButton extends AppCompatButton {
             textColorAnimEnd = defaultTextColor;
         }
 
+
+        if (pressedColor == Color.TRANSPARENT) {
+            if (solidColor != Color.TRANSPARENT) {
+                pressedColor = solidColor;
+            }
+        }
+
         if (null == bounds) {
             bounds = new Rect();
         }
@@ -332,15 +339,34 @@ public final class XButton extends AppCompatButton {
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
+    @Override
+    public void setTextColor(int color) {
+        super.setTextColor(color);
+
+        if (pressedTextColor == Color.TRANSPARENT) {
+            pressedTextColor = defaultTextColor;
+        }
+        if (clickTextColor == Color.TRANSPARENT) {
+            clickTextColor = defaultTextColor;
+        }
+        if (textColorAnimEnd == Color.TRANSPARENT) {
+            textColorAnimEnd = defaultTextColor;
+        }
+    }
+
     public void setPressedTextColor(int pressedTextColor) {
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setSolidColor(int solidColor) {
+
+        pressedColor = solidColor;
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeColor(int strokeColor) {
+        pressedColor = strokeColor;
+
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
