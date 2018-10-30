@@ -5,7 +5,7 @@ XComponent 集合多种android自定义控件
 
 # 使用方法
 
-引用    implementation 'com.zhxh:xcomponentlib:2.8'
+引用    implementation 'com.zhxh:xcomponentlib:3.1'
 
 
         <com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
