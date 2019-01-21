@@ -83,20 +83,19 @@ public class XStickyNavContainer extends LinearLayout implements NestedScrolling
     }
 
     /**
-     * 必须要复写 onStartNestedScroll后调用
-     */
-    @Override
-    public void onNestedScrollAccepted(View child, View target, int axes) {
-        mParentHelper.onNestedScrollAccepted(child, target, axes);
-    }
-
-    /**
      * 返回true代表处理本次事件
      * 在执行动画时间里不能处理本次事件
      */
     @Override
     public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
         return target instanceof RecyclerView && !isRunAnim;
+    }
+    /**
+     * 必须要复写 onStartNestedScroll后调用
+     */
+    @Override
+    public void onNestedScrollAccepted(View child, View target, int axes) {
+        mParentHelper.onNestedScrollAccepted(child, target, axes);
     }
 
     /**
@@ -116,33 +115,6 @@ public class XStickyNavContainer extends LinearLayout implements NestedScrolling
             mlistener.onStart();
         }
     }
-
-    /**
-     * 回弹动画
-     */
-    private class ProgressAnimation extends Animation {
-
-        private ProgressAnimation() {
-            isRunAnim = true;
-        }
-
-        @Override
-        protected void applyTransformation(float interpolatedTime, Transformation t) {
-            scrollBy((int) ((maxWidth - getScrollX()) * interpolatedTime), 0);
-            if (interpolatedTime == 1) {
-                isRunAnim = false;
-                mFooterView.setRelease();
-            }
-        }
-
-        @Override
-        public void initialize(int width, int height, int parentWidth, int parentHeight) {
-            super.initialize(width, height, parentWidth, parentHeight);
-            setDuration(300);
-            setInterpolator(new AccelerateInterpolator());
-        }
-    }
-
     @Override
     public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
 
@@ -200,6 +172,33 @@ public class XStickyNavContainer extends LinearLayout implements NestedScrolling
     public int getNestedScrollAxes() {
         return 0;
     }
+    /**
+     * 回弹动画
+     */
+    private class ProgressAnimation extends Animation {
+
+        private ProgressAnimation() {
+            isRunAnim = true;
+        }
+
+        @Override
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            scrollBy((int) ((maxWidth - getScrollX()) * interpolatedTime), 0);
+            if (interpolatedTime == 1) {
+                isRunAnim = false;
+                mFooterView.setRelease();
+            }
+        }
+
+        @Override
+        public void initialize(int width, int height, int parentWidth, int parentHeight) {
+            super.initialize(width, height, parentWidth, parentHeight);
+            setDuration(300);
+            setInterpolator(new AccelerateInterpolator());
+        }
+    }
+
+
 
     /**
      * 限制滑动 移动x轴不能超出最大范围
