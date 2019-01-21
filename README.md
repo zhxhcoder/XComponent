@@ -54,6 +54,7 @@ implementation 'com.zhxh:xcomponentlib:3.1'
         });
 ```
 部分效果:
+
 ![](https://github.com/zhxhcoder/XComponent/blob/master/screenshots/xcomponent.gif)
 
 ### 3. 源码分析
