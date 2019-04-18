@@ -167,7 +167,18 @@
         <attr name="siv_border_size" format="dimension" />
         <attr name="siv_border_color" format="color" />
     </declare-styleable>
-    <declare-styleable name="TiltTextView">
-        <attr name="Xdegree" format="integer"/>
+    <declare-styleable name="CTextView">
+        <attr name="CRotateDegree" format="integer"/>
+        <attr name="CPressedColor" format="color" />
+        <attr name="CPressedTextColor" format="color" />
+        <attr name="CClickTextColor" format="color" />
+        <attr name="CSolidColor" format="color" />
+        <attr name="CStrokeColor" format="color" />
+        <attr name="CStartColor" format="color" />
+        <attr name="CEndColor" format="color" />
+        <attr name="CAngleCorner" format="dimension" />
+        <attr name="CStrokeWidth" format="dimension" />
+        <attr name="CDrawablePadding" format="dimension" />
+        <attr name="CIsShaderAnim" format="boolean" />
     </declare-styleable>
 </resources>
