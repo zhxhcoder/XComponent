@@ -174,11 +174,8 @@
         <attr name="CClickTextColor" format="color" />
         <attr name="CSolidColor" format="color" />
         <attr name="CStrokeColor" format="color" />
-        <attr name="CStartColor" format="color" />
-        <attr name="CEndColor" format="color" />
         <attr name="CAngleCorner" format="dimension" />
         <attr name="CStrokeWidth" format="dimension" />
         <attr name="CDrawablePadding" format="dimension" />
-        <attr name="CIsShaderAnim" format="boolean" />
     </declare-styleable>
 </resources>
