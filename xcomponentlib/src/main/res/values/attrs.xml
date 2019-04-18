@@ -167,4 +167,7 @@
         <attr name="siv_border_size" format="dimension" />
         <attr name="siv_border_color" format="color" />
     </declare-styleable>
+    <declare-styleable name="TiltTextView">
+        <attr name="Xdegree" format="integer"/>
+    </declare-styleable>
 </resources>

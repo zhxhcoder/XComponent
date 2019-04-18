@@ -9,8 +9,8 @@
         android:id="@+id/tv_countdown_time"
         android:layout_width="289dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="48dp"
         android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="18dp"
         android:gravity="center"
         android:text="20180523"
@@ -104,28 +104,30 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/colorAccent"
-                android:layout_height="30dp">
+                android:background="@color/colorAccent">
+
                 <com.zhxh.xcomponentlib.SingleFitTextView
                     android:id="@+id/left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     android:background="@color/colorAccent"
                     android:text="222222"
                     android:textColor="@color/C9"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
                 <com.zhxh.xcomponentlib.SingleFitTextView
                     android:id="@+id/right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toRightOf="@+id/left"
-                    app:layout_constraintRight_toRightOf="parent"
                     android:background="@color/colorAccent"
                     android:text="666"
                     android:textColor="@color/C9"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toRightOf="@+id/left"
+                    app:layout_constraintRight_toRightOf="parent" />
 
 
             </android.support.constraint.ConstraintLayout>
@@ -146,6 +148,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expansionFrame" />
+
+    <com.zhxh.xcomponentlib.TiltTextView
+        android:id="@+id/tiltText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="明日开始"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:Xdegree="15"
+        app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
 
 
 </android.support.constraint.ConstraintLayout>
