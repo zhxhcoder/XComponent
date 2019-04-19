@@ -13,7 +13,7 @@ import com.zhxh.xcomponent.R;
 import java.util.List;
 
 
-public class ConstellationAdapter extends BaseAdapter {
+public class GridDropAdapter extends BaseAdapter {
 
     private Context context;
     private List<String> list;
@@ -24,7 +24,7 @@ public class ConstellationAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public ConstellationAdapter(Context context, List<String> list) {
+    public GridDropAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
     }

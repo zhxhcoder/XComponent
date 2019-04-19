@@ -13,7 +13,7 @@ import com.zhxh.xcomponent.R;
 import java.util.List;
 
 
-public class GirdDropDownAdapter extends BaseAdapter {
+public class ScrollListDropDownAdapter extends BaseAdapter {
 
     private Context context;
     private List<String> list;
@@ -24,7 +24,7 @@ public class GirdDropDownAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public GirdDropDownAdapter(Context context, List<String> list) {
+    public ScrollListDropDownAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
     }

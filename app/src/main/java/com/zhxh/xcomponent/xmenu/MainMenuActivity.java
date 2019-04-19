@@ -22,17 +22,15 @@ import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
     DropDownMenu mDropDownMenu;
-    private String headers[] = {"城市", "年龄", "性别", "星座"};
+    private String headers[] = {"城市", "年龄", "星座"};
     private List<View> popupViews = new ArrayList<>();
 
-    private GirdDropDownAdapter cityAdapter;
+    private ScrollListDropDownAdapter cityAdapter;
     private ListDropDownAdapter ageAdapter;
-    private ListDropDownAdapter sexAdapter;
-    private ConstellationAdapter constellationAdapter;
+    private GridDropAdapter constellationAdapter;
 
     private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
     private String ages[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
-    private String sexs[] = {"不限", "男", "女"};
     private String constellations[] = {"不限", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"};
 
     private int constellationPosition = 0;
@@ -50,7 +48,7 @@ public class MainMenuActivity extends AppCompatActivity {
         mDropDownMenu = findViewById(R.id.dropDownMenu);
         //init city menu
         final ListView cityView = new ListView(this);
-        cityAdapter = new GirdDropDownAdapter(this, Arrays.asList(citys));
+        cityAdapter = new ScrollListDropDownAdapter(this, Arrays.asList(citys));
         cityView.setDividerHeight(0);
         cityView.setAdapter(cityAdapter);
 
@@ -60,22 +58,16 @@ public class MainMenuActivity extends AppCompatActivity {
         ageAdapter = new ListDropDownAdapter(this, Arrays.asList(ages));
         ageView.setAdapter(ageAdapter);
 
-        //init sex menu
-        final ListView sexView = new ListView(this);
-        sexView.setDividerHeight(0);
-        sexAdapter = new ListDropDownAdapter(this, Arrays.asList(sexs));
-        sexView.setAdapter(sexAdapter);
-
         //init constellation
         final View constellationView = getLayoutInflater().inflate(R.layout.custom_layout, null);
         GridView constellation = constellationView.findViewById(R.id.constellation);
-        constellationAdapter = new ConstellationAdapter(this, Arrays.asList(constellations));
+        constellationAdapter = new GridDropAdapter(this, Arrays.asList(constellations));
         constellation.setAdapter(constellationAdapter);
         TextView ok = constellationView.findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDropDownMenu.setTabText(constellationPosition == 0 ? headers[3] : constellations[constellationPosition]);
+                mDropDownMenu.setTabText(constellationPosition == 0 ? headers[2] : constellations[constellationPosition]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -83,7 +75,6 @@ public class MainMenuActivity extends AppCompatActivity {
         //init popupViews
         popupViews.add(cityView);
         popupViews.add(ageView);
-        popupViews.add(sexView);
         popupViews.add(constellationView);
 
         //add item click event
@@ -101,15 +92,6 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ageAdapter.setCheckItem(position);
                 mDropDownMenu.setTabText(position == 0 ? headers[1] : ages[position]);
-                mDropDownMenu.closeMenu();
-            }
-        });
-
-        sexView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sexAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[2] : sexs[position]);
                 mDropDownMenu.closeMenu();
             }
         });
