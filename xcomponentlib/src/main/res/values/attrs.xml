@@ -114,23 +114,23 @@
     </declare-styleable>
     <!--收起展开textview-->
     <declare-styleable name="ExpandableTextView">
-        <attr name="maxCollapsedLines" format="integer"/>
-        <attr name="animDuration" format="integer"/>
-        <attr name="expandDrawable" format="reference"/>
-        <attr name="collapseDrawable" format="reference"/>
+        <attr name="maxCollapsedLines" format="integer" />
+        <attr name="animDuration" format="integer" />
+        <attr name="expandDrawable" format="reference" />
+        <attr name="collapseDrawable" format="reference" />
         <attr name="contentTextColor" format="color" />
         <attr name="collapseExpandTextColor" format="color" />
         <attr name="contentTextSize" format="dimension" />
         <attr name="collapseExpandTextSize" format="dimension" />
         <attr name="textCollapse" format="string" />
         <attr name="textExpand" format="string" />
-        <attr name="collapseExpandGrarity" >
-            <flag name="left" value="3"/>
-            <flag name="right" value="5"/>
+        <attr name="collapseExpandGrarity">
+            <flag name="left" value="3" />
+            <flag name="right" value="5" />
         </attr>
-        <attr name="drawableGrarity" >
-            <flag name="left" value="3"/>
-            <flag name="right" value="5"/>
+        <attr name="drawableGrarity">
+            <flag name="left" value="3" />
+            <flag name="right" value="5" />
         </attr>
     </declare-styleable>
 
@@ -168,7 +168,7 @@
         <attr name="siv_border_color" format="color" />
     </declare-styleable>
     <declare-styleable name="CTextView">
-        <attr name="CRotateDegree" format="integer"/>
+        <attr name="CRotateDegree" format="integer" />
         <attr name="CPressedColor" format="color" />
         <attr name="CPressedTextColor" format="color" />
         <attr name="CClickTextColor" format="color" />
@@ -177,5 +177,17 @@
         <attr name="CAngleCorner" format="dimension" />
         <attr name="CStrokeWidth" format="dimension" />
         <attr name="CDrawablePadding" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="DropDownMenu">
+        <attr name="ddunderlineColor" format="color" />
+        <attr name="dddividerColor" format="color" />
+        <attr name="ddtextSelectedColor" format="color" />
+        <attr name="ddtextUnselectedColor" format="color" />
+        <attr name="ddmenuBackgroundColor" format="color" />
+        <attr name="ddmaskColor" format="color" />
+        <attr name="ddmenuTextSize" format="dimension" />
+        <attr name="ddmenuSelectedIcon" format="reference" />
+        <attr name="ddmenuUnselectedIcon" format="reference" />
+        <attr name="ddmenuMenuHeightPercent" format="float" />
     </declare-styleable>
 </resources>

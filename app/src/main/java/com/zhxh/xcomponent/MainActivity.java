@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.zhxh.xcomponent.xmenu.MainMenuActivity;
 import com.zhxh.xcomponentlib.ExpansionFrame;
 import com.zhxh.xcomponentlib.SlideSwitch;
 import com.zhxh.xcomponentlib.TimeTextView;
@@ -84,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.tiltText).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
+            }
+        });
 
     }
 

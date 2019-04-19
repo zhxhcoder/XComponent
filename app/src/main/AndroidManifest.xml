@@ -21,6 +21,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".GalleryActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>     <activity
+            android:name=".xmenu.MainMenuActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
