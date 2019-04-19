@@ -85,11 +85,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.tiltText).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
-            }
+        findViewById(R.id.tiltText).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
+            startActivity(new Intent(MainActivity.this, MainPopActivity.class));
         });
 
     }

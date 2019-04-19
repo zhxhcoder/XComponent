@@ -20,4 +20,10 @@
     <style name="TabLayoutSmallTextStyle">
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/still</item>
+        <item name="android:windowExitAnimation">@anim/still</item>
+    </style>
+
 </resources>

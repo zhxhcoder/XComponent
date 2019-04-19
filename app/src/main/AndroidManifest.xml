@@ -24,6 +24,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>     <activity
             android:name=".xmenu.MainMenuActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MainPopActivity" />
     </application>
 
 </manifest>
