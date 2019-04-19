@@ -43,14 +43,6 @@
                     android:textSize="18dp" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/supplier_list_cart_iv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/icon_car" />
         </RelativeLayout>
     </FrameLayout>
 
