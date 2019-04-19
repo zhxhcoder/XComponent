@@ -237,8 +237,9 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
     @Override
     protected void onDraw(Canvas canvas) {
 
-        if (degrees != 0) {
-            canvas.rotate(-degrees, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
+        int lastDegrees = degrees % 360;//优化大于360度情况
+        if (lastDegrees != 0) {
+            canvas.rotate(-lastDegrees, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         }
         super.onDraw(canvas);
     }
