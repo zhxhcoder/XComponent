@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="45dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:textColor="@color/C4"
+        tools:text="全部"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/tab_indicator"
+        android:layout_width="30dp"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_red"
+        android:visibility="invisible" />
+
+</RelativeLayout>
