@@ -160,7 +160,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:CRotateDegree="15"
         app:CSpecialTextReg="%"
-        app:CSpecialTextSize="5sp"
+        app:CSpecialTextSize="3sp"
         app:CSpecialTextColor="#EC5A58"
         app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
 
