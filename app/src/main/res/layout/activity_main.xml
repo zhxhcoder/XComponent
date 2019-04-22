@@ -154,11 +154,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="明日开始"
+        android:text="明日开始%"
         android:layout_gravity="center_horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:CRotateDegree="15"
+        app:CSpecialTextReg="%"
+        app:CSpecialTextSize="5sp"
+        app:CSpecialTextColor="#EC5A58"
         app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
 
 

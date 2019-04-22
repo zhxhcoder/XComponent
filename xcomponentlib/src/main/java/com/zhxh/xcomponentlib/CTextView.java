@@ -9,9 +9,17 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by zhxh on 2019/4/18
@@ -31,6 +39,13 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
     private int clickTextColor = Color.TRANSPARENT;
     private int angleCorner = 0;
     private int strokeWidth = 0;
+
+
+    private Context ctx;
+    private String specialTextReg;
+    private int specialTextSize = 0;
+    private int specialTextColor = Color.TRANSPARENT;
+
 
     private int defaultTextColor;
 
@@ -65,6 +80,7 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
 
     @SuppressLint("ClickableViewAccessibility")
     private void init(Context context, AttributeSet attrs) {
+        ctx = context;
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CTextView);
         pressedColor = a.getColor(R.styleable.CTextView_CPressedColor, pressedColor);
         pressedTextColor = a.getColor(R.styleable.CTextView_CPressedTextColor, pressedTextColor);
@@ -75,6 +91,9 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
         strokeWidth = a.getDimensionPixelSize(R.styleable.CTextView_CStrokeWidth, strokeWidth);
         drawablePadding = a.getDimensionPixelSize(R.styleable.CTextView_CDrawablePadding, drawablePadding);
         degrees = a.getInteger(R.styleable.CTextView_CRotateDegree, 0);
+        specialTextReg = a.getString(R.styleable.CTextView_CSpecialTextReg);
+        specialTextSize = a.getDimensionPixelSize(R.styleable.CTextView_CSpecialTextSize, specialTextSize);
+        specialTextColor = a.getColor(R.styleable.CTextView_CSpecialTextColor, specialTextColor);
 
         defaultTextColor = this.getCurrentTextColor();
 
@@ -242,7 +261,34 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
         if (lastDegrees != 0) {
             canvas.rotate(-lastDegrees, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         }
+
+        SpannableString spannableString = reformSpecialText(getText().toString(), specialTextReg, specialTextColor, specialTextSize);
+        this.setText(spannableString);
         super.onDraw(canvas);
+    }
+
+    public SpannableString reformSpecialText(String srcStr, String regularExpression, int valueColor, int size) {
+
+        if (TextUtils.isEmpty(srcStr))
+            return new SpannableString("--");
+
+        if (TextUtils.isEmpty(regularExpression) || !srcStr.contains(regularExpression))
+            return new SpannableString(srcStr);
+
+        SpannableString resultSpan = new SpannableString(srcStr);
+
+        Pattern p = Pattern.compile(regularExpression);
+        Matcher m = p.matcher(srcStr);
+
+        while (m.find() && !regularExpression.equals("")) {
+
+            resultSpan.setSpan(new ForegroundColorSpan(valueColor),
+                    m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            resultSpan.setSpan(new AbsoluteSizeSpan(size, true), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return resultSpan;
     }
 
     //对外定义接口
