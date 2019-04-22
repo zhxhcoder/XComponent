@@ -177,6 +177,7 @@
         <attr name="CAngleCorner" format="dimension" />
         <attr name="CStrokeWidth" format="dimension" />
         <attr name="CDrawablePadding" format="dimension" />
+        <attr name="CRegText" format="string" />
     </declare-styleable>
     <declare-styleable name="DropDownMenu">
         <attr name="ddunderlineColor" format="color" />

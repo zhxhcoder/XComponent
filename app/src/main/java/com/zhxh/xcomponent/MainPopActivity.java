@@ -87,19 +87,19 @@ public class MainPopActivity extends Activity implements
             case R.id.supplier_list_product:
                 productTv.setTextColor(Color.parseColor("#39ac69"));
                 popListView.setAdapter(menuAdapter1);
-                popMenu.showAsDropDown(product, 0, 2);
+                popMenu.showAsDropDown(product, 0, 20);
                 menuIndex = 0;
                 break;
             case R.id.supplier_list_sort:
                 sortTv.setTextColor(Color.parseColor("#39ac69"));
                 popListView.setAdapter(menuAdapter2);
-                popMenu.showAsDropDown(product, 0, 2);
+                popMenu.showAsDropDown(product, 0, 20);
                 menuIndex = 1;
                 break;
             case R.id.supplier_list_activity:
                 activityTv.setTextColor(Color.parseColor("#39ac69"));
                 popListView.setAdapter(menuAdapter3);
-                popMenu.showAsDropDown(product, 0, 2);
+                popMenu.showAsDropDown(product, 0, 20);
                 menuIndex = 2;
                 break;
 
@@ -131,7 +131,7 @@ public class MainPopActivity extends Activity implements
         popMenu.setOutsideTouchable(true);
         popMenu.setBackgroundDrawable(new BitmapDrawable());
         popMenu.setFocusable(true);
-        popMenu.setAnimationStyle(R.style.popwin_anim_style);
+        //popMenu.setAnimationStyle(R.style.popwin_anim_style);
         popMenu.setOnDismissListener(new OnDismissListener() {
             public void onDismiss() {
                 productTv.setTextColor(Color.parseColor("#5a5959"));

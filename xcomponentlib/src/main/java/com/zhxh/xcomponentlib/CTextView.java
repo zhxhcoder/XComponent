@@ -18,6 +18,7 @@ import android.view.MotionEvent;
  * 继X系列开源库之后，开始C(新公司前缀)系列开源库开发
  * 倾斜字体 实现银行精选列表中，开抢时间的倾斜展示
  * 开始支持 下面带边框的效果
+ * 特殊字体支持 CRegText 正则匹配 187% %颜色或字体大小改变
  */
 public final class CTextView extends android.support.v7.widget.AppCompatTextView {
     GradientDrawable gradientDrawable;
