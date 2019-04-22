@@ -262,18 +262,24 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
             canvas.rotate(-lastDegrees, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         }
 
-        SpannableString spannableString = reformSpecialText(getText().toString(), specialTextReg, specialTextColor, specialTextSize);
+        SpannableString spannableString = getReformSpecialText(getText().toString(), specialTextReg, specialTextColor, specialTextSize);
         this.setText(spannableString);
         super.onDraw(canvas);
     }
 
-    public SpannableString reformSpecialText(String srcStr, String regularExpression, int valueColor, int size) {
+    public SpannableString getReformSpecialText(String srcStr, String regularExpression, int valueColor, int size) {
 
         if (TextUtils.isEmpty(srcStr))
-            return new SpannableString("--");
+            return new SpannableString("");
 
         if (TextUtils.isEmpty(regularExpression) || !srcStr.contains(regularExpression))
             return new SpannableString(srcStr);
+
+
+        if (valueColor == 0) {
+            valueColor = this.getCurrentTextColor();
+        }
+
 
         SpannableString resultSpan = new SpannableString(srcStr);
 
@@ -285,7 +291,9 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
             resultSpan.setSpan(new ForegroundColorSpan(valueColor),
                     m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            resultSpan.setSpan(new AbsoluteSizeSpan(size, true), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (size != 0) {
+                resultSpan.setSpan(new AbsoluteSizeSpan(size, true), m.start(), m.end(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
         }
 
         return resultSpan;
