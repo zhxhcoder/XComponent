@@ -126,6 +126,8 @@ public final class XButton extends AppCompatButton {
             return setColor(event.getAction());
         });
 
+        //资源回收
+        a.recycle();
     }
 
     @Override
