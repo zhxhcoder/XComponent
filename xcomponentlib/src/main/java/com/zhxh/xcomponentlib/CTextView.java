@@ -127,6 +127,7 @@ public final class CTextView extends android.support.v7.widget.AppCompatTextView
             return setColor(event.getAction());
         });
 
+        //资源回收
         a.recycle();
     }
 
