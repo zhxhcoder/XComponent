@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         tiltText.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
             startActivity(new Intent(MainActivity.this, MainPopActivity.class));
+            startActivity(new Intent(MainActivity.this, ScrollPopActivity.class));
         });
 
 
