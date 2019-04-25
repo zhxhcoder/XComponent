@@ -11,7 +11,6 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -153,7 +152,7 @@ public class CDropDownFloatMenu {
     public void showAsDropDown(View anchorView) {
         Rect visibleFrame = new Rect();
         anchorView.getGlobalVisibleRect(visibleFrame);
-        int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+        int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom + getNavigationBarHeight();
         popupwindow.setHeight(height);
         popupwindow.showAsDropDown(anchorView, 0, 0);
     }
@@ -173,5 +172,18 @@ public class CDropDownFloatMenu {
         void onSelect(int index);
 
         void onDismiss();
+    }
+
+    //获取底部navigationBar高度
+    private int getNavigationBarHeight() {
+        Resources resources = context.getResources();
+        int height = 0;
+        try {
+            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+            height = resources.getDimensionPixelSize(resourceId);
+            return height;
+        } catch (Resources.NotFoundException e) {
+            return height;
+        }
     }
 }
