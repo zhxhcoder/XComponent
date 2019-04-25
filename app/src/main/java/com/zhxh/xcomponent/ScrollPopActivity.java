@@ -25,7 +25,7 @@ public class ScrollPopActivity extends AppCompatActivity {
             .setAction("Action", null).show());
 
 
-        String[] strings = {"全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "百信银行", "众邦银行"};
+        String[] strings = {"首页全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "测试数据", "众邦银行"};
         TextView tvPopOut = findViewById(R.id.tvPopOut);
 
         tvPopOut.setOnClickListener(v -> {

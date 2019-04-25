@@ -74,7 +74,7 @@ public class CDropDownFloatMenu {
         final LinearLayout pop_layout;
         pop_layout = popupView.findViewById(R.id.pop_layout);
 
-        initFloatItem(item_container);
+        initFloatItem(item_container, true);
 
         Resources resources = context.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
@@ -101,7 +101,7 @@ public class CDropDownFloatMenu {
         });
     }
 
-    private void initFloatItem(FlowLayout item_container) {
+    private void initFloatItem(FlowLayout item_container, boolean init) {
         item_container.removeAllViews();
         for (int i = 0; i < stringArray.length; i++) {
             CTextView textView = new CTextView(context);
@@ -130,19 +130,16 @@ public class CDropDownFloatMenu {
             textView.setPadding(0, dip2px(5), 0, dip2px(5));
             item_container.addView(textView);
 
-            int finalI = i;
-
-            textView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    //selectStr = stringArray[finalI];
-                    //initFloatItem(item_container);
-                    //item_container.invalidate();
+            if (init) {//只有首次才有必要设置clickListener
+                int finalI = i;
+                textView.setOnClickListener(v -> {
+                    selectStr = stringArray[finalI];
+                    initFloatItem(item_container, false);
                     itemSelect.onSelect(finalI);
-                    dismiss();
-                    return false;
-                }
-            });
+                    //item_container.postDelayed而不用v.postDelayed而不用 生命周期不同
+                    item_container.post(() -> dismiss());
+                });
+            }
         }
     }
 
