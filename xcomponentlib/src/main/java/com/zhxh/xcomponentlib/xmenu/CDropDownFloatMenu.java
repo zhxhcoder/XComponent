@@ -1,11 +1,11 @@
 package com.zhxh.xcomponentlib.xmenu;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -27,7 +27,7 @@ import com.zhxh.xcomponentlib.R;
  */
 public class CDropDownFloatMenu {
 
-    private Context context;
+    private Activity context;
     public PopupWindow popupwindow;
 
     private int height = 0;
@@ -43,8 +43,8 @@ public class CDropDownFloatMenu {
     private int defaultTextColor;
 
 
-    public CDropDownFloatMenu(Context context, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
-        this.context = context;
+    public CDropDownFloatMenu(Activity activity, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
+        this.context = activity;
         this.stringArray = stringArray;
         this.selectStr = selectStr;
         this.itemClick = itemClick;
@@ -92,7 +92,10 @@ public class CDropDownFloatMenu {
         popupwindow.setTouchable(true); // 设置PopupWindow可触摸
         popupwindow.setOutsideTouchable(true);
         popupwindow.setFocusable(true);
-        popupwindow.setBackgroundDrawable(new BitmapDrawable());
+
+        //WindowManager.LayoutParams lp =context.getWindow().getAttributes();
+        //lp.alpha = 0.3f;
+        //context.getWindow().setAttributes(lp);
 
         popupwindow.setOnDismissListener(() -> {
             //Todo
@@ -123,7 +126,7 @@ public class CDropDownFloatMenu {
             }
             LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             textView.setLayoutParams(textViewParams);
-            textView.setPadding(dip2px(20), dip2px(8), dip2px(20), dip2px(8));
+            textView.setPadding(dip2px(22), dip2px(6), dip2px(22), dip2px(6));
 
             item_container.addView(textView);
 
