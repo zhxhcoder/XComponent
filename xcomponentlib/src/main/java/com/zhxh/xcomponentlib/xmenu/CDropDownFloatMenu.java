@@ -7,11 +7,14 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -152,7 +155,12 @@ public class CDropDownFloatMenu {
     public void showAsDropDown(View anchorView) {
         Rect visibleFrame = new Rect();
         anchorView.getGlobalVisibleRect(visibleFrame);
-        int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom + getNavigationBarHeight();
+        int height;
+        if (checkHasNavigationBar(context)) {
+            height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+        } else {
+            height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom + getNavigationBarHeight();
+        }
         popupwindow.setHeight(height);
         popupwindow.showAsDropDown(anchorView, 0, 0);
     }
@@ -186,4 +194,26 @@ public class CDropDownFloatMenu {
             return height;
         }
     }
+
+    public static boolean checkHasNavigationBar(Activity activity) {
+        WindowManager windowManager = activity.getWindowManager();
+        Display d = windowManager.getDefaultDisplay();
+
+        DisplayMetrics realDisplayMetrics = new DisplayMetrics();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            d.getRealMetrics(realDisplayMetrics);
+        }
+
+        int realHeight = realDisplayMetrics.heightPixels;
+        int realWidth = realDisplayMetrics.widthPixels;
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        d.getMetrics(displayMetrics);
+
+        int displayHeight = displayMetrics.heightPixels;
+        int displayWidth = displayMetrics.widthPixels;
+
+        return (realWidth - displayWidth) > 0 || (realHeight - displayHeight) > 0;
+    }
+
 }
