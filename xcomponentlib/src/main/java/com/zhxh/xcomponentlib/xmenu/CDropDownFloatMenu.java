@@ -56,7 +56,6 @@ public class CDropDownFloatMenu {
 
     @SuppressLint("ClickableViewAccessibility")
     private void createAutoDialog() {
-
         selectTextColor = Color.parseColor("#E54749");
         selectSolidColor = Color.parseColor("#FFE8E8");
 
@@ -115,16 +114,16 @@ public class CDropDownFloatMenu {
                     , selectTextColor
                     , selectSolidColor
                     , selectTextColor
-                    , 5
-                    , 2);
+                    , dip2px(2)
+                    , dip2px(1));
                 textView.setTextColor(selectTextColor);
             } else {
-                textView.setSolidAttr(defaultSolidColor, defaultSolidColor, 5);
+                textView.setSolidAttr(defaultSolidColor, defaultSolidColor, dip2px(2));
                 textView.setTextColor(defaultTextColor);
             }
             LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             textView.setLayoutParams(textViewParams);
-            textView.setPadding(60, 20, 60, 20);
+            textView.setPadding(dip2px(20), dip2px(8), dip2px(20), dip2px(8));
 
             item_container.addView(textView);
 
@@ -133,12 +132,14 @@ public class CDropDownFloatMenu {
             textView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    //selectStr = stringArray[finalI];
+                    //initFloatItem(item_container);
+                    //item_container.invalidate();
                     itemClick.onItemClick(finalI);
                     dismiss();
                     return false;
                 }
             });
-
         }
     }
 
@@ -153,7 +154,7 @@ public class CDropDownFloatMenu {
         if (Build.VERSION.SDK_INT >= 24) {
             Rect visibleFrame = new Rect();
             anchorView.getGlobalVisibleRect(visibleFrame);
-            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom + dip2px(context, 50);
+            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
             popupwindow.setHeight(height);
             popupwindow.showAsDropDown(anchorView, 0, 0);
         } else {
@@ -191,7 +192,7 @@ public class CDropDownFloatMenu {
         popupwindow.showAtLocation(anchorView, Gravity.TOP, location[0] - width / 2, y);
     }
 
-    public int dip2px(Context context, float dpValue) {
+    public int dip2px(float dpValue) {
         if (context == null) {
             return 0;
         }
