@@ -24,12 +24,12 @@ public class ScrollPopActivity extends AppCompatActivity {
             .setAction("Action", null).show());
 
 
-        String[] strings = {"aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"};
+        String[] strings = {"全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "百信银行", "众邦银行"};
         TextView tvPopOut = findViewById(R.id.tvPopOut);
 
         tvPopOut.setOnClickListener(v -> {
             Toast.makeText(ScrollPopActivity.this, "弹出弹框", Toast.LENGTH_LONG).show();
-            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, strings, "gggg", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
+            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, strings, "全部银行", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
             downMenu.showAsDropDown(tvPopOut);
         });
     }

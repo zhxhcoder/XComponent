@@ -127,7 +127,11 @@ public class FloatDropDownMenu {
 
             item_container.addView(textView);
 
-            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(i, item_container));
+            int finalI = i;
+            textView.setOnClickListener(v -> {
+                dismiss();
+                itemClick.onItemClick(finalI);
+            });
         }
     }
 
@@ -188,19 +192,4 @@ public class FloatDropDownMenu {
         void onItemClick(int index);
     }
 
-    class ClickTextView implements View.OnClickListener {
-        int position;
-        FlowLayout layout;
-
-        public ClickTextView(int position, FlowLayout layout) {
-            this.position = position;
-            this.layout = layout;
-        }
-
-        @Override
-        public void onClick(View v) {
-            itemClick.onItemClick(position);
-            dismiss();
-        }
-    }
 }
