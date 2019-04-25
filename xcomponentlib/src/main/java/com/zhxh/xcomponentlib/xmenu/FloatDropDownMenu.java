@@ -14,13 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.zhxh.xcomponentlib.FlowLayout;
 import com.zhxh.xcomponentlib.R;
 
 /**
  * Created by zhxh on 2019/4/19
  * 下拉选择框
  */
-public class FloatDownMenu {
+public class FloatDropDownMenu {
 
     private Context context;
 
@@ -39,7 +40,7 @@ public class FloatDownMenu {
     ItemClickTextView itemClick;
 
 
-    public FloatDownMenu(Context context, View anchorView, String[] stringArray, int selectIndex, ItemClickTextView itemClick) {
+    public FloatDropDownMenu(Context context, View anchorView, String[] stringArray, int selectIndex, ItemClickTextView itemClick) {
 
         this.context = context;
         this.anchorView = anchorView;
@@ -62,7 +63,7 @@ public class FloatDownMenu {
         });
 
         final LinearLayout pop_layout;
-        final LinearLayout item_container;
+        final FlowLayout item_container;
 
         pop_layout = popupView.findViewById(R.id.pop_layout);
         item_container = popupView.findViewById(R.id.item_container);
@@ -83,7 +84,7 @@ public class FloatDownMenu {
             if (j == tempIndex) {
                 textView.setTextColor(selectColor);
             } else {
-                textView.setTextColor(Color.BLUE);
+                textView.setTextColor(Color.WHITE);
             }
 
             LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(200, 100);
@@ -92,7 +93,7 @@ public class FloatDownMenu {
 
             item_container.addView(textView);
 
-            textView.setOnClickListener(new FloatDownMenu.ClickTextView(j, item_container));
+            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(j, item_container));
         }
 
 
@@ -102,24 +103,15 @@ public class FloatDownMenu {
         int heightPixels = dm.heightPixels;
 
 
-        TextView blank = new TextView(context);
-
-        blank.setWidth(widthPixels);
-        blank.setHeight(600);
-
-        blank.setBackgroundColor(Color.BLACK);
-
-
-        pop_layout.addView(blank,1);
-
         int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         pop_layout.measure(w, h);
 
         height = pop_layout.getMeasuredHeight();
 
+        //popupwindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        popupwindow = new PopupWindow(popupView, widthPixels, height);
+        popupwindow = new PopupWindow(popupView, widthPixels, height + 1300);
         popupwindow.setTouchable(true); // 设置PopupWindow可触摸
         popupwindow.setOutsideTouchable(true);
         popupwindow.setFocusable(true);
@@ -179,9 +171,9 @@ public class FloatDownMenu {
     class ClickTextView implements View.OnClickListener {
 
         int position;
-        LinearLayout linearLayout;
+        FlowLayout linearLayout;
 
-        public ClickTextView(int position, LinearLayout linearLayout) {
+        public ClickTextView(int position, FlowLayout linearLayout) {
 
             this.position = position;
             this.linearLayout = linearLayout;
@@ -195,7 +187,7 @@ public class FloatDownMenu {
             for (int i = 0; i < childCount; i++) {
                 View view = linearLayout.getChildAt(i);
                 if (view instanceof TextView) {
-                    ((TextView) view).setTextColor(Color.BLUE);
+                    ((TextView) view).setTextColor(Color.WHITE);
                 }
             }
             TextView textView = (TextView) v;

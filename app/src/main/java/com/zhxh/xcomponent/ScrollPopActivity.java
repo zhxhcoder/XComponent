@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhxh.xcomponentlib.xmenu.FloatDownMenu;
+import com.zhxh.xcomponentlib.xmenu.FloatDropDownMenu;
 
 public class ScrollPopActivity extends AppCompatActivity {
 
@@ -24,14 +24,14 @@ public class ScrollPopActivity extends AppCompatActivity {
             .setAction("Action", null).show());
 
 
-        String[] strings = {"aa", "bb", "cc"};
+        String[] strings = {"aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff", "gggg", "hhhh", "iiii", "jjjj", "kkkk"};
         TextView tvPopOut = findViewById(R.id.tvPopOut);
 
         tvPopOut.setOnClickListener(v -> {
 
             Toast.makeText(ScrollPopActivity.this, "弹出弹框", Toast.LENGTH_LONG).show();
 
-            FloatDownMenu downMenu = new FloatDownMenu(ScrollPopActivity.this, tvPopOut, strings, 1, new FloatDownMenu.ItemClickTextView() {
+            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, tvPopOut, strings, 0, new FloatDropDownMenu.ItemClickTextView() {
 
                 @Override
                 public void onItemClick(int index) {

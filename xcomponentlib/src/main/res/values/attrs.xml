@@ -193,4 +193,9 @@
         <attr name="ddmenuUnselectedIcon" format="reference" />
         <attr name="ddmenuMenuHeightPercent" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpacing" format="dimension" />
+        <attr name="itemSpacing" format="dimension" />
+    </declare-styleable>
 </resources>
