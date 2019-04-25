@@ -12,9 +12,9 @@
         android:id="@+id/item_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/C1"
+        android:background="@color/white"
         android:orientation="horizontal"
-        app:itemSpacing="5dp"
+        app:itemSpacing="10dp"
         app:lineSpacing="10dp">
 
     </com.zhxh.xcomponentlib.FlowLayout>

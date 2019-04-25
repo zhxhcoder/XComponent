@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
+import com.zhxh.xcomponentlib.CTextView;
 import com.zhxh.xcomponentlib.FlowLayout;
 import com.zhxh.xcomponentlib.R;
 
@@ -27,19 +27,20 @@ import com.zhxh.xcomponentlib.R;
 public class FloatDropDownMenu {
 
     private Context context;
-
     public PopupWindow popupwindow;
 
     private int height = 0;
     private int width = 0;
 
     private String selectStr;
-
     private String[] stringArray;
-
-    int selectColor;
-
     ItemClickTextView itemClick;
+
+    private int selectTextColor;
+    private int selectSolidColor;
+    private int defaultSolidColor;
+    private int defaultTextColor;
+
 
     public FloatDropDownMenu(Context context, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
         this.context = context;
@@ -54,7 +55,13 @@ public class FloatDropDownMenu {
 
     @SuppressLint("ClickableViewAccessibility")
     private void createAutoDialog() {
-        selectColor = Color.RED;
+
+        selectTextColor = Color.parseColor("#E54749");
+        selectSolidColor = Color.parseColor("#FFE8E8");
+
+        defaultTextColor = Color.parseColor("#48484F");
+        defaultSolidColor = Color.parseColor("#F0F0F0");
+
         LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = inflate.inflate(R.layout.pop_common_drop_down, null);
 
@@ -63,32 +70,14 @@ public class FloatDropDownMenu {
             return false;
         });
 
-        final LinearLayout pop_layout;
         final FlowLayout item_container;
-
-        pop_layout = popupView.findViewById(R.id.pop_layout);
         item_container = popupView.findViewById(R.id.item_container);
 
-        for (int i = 0; i < stringArray.length; i++) {
+        final LinearLayout pop_layout;
+        pop_layout = popupView.findViewById(R.id.pop_layout);
 
-            TextView textView = new TextView(context);
-            textView.setGravity(Gravity.CENTER);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            textView.setText(stringArray[i]);
+        initFloatItem(item_container);
 
-            if (selectStr.equalsIgnoreCase(stringArray[i])) {
-                textView.setTextColor(selectColor);
-            } else {
-                textView.setTextColor(Color.WHITE);
-            }
-            LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(200, 100);
-            textView.setLayoutParams(textViewParams);
-            textView.setPadding(0, 20, 0, 20);
-
-            item_container.addView(textView);
-
-            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(i, item_container));
-        }
         Resources resources = context.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int widthPixels = dm.widthPixels;
@@ -108,6 +97,38 @@ public class FloatDropDownMenu {
         popupwindow.setOnDismissListener(() -> {
             //Todo
         });
+    }
+
+
+    private void initFloatItem(FlowLayout item_container) {
+        for (int i = 0; i < stringArray.length; i++) {
+
+            CTextView textView = new CTextView(context);
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+            textView.setText(stringArray[i]);
+
+            if (selectStr.equalsIgnoreCase(stringArray[i])) {
+                textView.setBtnAttr(
+                    selectSolidColor
+                    , selectTextColor
+                    , selectSolidColor
+                    , selectTextColor
+                    , 5
+                    , 2);
+                textView.setTextColor(selectTextColor);
+            } else {
+                textView.setSolidAttr(defaultSolidColor, defaultSolidColor, 5);
+                textView.setTextColor(defaultTextColor);
+            }
+            LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            textView.setLayoutParams(textViewParams);
+            textView.setPadding(60, 20, 60, 20);
+
+            item_container.addView(textView);
+
+            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(i, item_container));
+        }
     }
 
 
@@ -169,26 +190,15 @@ public class FloatDropDownMenu {
 
     class ClickTextView implements View.OnClickListener {
         int position;
-        FlowLayout linearLayout;
+        FlowLayout layout;
 
-        public ClickTextView(int position, FlowLayout linearLayout) {
+        public ClickTextView(int position, FlowLayout layout) {
             this.position = position;
-            this.linearLayout = linearLayout;
+            this.layout = layout;
         }
 
         @Override
         public void onClick(View v) {
-
-            int childCount = linearLayout.getChildCount();
-
-            for (int i = 0; i < childCount; i++) {
-                View view = linearLayout.getChildAt(i);
-                if (view instanceof TextView) {
-                    ((TextView) view).setTextColor(Color.WHITE);
-                }
-            }
-            TextView textView = (TextView) v;
-            textView.setTextColor(selectColor);
             itemClick.onItemClick(position);
             dismiss();
         }

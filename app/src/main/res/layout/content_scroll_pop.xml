@@ -12,9 +12,9 @@
         android:id="@+id/tvPopOut"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_margin="50dp"
-        android:padding="10dp"
+        android:layout_marginTop="50dp"
         android:background="@color/colorAccent"
+        android:padding="10dp"
         android:text="点这里弹出pop框" />
 
 </android.support.v4.widget.NestedScrollView>
