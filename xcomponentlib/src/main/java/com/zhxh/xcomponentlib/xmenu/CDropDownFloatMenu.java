@@ -6,13 +6,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -30,11 +30,10 @@ public class CDropDownFloatMenu {
     public PopupWindow popupwindow;
 
     private int height = 0;
-    private int width = 0;
 
     private String selectStr;
     private String[] stringArray;
-    ItemClickTextView itemClick;
+    ItemSelect itemSelect;
 
     private int selectTextColor;
     private int selectSolidColor;
@@ -42,11 +41,11 @@ public class CDropDownFloatMenu {
     private int defaultTextColor;
 
 
-    public CDropDownFloatMenu(Activity activity, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
+    public CDropDownFloatMenu(Activity activity, String[] stringArray, String selectStr, ItemSelect itemSelect) {
         this.context = activity;
         this.stringArray = stringArray;
         this.selectStr = selectStr;
-        this.itemClick = itemClick;
+        this.itemSelect = itemSelect;
 
         if (stringArray != null) {
             createAutoDialog();
@@ -98,9 +97,9 @@ public class CDropDownFloatMenu {
 
         popupwindow.setOnDismissListener(() -> {
             //Todo
+            itemSelect.onDismiss();
         });
     }
-
 
     private void initFloatItem(FlowLayout item_container) {
         item_container.removeAllViews();
@@ -124,6 +123,8 @@ public class CDropDownFloatMenu {
                 textView.setTextColor(defaultTextColor);
             }
 
+            textView.setTypeface(Typeface.DEFAULT_BOLD);
+
             //兼容低版本可能出现的paddingLeft和paddingRight不起作用
             textView.setWidth((int) textView.getPaint().measureText(stringArray[i]) + dip2px(20));
             textView.setPadding(0, dip2px(5), 0, dip2px(5));
@@ -137,7 +138,7 @@ public class CDropDownFloatMenu {
                     //selectStr = stringArray[finalI];
                     //initFloatItem(item_container);
                     //item_container.invalidate();
-                    itemClick.onItemClick(finalI);
+                    itemSelect.onSelect(finalI);
                     dismiss();
                     return false;
                 }
@@ -171,7 +172,9 @@ public class CDropDownFloatMenu {
     /**
      * 定义状态改变接口
      */
-    public interface ItemClickTextView {
-        void onItemClick(int index);
+    public interface ItemSelect {
+        void onSelect(int index);
+
+        void onDismiss();
     }
 }

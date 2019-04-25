@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +29,22 @@ public class ScrollPopActivity extends AppCompatActivity {
         TextView tvPopOut = findViewById(R.id.tvPopOut);
 
         tvPopOut.setOnClickListener(v -> {
-            Toast.makeText(ScrollPopActivity.this, "弹出弹框", Toast.LENGTH_LONG).show();
-            CDropDownFloatMenu downMenu = new CDropDownFloatMenu(ScrollPopActivity.this, strings, "全部银行", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
+
+            CDropDownFloatMenu downMenu = new CDropDownFloatMenu(ScrollPopActivity.this, strings, "全部银行", new CDropDownFloatMenu.ItemSelect() {
+                @Override
+                public void onSelect(int index) {
+                    Log.d("zhxhzhxh", "选中 " + strings[index]);
+                    Toast.makeText(ScrollPopActivity.this, "选中" + strings[index], Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onDismiss() {
+                    Log.d("zhxhzhxh", "消失");
+                    Toast.makeText(ScrollPopActivity.this, "消失", Toast.LENGTH_LONG).show();
+                }
+            });
             downMenu.showAsDropDown(tvPopOut);
+
         });
     }
 }
