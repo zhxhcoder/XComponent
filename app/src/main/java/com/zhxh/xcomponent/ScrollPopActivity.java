@@ -28,18 +28,9 @@ public class ScrollPopActivity extends AppCompatActivity {
         TextView tvPopOut = findViewById(R.id.tvPopOut);
 
         tvPopOut.setOnClickListener(v -> {
-
             Toast.makeText(ScrollPopActivity.this, "弹出弹框", Toast.LENGTH_LONG).show();
-
-            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, tvPopOut, strings, 0, new FloatDropDownMenu.ItemClickTextView() {
-
-                @Override
-                public void onItemClick(int index) {
-                    Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show();
-                }
-            });
-
-            downMenu.show();
+            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, strings, "gggg", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
+            downMenu.showAsDropDown(tvPopOut);
         });
     }
 }

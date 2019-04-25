@@ -4,12 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -25,13 +28,12 @@ public class FloatDropDownMenu {
 
     private Context context;
 
-    private View anchorView;
     public PopupWindow popupwindow;
 
     private int height = 0;
     private int width = 0;
 
-    private int selectIndex;
+    private String selectStr;
 
     private String[] stringArray;
 
@@ -39,20 +41,19 @@ public class FloatDropDownMenu {
 
     ItemClickTextView itemClick;
 
-
-    public FloatDropDownMenu(Context context, View anchorView, String[] stringArray, int selectIndex, ItemClickTextView itemClick) {
-
+    public FloatDropDownMenu(Context context, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
         this.context = context;
-        this.anchorView = anchorView;
         this.stringArray = stringArray;
-        this.selectIndex = selectIndex;
+        this.selectStr = selectStr;
         this.itemClick = itemClick;
-        createAutoDialog();
+
+        if (stringArray != null) {
+            createAutoDialog();
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private void createAutoDialog() {
-
         selectColor = Color.RED;
         LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = inflate.inflate(R.layout.pop_common_drop_down, null);
@@ -70,38 +71,27 @@ public class FloatDropDownMenu {
 
         for (int i = 0; i < stringArray.length; i++) {
 
-            int j;
-            int tempIndex;
-
-            j = i;
-            tempIndex = selectIndex;
-
             TextView textView = new TextView(context);
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            textView.setText(stringArray[j]);
+            textView.setText(stringArray[i]);
 
-            if (j == tempIndex) {
+            if (selectStr.equalsIgnoreCase(stringArray[i])) {
                 textView.setTextColor(selectColor);
             } else {
                 textView.setTextColor(Color.WHITE);
             }
-
             LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(200, 100);
             textView.setLayoutParams(textViewParams);
             textView.setPadding(0, 20, 0, 20);
 
             item_container.addView(textView);
 
-            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(j, item_container));
+            textView.setOnClickListener(new FloatDropDownMenu.ClickTextView(i, item_container));
         }
-
-
         Resources resources = context.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int widthPixels = dm.widthPixels;
-        int heightPixels = dm.heightPixels;
-
 
         int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
@@ -109,9 +99,7 @@ public class FloatDropDownMenu {
 
         height = pop_layout.getMeasuredHeight();
 
-        //popupwindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        popupwindow = new PopupWindow(popupView, widthPixels, height + 1300);
+        popupwindow = new PopupWindow(popupView, widthPixels, ViewGroup.LayoutParams.MATCH_PARENT);
         popupwindow.setTouchable(true); // 设置PopupWindow可触摸
         popupwindow.setOutsideTouchable(true);
         popupwindow.setFocusable(true);
@@ -124,14 +112,25 @@ public class FloatDropDownMenu {
 
 
     public void dismiss() {
-
         if (popupwindow != null && popupwindow.isShowing()) {
-
             popupwindow.dismiss();
         }
     }
 
-    public void show() {
+    //默认调用方法
+    public void showAsDropDown(View anchorView) {
+        if (Build.VERSION.SDK_INT >= 24) {
+            Rect visibleFrame = new Rect();
+            anchorView.getGlobalVisibleRect(visibleFrame);
+            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+            popupwindow.setHeight(height);
+            popupwindow.showAsDropDown(anchorView, 0, 0);
+        } else {
+            popupwindow.showAsDropDown(anchorView, 0, 0);
+        }
+    }
+
+    public void show(View anchorView) {
         int[] location = new int[2];
 
         anchorView.getLocationOnScreen(location);
@@ -141,7 +140,7 @@ public class FloatDropDownMenu {
     }
 
 
-    public void show(int x, int y) {
+    public void show(View anchorView, int x, int y) {
 
         int[] location = new int[2];
 
@@ -151,7 +150,7 @@ public class FloatDropDownMenu {
         popupwindow.showAtLocation(anchorView, Gravity.TOP, x, y);
     }
 
-    public void show(int y) {
+    public void show(View anchorView, int y) {
 
         int[] location = new int[2];
 
@@ -169,12 +168,10 @@ public class FloatDropDownMenu {
     }
 
     class ClickTextView implements View.OnClickListener {
-
         int position;
         FlowLayout linearLayout;
 
         public ClickTextView(int position, FlowLayout linearLayout) {
-
             this.position = position;
             this.linearLayout = linearLayout;
         }
@@ -195,6 +192,5 @@ public class FloatDropDownMenu {
             itemClick.onItemClick(position);
             dismiss();
         }
-
     }
 }
