@@ -101,8 +101,8 @@ public class FloatDropDownMenu {
 
 
     private void initFloatItem(FlowLayout item_container) {
+        item_container.removeAllViews();
         for (int i = 0; i < stringArray.length; i++) {
-
             CTextView textView = new CTextView(context);
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
