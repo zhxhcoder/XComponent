@@ -88,7 +88,7 @@ public class CDropDownFloatMenu {
 
         height = pop_layout.getMeasuredHeight();
 
-        popupwindow = new PopupWindow(popupView, widthPixels, ViewGroup.LayoutParams.MATCH_PARENT);
+        popupwindow = new PopupWindow(popupView, widthPixels, height);
         popupwindow.setTouchable(true); // 设置PopupWindow可触摸
         popupwindow.setOutsideTouchable(true);
         popupwindow.setFocusable(true);
@@ -163,36 +163,6 @@ public class CDropDownFloatMenu {
         } else {
             popupwindow.showAsDropDown(anchorView, 0, 0);
         }
-    }
-
-    public void show(View anchorView) {
-        int[] location = new int[2];
-
-        anchorView.getLocationOnScreen(location);
-        //为popWindow添加动画效果
-        popupwindow.setAnimationStyle(android.R.style.Animation_Dialog);
-        popupwindow.showAtLocation(anchorView, Gravity.TOP, location[0] - width / 3, location[1] + height);
-    }
-
-
-    public void show(View anchorView, int x, int y) {
-
-        int[] location = new int[2];
-
-        anchorView.getLocationInWindow(location);
-        //为popWindow添加动画效果
-        popupwindow.setAnimationStyle(android.R.style.Animation_Dialog);
-        popupwindow.showAtLocation(anchorView, Gravity.TOP, x, y);
-    }
-
-    public void show(View anchorView, int y) {
-
-        int[] location = new int[2];
-
-        anchorView.getLocationInWindow(location);
-        //为popWindow添加动画效果
-        popupwindow.setAnimationStyle(android.R.style.Animation_Dialog);
-        popupwindow.showAtLocation(anchorView, Gravity.TOP, location[0] - width / 2, y);
     }
 
     public int dip2px(float dpValue) {
