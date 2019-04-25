@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -124,10 +123,10 @@ public class CDropDownFloatMenu {
                 textView.setSolidAttr(defaultSolidColor, defaultSolidColor, dip2px(2));
                 textView.setTextColor(defaultTextColor);
             }
-            LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            textView.setLayoutParams(textViewParams);
-            textView.setPadding(dip2px(22), dip2px(6), dip2px(22), dip2px(6));
 
+            //兼容低版本可能出现的paddingLeft和paddingRight不起作用
+            textView.setWidth((int) textView.getPaint().measureText(stringArray[i]) + dip2px(20));
+            textView.setPadding(0, dip2px(5), 0, dip2px(5));
             item_container.addView(textView);
 
             int finalI = i;
@@ -154,15 +153,11 @@ public class CDropDownFloatMenu {
 
     //默认调用方法
     public void showAsDropDown(View anchorView) {
-        if (Build.VERSION.SDK_INT >= 24) {
-            Rect visibleFrame = new Rect();
-            anchorView.getGlobalVisibleRect(visibleFrame);
-            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
-            popupwindow.setHeight(height);
-            popupwindow.showAsDropDown(anchorView, 0, 0);
-        } else {
-            popupwindow.showAsDropDown(anchorView, 0, 0);
-        }
+        Rect visibleFrame = new Rect();
+        anchorView.getGlobalVisibleRect(visibleFrame);
+        int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+        popupwindow.setHeight(height);
+        popupwindow.showAsDropDown(anchorView, 0, 0);
     }
 
     public int dip2px(float dpValue) {
