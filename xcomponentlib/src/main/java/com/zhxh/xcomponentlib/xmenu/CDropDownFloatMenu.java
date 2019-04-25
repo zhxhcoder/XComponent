@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -24,7 +25,7 @@ import com.zhxh.xcomponentlib.R;
  * Created by zhxh on 2019/4/19
  * 下拉选择框
  */
-public class FloatDropDownMenu {
+public class CDropDownFloatMenu {
 
     private Context context;
     public PopupWindow popupwindow;
@@ -42,7 +43,7 @@ public class FloatDropDownMenu {
     private int defaultTextColor;
 
 
-    public FloatDropDownMenu(Context context, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
+    public CDropDownFloatMenu(Context context, String[] stringArray, String selectStr, ItemClickTextView itemClick) {
         this.context = context;
         this.stringArray = stringArray;
         this.selectStr = selectStr;
@@ -128,13 +129,18 @@ public class FloatDropDownMenu {
             item_container.addView(textView);
 
             int finalI = i;
-            textView.setOnClickListener(v -> {
-                dismiss();
-                itemClick.onItemClick(finalI);
+
+            textView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    itemClick.onItemClick(finalI);
+                    dismiss();
+                    return false;
+                }
             });
+
         }
     }
-
 
     public void dismiss() {
         if (popupwindow != null && popupwindow.isShowing()) {
@@ -147,7 +153,7 @@ public class FloatDropDownMenu {
         if (Build.VERSION.SDK_INT >= 24) {
             Rect visibleFrame = new Rect();
             anchorView.getGlobalVisibleRect(visibleFrame);
-            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+            int height = anchorView.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom + dip2px(context, 50);
             popupwindow.setHeight(height);
             popupwindow.showAsDropDown(anchorView, 0, 0);
         } else {
@@ -185,11 +191,18 @@ public class FloatDropDownMenu {
         popupwindow.showAtLocation(anchorView, Gravity.TOP, location[0] - width / 2, y);
     }
 
+    public int dip2px(Context context, float dpValue) {
+        if (context == null) {
+            return 0;
+        }
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
     /**
      * 定义状态改变接口
      */
     public interface ItemClickTextView {
         void onItemClick(int index);
     }
-
 }

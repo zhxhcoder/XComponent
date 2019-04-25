@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhxh.xcomponentlib.xmenu.FloatDropDownMenu;
+import com.zhxh.xcomponentlib.xmenu.CDropDownFloatMenu;
 
 public class ScrollPopActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class ScrollPopActivity extends AppCompatActivity {
 
         tvPopOut.setOnClickListener(v -> {
             Toast.makeText(ScrollPopActivity.this, "弹出弹框", Toast.LENGTH_LONG).show();
-            FloatDropDownMenu downMenu = new FloatDropDownMenu(ScrollPopActivity.this, strings, "全部银行", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
+            CDropDownFloatMenu downMenu = new CDropDownFloatMenu(ScrollPopActivity.this, strings, "全部银行", index -> Toast.makeText(ScrollPopActivity.this, "弹出弹框--" + strings[index], Toast.LENGTH_LONG).show());
             downMenu.showAsDropDown(tvPopOut);
         });
     }
