@@ -365,7 +365,7 @@ public class StickyScrollView extends ScrollView {
                 if (bounds == null) {
                     bounds = new RectF(canvas.getClipBounds());
                 }
-                canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, (int) (Math.min(255, Math.max(0, alphaList.get(i) * 255f))), Canvas.CLIP_TO_LAYER_SAVE_FLAG);
+                canvas.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, (int) (Math.min(255, Math.max(0, alphaList.get(i) * 255f))), Canvas.ALL_SAVE_FLAG);
                 canvas.translate(getPaddingLeft() + stickyViewLeftOffset, getScrollY() + stickyViewTopOffset + (clippingToPadding ? getPaddingTop() : 0) + sumList.get(i));
 
                 canvas.clipRect(0, (clippingToPadding ? -stickyViewTopOffset : 0), getWidth(), currentItem.getHeight() + mShadowHeight + 1);
