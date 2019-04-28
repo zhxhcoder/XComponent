@@ -77,6 +77,9 @@ public class MainMenuActivity extends AppCompatActivity {
         popupViews.add(ageView);
         popupViews.add(constellationView);
 
+        String[] arr=new String[1];
+
+
         //add item click event
         cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

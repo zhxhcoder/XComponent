@@ -22,6 +22,8 @@ import com.zhxh.xcomponentlib.CTextView;
 import com.zhxh.xcomponentlib.FlowLayout;
 import com.zhxh.xcomponentlib.R;
 
+import java.util.List;
+
 /**
  * Created by zhxh on 2019/4/19
  * 下拉选择框
@@ -33,8 +35,8 @@ public class CDropDownFloatMenu {
 
     private int height = 0;
 
-    private String selectStr;
-    private String[] stringArray;
+    private int selectIndex;
+    private List<String> stringList;
     ItemSelect itemSelect;
 
     private int selectTextColor;
@@ -43,13 +45,13 @@ public class CDropDownFloatMenu {
     private int defaultTextColor;
 
 
-    public CDropDownFloatMenu(Activity activity, String[] stringArray, String selectStr, ItemSelect itemSelect) {
+    public CDropDownFloatMenu(Activity activity, List<String> stringList, int selectIndex, ItemSelect itemSelect) {
         this.context = activity;
-        this.stringArray = stringArray;
-        this.selectStr = selectStr;
+        this.stringList = stringList;
+        this.selectIndex = selectIndex;
         this.itemSelect = itemSelect;
 
-        if (stringArray != null) {
+        if (stringList != null) {
             initPopLayout();
         }
     }
@@ -105,13 +107,13 @@ public class CDropDownFloatMenu {
 
     private void createFloatItem(FlowLayout item_container, boolean isInit) {
         item_container.removeAllViews();
-        for (int i = 0; i < stringArray.length; i++) {
+        for (int i = 0; i < stringList.size(); i++) {
             CTextView textView = new CTextView(context);
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-            textView.setText(stringArray[i]);
+            textView.setText(stringList.get(i));
 
-            if (selectStr.equalsIgnoreCase(stringArray[i])) {
+            if (selectIndex == i) {
                 textView.setBtnAttr(
                     selectSolidColor
                     , selectTextColor
@@ -128,14 +130,14 @@ public class CDropDownFloatMenu {
             textView.setTypeface(Typeface.DEFAULT_BOLD);
 
             //兼容低版本可能出现的paddingLeft和paddingRight不起作用
-            textView.setWidth((int) textView.getPaint().measureText(stringArray[i]) + dip2px(20));
+            textView.setWidth((int) textView.getPaint().measureText(stringList.get(i)) + dip2px(20));
             textView.setPadding(0, dip2px(5), 0, dip2px(5));
             item_container.addView(textView);
 
             if (isInit) {//只有首次才有必要设置clickListener
                 int finalI = i;
                 textView.setOnClickListener(v -> {
-                    selectStr = stringArray[finalI];
+                    selectIndex = finalI;
                     createFloatItem(item_container, false);
                     itemSelect.onSelect(finalI);
                     //item_container.postDelayed而不用v.postDelayed而不用 生命周期不同

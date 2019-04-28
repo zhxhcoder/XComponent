@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.zhxh.xcomponentlib.xmenu.CDropDownFloatMenu;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ScrollPopActivity extends AppCompatActivity {
 
     @Override
@@ -25,16 +28,19 @@ public class ScrollPopActivity extends AppCompatActivity {
             .setAction("Action", null).show());
 
 
-        String[] strings = {"首页全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "测试数据", "众邦银行"};
+        List<String> strings = Arrays.asList("首页全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "测试数据", "众邦银行");
         TextView tvPopOut = findViewById(R.id.tvPopOut);
+
+        final int[] selectIndex = {2};
 
         tvPopOut.setOnClickListener(v -> {
 
-            CDropDownFloatMenu downMenu = new CDropDownFloatMenu(ScrollPopActivity.this, strings, "全部银行", new CDropDownFloatMenu.ItemSelect() {
+            CDropDownFloatMenu downMenu = new CDropDownFloatMenu(ScrollPopActivity.this, strings, selectIndex[0], new CDropDownFloatMenu.ItemSelect() {
                 @Override
                 public void onSelect(int index) {
-                    Log.d("zhxhzhxh", "选中 " + strings[index]);
-                    Toast.makeText(ScrollPopActivity.this, "选中" + strings[index], Toast.LENGTH_LONG).show();
+                    selectIndex[0] = index;
+                    Log.d("zhxhzhxh", "选中 " + strings.get(index));
+                    Toast.makeText(ScrollPopActivity.this, "选中" + strings.get(index), Toast.LENGTH_LONG).show();
                 }
 
                 @Override
