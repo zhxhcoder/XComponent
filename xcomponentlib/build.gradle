@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 19
-        versionName "3.1"
+        versionCode 20
+        versionName "3.2"
     }
 
     buildTypes {
@@ -69,7 +69,7 @@ def gitUrl = 'https://github.com/zhxhcoder/XComponent.git'   //github仓库的�
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-version = "3.1"//version
+version = "3.2"//version
 group = "com.zhxh"//groupId
 bintray {
     user = properties.getProperty("bintray.user")
@@ -84,10 +84,10 @@ bintray {
         publish = true // 是否是公开项目。
 
         version {
-            name = '3.1'//版本号
+            name = '3.2'//版本号
             desc = 'extent android component with customized feature'//版本描述
             released = new Date()
-            vcsTag = 'v3.1'
+            vcsTag = 'v3.2'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
