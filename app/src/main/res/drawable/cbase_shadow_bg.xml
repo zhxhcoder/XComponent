@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/cbase_dp_1"
+                android:left="@dimen/cbase_dp_1"
+                android:right="@dimen/cbase_dp_1"
+                android:top="@dimen/cbase_dp_1" />
+
+            <solid android:color="#00dddddd" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/cbase_dp_1"
+                android:left="@dimen/cbase_dp_1"
+                android:right="@dimen/cbase_dp_1"
+                android:top="@dimen/cbase_dp_1" />
+
+            <solid android:color="#10dddddd" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/cbase_dp_1"
+                android:left="@dimen/cbase_dp_1"
+                android:right="@dimen/cbase_dp_1"
+                android:top="@dimen/cbase_dp_1" />
+
+            <solid android:color="#11dddddd" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/cbase_dp_1"
+                android:left="@dimen/cbase_dp_1"
+                android:right="@dimen/cbase_dp_1"
+                android:top="@dimen/cbase_dp_1" />
+
+            <solid android:color="#15dddddd" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/cbase_dp_1"
+                android:left="@dimen/cbase_dp_1"
+                android:right="@dimen/cbase_dp_1"
+                android:top="@dimen/cbase_dp_1" />
+
+            <solid android:color="20dddddd" />
+        </shape>
+    </item>
+    <!-- Background -->
+    <item>
+        <shape>
+            <solid android:color="#FF4081" />
+        </shape>
+    </item>
+
+</layer-list>
