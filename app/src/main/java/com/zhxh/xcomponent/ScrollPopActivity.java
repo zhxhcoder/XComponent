@@ -1,5 +1,7 @@
 package com.zhxh.xcomponent;
 
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhxh.xcomponentlib.ShadowDrawable;
 import com.zhxh.xcomponentlib.xmenu.CDropDownFloatMenu;
 
 import java.util.Arrays;
@@ -52,5 +55,15 @@ public class ScrollPopActivity extends AppCompatActivity {
             downMenu.showAsDropDown(tvPopOut);
 
         });
+
+
+        TextView tvShapeDrawable = findViewById(R.id.tvShapeDrawable);
+        ShadowDrawable.setShadowDrawable(tvShapeDrawable, new int[]{
+                Color.parseColor("#536DFE"), Color.parseColor("#7C4DFF")}, dpToPx(8),
+            Color.parseColor("#997C4DFF"), dpToPx(6), dpToPx(3), dpToPx(3));
+    }
+
+    private int dpToPx(int dp) {
+        return (int) (Resources.getSystem().getDisplayMetrics().density * dp + 0.5f);
     }
 }

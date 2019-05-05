@@ -43,13 +43,19 @@
             android:text="哈哈哈哈哈哈" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="50dp"
-            android:background="@color/colorAccent"
+            android:id="@+id/tvShapeDrawable"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="5dp"
+            android:paddingTop="3dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="9dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="9dp"
             android:gravity="center"
-            android:padding="10dp"
-            android:text="哈哈哈哈哈哈" />
+            android:text="Hello World!"
+            android:textColor="@android:color/darker_gray"/>
 
         <TextView
             android:layout_width="match_parent"
