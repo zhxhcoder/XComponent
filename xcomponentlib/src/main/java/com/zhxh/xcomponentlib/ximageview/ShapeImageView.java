@@ -22,7 +22,7 @@ import com.zhxh.xcomponentlib.R;
  * Created by zhxh on 2018/8/29
  * 处理ImageView形状，原形圆角等
  */
-public class ShapeImageView extends android.support.v7.widget.AppCompatImageView {
+public class ShapeImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLORDRAWABLE_DIMENSION = 2;

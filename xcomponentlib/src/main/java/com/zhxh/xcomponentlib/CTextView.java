@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  * 开始支持 下面带边框的效果
  * 特殊字体支持 CRegText 正则匹配 187% %颜色或字体大小改变
  */
-public final class CTextView extends android.support.v7.widget.AppCompatTextView {
+public final class CTextView extends androidx.appcompat.widget.AppCompatTextView {
     GradientDrawable gradientDrawable;
 
     //关键属性设置

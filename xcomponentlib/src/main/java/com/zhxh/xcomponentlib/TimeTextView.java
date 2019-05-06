@@ -1,7 +1,6 @@
 package com.zhxh.xcomponentlib;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class TimeTextView extends android.support.v7.widget.AppCompatTextView implements Runnable {
+public final class TimeTextView extends androidx.appcompat.widget.AppCompatTextView implements Runnable {
 
     Paint mPaint;
 

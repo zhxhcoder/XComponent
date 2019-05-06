@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Parcelable;
-import android.support.v4.view.MotionEventCompat;
+import androidx.core.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;

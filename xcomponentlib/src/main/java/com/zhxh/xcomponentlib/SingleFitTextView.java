@@ -10,7 +10,7 @@ import android.util.TypedValue;
 /**
  * Created by zhxh on 2018/8/1
  */
-public final class SingleFitTextView extends android.support.v7.widget.AppCompatTextView {
+public final class SingleFitTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     private Paint mPaint;
 

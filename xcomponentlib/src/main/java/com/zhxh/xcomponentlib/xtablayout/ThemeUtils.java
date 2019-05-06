@@ -18,7 +18,8 @@ package com.zhxh.xcomponentlib.xtablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.R;
+
+import com.zhxh.xcomponentlib.R;
 
 class ThemeUtils {
 

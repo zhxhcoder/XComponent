@@ -15,7 +15,7 @@ import com.zhxh.xcomponentlib.R;
  * 即如果设置了mIsWidthFitDrawableSizeRatio为true，则优先级较低的三个值不生效
  */
 
-public class RatioImageView extends android.support.v7.widget.AppCompatImageView {
+public class RatioImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private float mDrawableSizeRatio = -1f; // src图片(前景图)的宽高比例
     // 根据前景图宽高比例测量View,防止图片缩放变形

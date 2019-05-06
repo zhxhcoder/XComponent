@@ -18,10 +18,11 @@ package com.zhxh.xcomponentlib.xtablayout;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.design.R;
-import android.support.v7.widget.TintTypedArray;
+import androidx.appcompat.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.zhxh.xcomponentlib.R;
 
 /**
  * TabItem is a special 'view' which allows you to declare tab items for a {link 官方 TabLayout}
