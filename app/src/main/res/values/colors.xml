@@ -11,4 +11,10 @@
     <color name="C12">#FF4C51</color>
     <color name="C8">#F4F5F6</color>
     <color name="C9">#FFFFFF</color>
+
+    <color name="cbase_shadow_color_1">#00dddddd</color>
+    <color name="cbase_shadow_color_2">#10dddddd</color>
+    <color name="cbase_shadow_color_3">#11dddddd</color>
+    <color name="cbase_shadow_color_4">#15dddddd</color>
+    <color name="cbase_shadow_color_5">#20dddddd</color>
 </resources>
