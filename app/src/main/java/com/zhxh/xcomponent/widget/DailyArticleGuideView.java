@@ -14,9 +14,9 @@ import com.zhxh.xcomponent.R;
  */
 public class DailyArticleGuideView extends ConstraintLayout {
 
-    private TextView mAssetNameTV; // 资产名字
+    private TextView tv_daily_article_guide_read;
+    private TextView tv_daily_article_card_title;
 
-    private TextView mAssetAmountTV; // 总额
 
     public DailyArticleGuideView(Context context) {
         super(context);
@@ -42,7 +42,8 @@ public class DailyArticleGuideView extends ConstraintLayout {
      */
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.cfuturewealth_daily_article_guide, this);
-        mAssetNameTV = findViewById(R.id.tv_asset_name);
+        tv_daily_article_guide_read = findViewById(R.id.tv_daily_article_guide_read);
+        tv_daily_article_card_title = findViewById(R.id.tv_daily_article_card_title);
     }
 
     /**
