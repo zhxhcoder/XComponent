@@ -1,9 +1,14 @@
 package com.zhxh.xcomponent.dailyarticle;
 
+import android.os.Build;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.zhxh.xcomponent.R;
 
@@ -14,7 +19,10 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
     int page = 1;
     RecyclerView dailyList;
+    SwipeRefreshLayout refreshLayout;
     DailyArticleListAdapter listAdapter;
+    List<DailyArticleData> dataList;
+    private View headerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +34,28 @@ public class DailyArticleListActivity extends AppCompatActivity {
         initAdapter();
 
         loadData();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            dailyList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                }
+            });
+        }
+
+        refreshLayout.setOnRefreshListener(
+            () -> {
+                page++;
+                loadData();
+            }
+        );
     }
 
     private void initView() {
+        headerView = LayoutInflater.from(this).inflate(R.layout.item_listview_popwin, null);
+
+        refreshLayout = findViewById(R.id.refreshLayout);
         dailyList = findViewById(R.id.dailyList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         dailyList.setLayoutManager(layoutManager);
@@ -36,17 +63,14 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
     private void initAdapter() {
         listAdapter = new DailyArticleListAdapter(this, R.layout.cfuturewealth_item_daily_article_layout);
-        listAdapter.setEnableLoadMore(true);
-        listAdapter.setHeaderAndEmpty(false);
-        listAdapter.setOnLoadMoreListener(() -> {
-            page++;
-            loadData();
-        }, dailyList);
-
+        listAdapter.setEnableLoadMore(false);
+        listAdapter.setHeaderAndEmpty(true);
         dailyList.setAdapter(listAdapter);
     }
 
     private void loadData() {
+
+        Log.d("loadData", "loadData:" + page);
 
         List<DailyArticleData> tempList = new ArrayList<>();
         tempList.add(new DailyArticleData(page, "title1", "content1"));
@@ -59,14 +83,17 @@ public class DailyArticleListActivity extends AppCompatActivity {
             if (tempList != null || tempList.size() == 0) {
                 listAdapter.setNewData(tempList);
             } else {
-                listAdapter.loadMoreComplete();
             }
         } else {
             if (page == 4) {
-                listAdapter.loadMoreEnd();
+                headerView.setVisibility(View.VISIBLE);
+                listAdapter.addHeaderView(headerView);
+                refreshLayout.setOnRefreshListener(null);
+                refreshLayout.setRefreshing(false);
+                refreshLayout.setEnabled(false);
             } else {
-                listAdapter.loadMoreComplete();
-                listAdapter.addData(tempList);
+                listAdapter.addData(0,tempList);
+                refreshLayout.setRefreshing(false);
             }
         }
     }

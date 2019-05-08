@@ -30,7 +30,7 @@ public class DailyArticleListAdapter extends BaseQuickAdapter<DailyArticleData, 
         helper.setText(R.id.tv_daily_article_read, item.getType() + "");
 
         LinearLayout ll_daily_article_inner_container = helper.getView(R.id.ll_daily_article_inner_container);
-        setInnerList(ll_daily_article_inner_container, item.getInnerList());
+        //setInnerList(ll_daily_article_inner_container, item.getInnerList());
     }
 
     private void setInnerList(LinearLayout container, List<DailyArticleData> dataList) {
