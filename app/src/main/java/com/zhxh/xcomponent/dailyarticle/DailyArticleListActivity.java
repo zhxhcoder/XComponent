@@ -21,7 +21,6 @@ public class DailyArticleListActivity extends AppCompatActivity {
     RecyclerView dailyList;
     SwipeRefreshLayout refreshLayout;
     DailyArticleListAdapter listAdapter;
-    List<DailyArticleData> dataList;
     private View headerView;
 
     @Override
@@ -34,15 +33,6 @@ public class DailyArticleListActivity extends AppCompatActivity {
         initAdapter();
 
         loadData();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            dailyList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                }
-            });
-        }
 
         refreshLayout.setOnRefreshListener(
             () -> {
@@ -92,7 +82,7 @@ public class DailyArticleListActivity extends AppCompatActivity {
                 refreshLayout.setRefreshing(false);
                 refreshLayout.setEnabled(false);
             } else {
-                listAdapter.addData(0,tempList);
+                listAdapter.addData(0, tempList);
                 refreshLayout.setRefreshing(false);
             }
         }
