@@ -1,4 +1,4 @@
-package com.zhxh.xcomponent.widget;
+package com.zhxh.xcomponent.dailyarticle;
 
 /**
  * Created by zhxh on 2019/05/06
