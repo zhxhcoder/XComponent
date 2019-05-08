@@ -20,17 +20,20 @@ public class DailyArticleListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cfuturewealth_daily_article_list);
 
-        dailyList = findViewById(R.id.dailyList);
+        initView();
 
         initAdapter();
 
         loadData();
     }
 
+    private void initView() {
+        dailyList = findViewById(R.id.dailyList);
+    }
+
     private void initAdapter() {
 
         listAdapter = new DailyArticleListAdapter(this, R.layout.cfuturewealth_item_daily_article_layout);
-        dailyList.setAdapter(listAdapter);
 
         listAdapter.setEnableLoadMore(true);
         listAdapter.setOnLoadMoreListener(() -> {
@@ -38,6 +41,10 @@ public class DailyArticleListActivity extends AppCompatActivity {
             loadData();
 
         }, dailyList);
+        listAdapter.setHeaderAndEmpty(false);
+
+        dailyList.setAdapter(listAdapter);
+
     }
 
     private void loadData() {
@@ -51,19 +58,16 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
 
         if (page == 1) {
-
             if (tempList != null) {
                 listAdapter.setNewData(tempList);
             } else {
                 listAdapter.loadMoreComplete();
             }
-
         } else {
             if (page == 3) {
                 listAdapter.loadMoreEnd();
             } else {
                 listAdapter.loadMoreComplete();
-
                 listAdapter.addData(tempList);
             }
         }
