@@ -46,7 +46,7 @@ public class DailyArticleListAdapter extends BaseQuickAdapter<DailyArticleData, 
 
                 View line_top = itemView.findViewById(R.id.line_top);
                 TextView tv_inner_title = itemView.findViewById(R.id.tv_inner_title);
-                tv_inner_title.setText(data.getTitle() + data.getType());
+                tv_inner_title.setText(data.getTitle() + ":" + data.getType());
 
                 if (i == 0) {
                     line_top.setVisibility(View.GONE);
@@ -54,11 +54,8 @@ public class DailyArticleListAdapter extends BaseQuickAdapter<DailyArticleData, 
                     line_top.setVisibility(View.VISIBLE);
                 }
                 container.addView(itemView);
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(ctx, data.getTitle() + data.getType(), Toast.LENGTH_LONG).show();
-                    }
+                itemView.setOnClickListener(v -> {
+                    Toast.makeText(ctx, data.getTitle() + ":" + data.getType(), Toast.LENGTH_LONG).show();
                 });
             }
 
