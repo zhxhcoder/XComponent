@@ -76,11 +76,13 @@ public class DailyArticleListActivity extends AppCompatActivity {
             }
         } else {
             if (page == 4) {
+                //终止加载更多数据
                 headerView.setVisibility(View.VISIBLE);
                 listAdapter.addHeaderView(headerView);
                 refreshLayout.setOnRefreshListener(null);
                 refreshLayout.setRefreshing(false);
                 refreshLayout.setEnabled(false);
+                listAdapter.notifyDataSetChanged();
             } else {
                 listAdapter.addData(0, tempList);
                 refreshLayout.setRefreshing(false);
