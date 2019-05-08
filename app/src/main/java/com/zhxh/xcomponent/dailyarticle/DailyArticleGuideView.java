@@ -1,6 +1,7 @@
 package com.zhxh.xcomponent.dailyarticle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -79,8 +80,7 @@ public class DailyArticleGuideView extends LinearLayout {
             Glide.with(ctx).load(R.mipmap.ic_reclogo).apply(options).into(iv_daily_article_card_right);
 
             this.setOnClickListener(v -> {
-                //TODO
-                Toast.makeText(ctx, "haha", Toast.LENGTH_LONG).show();
+                ctx.startActivity(new Intent(ctx, DailyArticleListActivity.class));
             });
         } else {
             this.setVisibility(GONE);

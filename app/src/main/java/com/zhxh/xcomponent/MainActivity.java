@@ -39,19 +39,13 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
-        tv_countdown_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, GalleryActivity.class));
-            }
-        });
+        tv_countdown_time.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GalleryActivity.class)));
 
 
         XStickyNavContainer layout = findViewById(R.id.head_home_layout);
 
         layout.setOnStartActivity(() -> {
             startActivity(new Intent(MainActivity.this, TabHomeActivity.class));
-
         });
         RecyclerView mHeadRecyclerView = findViewById(R.id.head_home_recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -67,12 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView expand_arrow = findViewById(R.id.expand_arrow);
 
         ExpansionFrame expansionFrame = findViewById(R.id.expansionFrame);
-        expansionFrame.setOnExpansionUpdateListener(new ExpansionFrame.OnExpansionUpdateListener() {
-            @Override
-            public void onExpansionUpdate(float expansionFraction) {
-                expand_arrow.setRotation(expansionFraction * 180);
-            }
-        });
+        expansionFrame.setOnExpansionUpdateListener(expansionFraction -> expand_arrow.setRotation(expansionFraction * 180));
 
 
         SlideSwitch slideSwitch = findViewById(R.id.slideSwitch);
@@ -108,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public class HomeAdapters extends RecyclerView.Adapter<HomeAdapters.ViewHolder> {
-
         @Override
         public HomeAdapters.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_adapter_homes, parent, false);
@@ -117,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(HomeAdapters.ViewHolder holder, int position) {
-
         }
 
         @Override
@@ -132,5 +119,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }

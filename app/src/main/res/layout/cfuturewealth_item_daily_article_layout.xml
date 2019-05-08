@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cbase_shadow_bg">
+
+        <TextView
+            android:id="@+id/tv_daily_article_date"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="昨天"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_daily_article_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_daily_article_date"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_daily_article_date"
+            tools:text="共111人已读过" />
+
+        <ImageView
+            android:id="@+id/iv_daily_article_card_bg"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_reclogo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_daily_article_date" />
+
+        <TextView
+            android:id="@+id/tv_daily_article_card_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="2019年第一批储蓄国债来了，买十万块能赚多事利息"
+            android:textColor="@color/C9"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_daily_article_card_bg"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_daily_article_card_bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_daily_article_inner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/iv_daily_article_card_bg">
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
+
+
