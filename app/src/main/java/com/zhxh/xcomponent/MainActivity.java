@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhxh.xcomponent.dailyarticle.DailyArticleData;
+import com.zhxh.xcomponent.dailyarticle.DailyArticleGuideView;
 import com.zhxh.xcomponent.xmenu.MainMenuActivity;
 import com.zhxh.xcomponentlib.ExpansionFrame;
 import com.zhxh.xcomponentlib.SlideSwitch;
@@ -97,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         tiltText.setText("开始%");
+
+
+        DailyArticleGuideView dailyLayout = findViewById(R.id.dailyLayout);
+        dailyLayout.show(new DailyArticleData(1, "标题", "内容"));
 
     }
 

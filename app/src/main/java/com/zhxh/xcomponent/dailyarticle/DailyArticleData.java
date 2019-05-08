@@ -8,6 +8,11 @@ public class DailyArticleData {
     private String title;
     private String content;
 
+    public DailyArticleData(int type, String title, String content) {
+        this.type = type;
+        this.title = title;
+        this.content = content;
+    }
 
     public int getType() {
         return type;

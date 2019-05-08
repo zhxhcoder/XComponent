@@ -6,7 +6,11 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.zhxh.xcomponent.R;
 
 /**
@@ -14,6 +18,8 @@ import com.zhxh.xcomponent.R;
  * 每日研读
  */
 public class DailyArticleGuideView extends LinearLayout {
+
+    private Context ctx;
 
     private TextView tv_daily_article_guide_read;
     private TextView tv_daily_article_card_title;
@@ -44,6 +50,7 @@ public class DailyArticleGuideView extends LinearLayout {
      * @time 2019/1/19
      */
     private void init(Context context) {
+        ctx = context;
         LayoutInflater.from(context).inflate(R.layout.cfuturewealth_daily_article_guide, this);
         tv_daily_article_guide_read = findViewById(R.id.tv_daily_article_guide_read);
         tv_daily_article_card_title = findViewById(R.id.tv_daily_article_card_title);
@@ -65,8 +72,15 @@ public class DailyArticleGuideView extends LinearLayout {
             tv_daily_article_card_num.setText(data.getTitle());
             tv_daily_article_card_day.setText(data.getTitle());
 
+            //设置图片圆角角度
+            RoundedCorners roundedCorners = new RoundedCorners(6);
+            //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
+            RequestOptions options = RequestOptions.bitmapTransform(roundedCorners).override(120, 120);
+            Glide.with(ctx).load(R.mipmap.ic_reclogo).apply(options).into(iv_daily_article_card_right);
+
             this.setOnClickListener(v -> {
                 //TODO
+                Toast.makeText(ctx, "haha", Toast.LENGTH_LONG).show();
             });
         } else {
             this.setVisibility(GONE);

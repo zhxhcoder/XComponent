@@ -1,167 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:slideswitch="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.zhxh.xcomponentlib.TimeTextView
-        android:id="@+id/tv_countdown_time"
-        android:layout_width="289dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="18dp"
-        android:gravity="center"
-        android:text="20180523"
-        android:textColor="@color/colorPrimary"
-        android:textSize="14sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
-
-
-    <com.zhxh.xcomponentlib.SineWaveView
-        android:id="@+id/sineView"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintTop_toBottomOf="@+id/tv_countdown_time" />
+        android:layout_height="match_parent">
 
-    <com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
-        android:id="@+id/head_home_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sineView">
+        <com.zhxh.xcomponentlib.TimeTextView
+            android:id="@+id/tv_countdown_time"
+            android:layout_width="289dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="20180523"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.717" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/head_home_recyclerview"
+
+        <com.zhxh.xcomponentlib.SineWaveView
+            android:id="@+id/sineView"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/tv_countdown_time" />
+
+        <com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
+            android:id="@+id/head_home_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:overScrollMode="never"
-            android:scrollbars="none" />
+            app:layout_constraintTop_toBottomOf="@+id/sineView">
 
-    </com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer>
-
-    <com.zhxh.xcomponentlib.XEditText
-        android:id="@+id/xEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_remove_red_eye_black_24dp"
-        android:hint="可点击的drawable"
-        android:inputType="text"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/head_home_layout"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <com.zhxh.xcomponentlib.SlideSwitch
-        android:id="@+id/slideSwitch"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/xEditText"
-        slideswitch:isOpen="true"
-        slideswitch:shape="rectangle"
-        slideswitch:themeColor="#ffee3a00">
-
-    </com.zhxh.xcomponentlib.SlideSwitch>
-
-
-    <com.zhxh.xcomponentlib.ExpansionFrame
-        android:id="@+id/expansionFrame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:Xduration="200"
-        app:Xexpanded="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slideSwitch">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_auto"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/head_home_recyclerview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="这是扩展的后展示的文字看下效果如何吧\n这是扩展的后展示的文字看下效果如何吧"
-                app:autoSizeMaxTextSize="60sp"
-                app:autoSizeMinTextSize="10sp"
-                app:autoSizeStepGranularity="5sp"
-                app:autoSizeTextType="uniform" />
+                android:background="#ffffff"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/colorAccent">
+        </com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer>
 
-                <com.zhxh.xcomponentlib.SingleFitTextView
-                    android:id="@+id/left"
+
+        <com.zhxh.xcomponentlib.XEditText
+            android:id="@+id/xEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_remove_red_eye_black_24dp"
+            android:hint="可点击的drawable"
+            android:inputType="text"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/head_home_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.zhxh.xcomponentlib.SlideSwitch
+            android:id="@+id/slideSwitch"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/xEditText"
+            slideswitch:isOpen="true"
+            slideswitch:shape="rectangle"
+            slideswitch:themeColor="#ffee3a00">
+
+        </com.zhxh.xcomponentlib.SlideSwitch>
+
+
+        <com.zhxh.xcomponentlib.ExpansionFrame
+            android:id="@+id/expansionFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:Xduration="200"
+            app:Xexpanded="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slideSwitch">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_auto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:text="222222"
-                    android:textColor="@color/C9"
-                    android:textSize="15sp"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:text="这是扩展的后展示的文字看下效果如何吧\n这是扩展的后展示的文字看下效果如何吧"
+                    app:autoSizeMaxTextSize="60sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeStepGranularity="5sp"
+                    app:autoSizeTextType="uniform" />
 
-                <com.zhxh.xcomponentlib.SingleFitTextView
-                    android:id="@+id/right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:text="666"
-                    android:textColor="@color/C9"
-                    android:textSize="15sp"
-                    app:layout_constraintLeft_toRightOf="@+id/left"
-                    app:layout_constraintRight_toRightOf="parent" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorAccent">
 
+                    <com.zhxh.xcomponentlib.SingleFitTextView
+                        android:id="@+id/left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:text="222222"
+                        android:textColor="@color/C9"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toLeftOf="parent" />
 
-            </android.support.constraint.ConstraintLayout>
-
-
-        </LinearLayout>
-
-    </com.zhxh.xcomponentlib.ExpansionFrame>
-
-
-    <ImageView
-        android:id="@+id/expand_arrow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="4dp"
-        android:src="@mipmap/ic_arrow_small_expand"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expansionFrame" />
-
-    <com.zhxh.xcomponentlib.CTextView
-        android:id="@+id/tiltText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="明日开始%"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:CRotateDegree="15"
-        app:CSpecialTextReg="%"
-        app:CSpecialTextSize="3sp"
-        app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
+                    <com.zhxh.xcomponentlib.SingleFitTextView
+                        android:id="@+id/right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:text="666"
+                        android:textColor="@color/C9"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toRightOf="@+id/left"
+                        app:layout_constraintRight_toRightOf="parent" />
 
 
-</android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
+
+
+            </LinearLayout>
+
+        </com.zhxh.xcomponentlib.ExpansionFrame>
+
+
+        <ImageView
+            android:id="@+id/expand_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="4dp"
+            android:src="@mipmap/ic_arrow_small_expand"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expansionFrame" />
+
+        <com.zhxh.xcomponentlib.CTextView
+            android:id="@+id/tiltText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp"
+            android:text="明日开始%"
+            app:CRotateDegree="15"
+            app:CSpecialTextReg="%"
+            app:CSpecialTextSize="3sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
+
+
+        <com.zhxh.xcomponent.dailyarticle.DailyArticleGuideView
+            android:id="@+id/dailyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tiltText" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
