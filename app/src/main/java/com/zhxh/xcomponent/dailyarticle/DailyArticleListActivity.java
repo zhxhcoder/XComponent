@@ -2,6 +2,7 @@ package com.zhxh.xcomponent.dailyarticle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.zhxh.xcomponent.R;
@@ -29,22 +30,20 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
     private void initView() {
         dailyList = findViewById(R.id.dailyList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        dailyList.setLayoutManager(layoutManager);
     }
 
     private void initAdapter() {
-
         listAdapter = new DailyArticleListAdapter(this, R.layout.cfuturewealth_item_daily_article_layout);
-
         listAdapter.setEnableLoadMore(true);
+        listAdapter.setHeaderAndEmpty(false);
         listAdapter.setOnLoadMoreListener(() -> {
             page++;
             loadData();
-
         }, dailyList);
-        listAdapter.setHeaderAndEmpty(false);
 
         dailyList.setAdapter(listAdapter);
-
     }
 
     private void loadData() {
@@ -56,15 +55,14 @@ public class DailyArticleListActivity extends AppCompatActivity {
         tempList.add(new DailyArticleData(page, "title4", "content4"));
         tempList.add(new DailyArticleData(page, "title5", "content5"));
 
-
         if (page == 1) {
-            if (tempList != null) {
+            if (tempList != null || tempList.size() == 0) {
                 listAdapter.setNewData(tempList);
             } else {
                 listAdapter.loadMoreComplete();
             }
         } else {
-            if (page == 3) {
+            if (page == 4) {
                 listAdapter.loadMoreEnd();
             } else {
                 listAdapter.loadMoreComplete();
