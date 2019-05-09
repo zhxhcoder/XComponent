@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,9 +61,11 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
         listAdapter.bindToRecyclerView(recyclerView);
 
-        TextView textView = new TextView(this);
-        textView.setText("数据已经空啦");
-        listAdapter.setEmptyView(textView);
+        TextView empty = new TextView(this);
+        empty.setText("数据已经空啦");
+        empty.setGravity(Gravity.CENTER);
+        empty.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        listAdapter.setEmptyView(empty);
         listAdapter.getEmptyView().setOnClickListener(v -> {
             Toast.makeText(DailyArticleListActivity.this, "empty", Toast.LENGTH_LONG).show();
         });

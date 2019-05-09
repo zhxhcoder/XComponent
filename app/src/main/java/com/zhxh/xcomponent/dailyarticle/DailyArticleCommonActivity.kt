@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 
@@ -58,10 +60,12 @@ class DailyArticleCommonActivity : AppCompatActivity() {
         listAdapter.addHeaderView(headerView)
 
 
-        val textView = TextView(this)
-        textView.text = "暂无数据"
+        val empty = TextView(this)
+        empty.text = "数据已经空啦"
+        empty.gravity = Gravity.CENTER
+        empty.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
-        listAdapter.emptyView = textView
+        listAdapter.emptyView = empty
         listAdapter.emptyView.setOnClickListener { Toast.makeText(this, "empty", Toast.LENGTH_LONG).show() }
     }
 
