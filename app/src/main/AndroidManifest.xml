@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".dailyarticle.DailyArticleListActivity"></activity>
+        <activity android:name=".dailyarticle.DailyArticleCommonActivity"></activity>
         <activity
             android:name=".ScrollPopActivity"
             android:theme="@style/AppTheme.NoActionBar" />

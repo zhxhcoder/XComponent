@@ -80,6 +80,7 @@ public class DailyArticleGuideView extends LinearLayout {
 
             this.setOnClickListener(v -> {
                 ctx.startActivity(new Intent(ctx, DailyArticleListActivity.class));
+                ctx.startActivity(new Intent(ctx, DailyArticleCommonActivity.class));
             });
         } else {
             this.setVisibility(GONE);
