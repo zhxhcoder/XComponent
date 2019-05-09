@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhxh.xcomponent.R;
 
@@ -21,7 +23,6 @@ public class DailyArticleListActivity extends AppCompatActivity {
     SwipeRefreshLayout refreshLayout;
     DailyArticleListAdapter listAdapter;
     private View headerView;
-    private View emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,6 @@ public class DailyArticleListActivity extends AppCompatActivity {
     private void initView() {
         headerView = LayoutInflater.from(this).inflate(R.layout.item_listview_popwin, null);
 
-        emptyView = findViewById(R.id.emptyView);
         refreshLayout = findViewById(R.id.refreshLayout);
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -56,7 +56,15 @@ public class DailyArticleListActivity extends AppCompatActivity {
         listAdapter = new DailyArticleListAdapter(this, R.layout.cfuturewealth_item_daily_article_layout);
         listAdapter.setEnableLoadMore(false);
         listAdapter.setHeaderAndEmpty(true);
-        recyclerView.setAdapter(listAdapter);
+
+        listAdapter.bindToRecyclerView(recyclerView);
+
+        TextView textView = new TextView(this);
+        textView.setText("数据已经空啦");
+        listAdapter.setEmptyView(textView);
+        listAdapter.getEmptyView().setOnClickListener(v -> {
+            Toast.makeText(DailyArticleListActivity.this, "empty", Toast.LENGTH_LONG).show();
+        });
     }
 
     private void loadData() {
@@ -69,12 +77,12 @@ public class DailyArticleListActivity extends AppCompatActivity {
         tempList.add(new DailyArticleData(page, "title3", "content3"));
         tempList.add(new DailyArticleData(page, "title4", "content4"));
         tempList.add(new DailyArticleData(page, "title5", "content5"));
+
         if (page == 1) {
             if (tempList != null && tempList.size() > 0) {
                 listAdapter.setNewData(tempList);
             } else {
                 listAdapter.setNewData(null);
-                emptyView.setVisibility(View.VISIBLE);
                 refreshLayout.setEnabled(false);
             }
         } else {

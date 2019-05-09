@@ -17,17 +17,4 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-
-    <TextView
-        android:id="@+id/emptyView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@color/C17"
-        android:gravity="center"
-        android:text="暂无数据"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
-
-
 </FrameLayout>

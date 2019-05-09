@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 
 import com.zhxh.xcomponent.R
 
@@ -18,6 +22,9 @@ class DailyArticleCommonActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var listAdapter: DailyArticleListAdapter
 
+    private var headerView: View? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cfuturewealth_daily_article_list)
@@ -30,6 +37,8 @@ class DailyArticleCommonActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        headerView = LayoutInflater.from(this).inflate(R.layout.item_listview_popwin, null)
+
         recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
@@ -45,6 +54,15 @@ class DailyArticleCommonActivity : AppCompatActivity() {
         }, recyclerView)
 
         recyclerView.adapter = listAdapter
+
+        listAdapter.addHeaderView(headerView)
+
+
+        val textView = TextView(this)
+        textView.text = "暂无数据"
+
+        listAdapter.emptyView = textView
+        listAdapter.emptyView.setOnClickListener { Toast.makeText(this, "empty", Toast.LENGTH_LONG).show() }
     }
 
     private fun loadData() {
