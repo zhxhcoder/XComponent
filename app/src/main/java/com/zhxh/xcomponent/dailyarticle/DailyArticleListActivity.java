@@ -17,7 +17,7 @@ import java.util.List;
 public class DailyArticleListActivity extends AppCompatActivity {
 
     int page = 1;
-    RecyclerView dailyList;
+    RecyclerView recyclerView;
     SwipeRefreshLayout refreshLayout;
     DailyArticleListAdapter listAdapter;
     private View headerView;
@@ -47,16 +47,16 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
         emptyView = findViewById(R.id.emptyView);
         refreshLayout = findViewById(R.id.refreshLayout);
-        dailyList = findViewById(R.id.dailyList);
+        recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        dailyList.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     private void initAdapter() {
         listAdapter = new DailyArticleListAdapter(this, R.layout.cfuturewealth_item_daily_article_layout);
         listAdapter.setEnableLoadMore(false);
         listAdapter.setHeaderAndEmpty(true);
-        dailyList.setAdapter(listAdapter);
+        recyclerView.setAdapter(listAdapter);
     }
 
     private void loadData() {
