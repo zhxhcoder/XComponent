@@ -1,6 +1,6 @@
 package com.zhxh.xcomponent.dailyarticle;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,14 +22,15 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
     int page = 1;
     RecyclerView recyclerView;
-    SwipeRefreshLayout refreshLayout;
     DailyArticleListAdapter listAdapter;
     private View headerView;
+
+    RecyclerView.OnScrollListener onScrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cfuturewealth_daily_article_list);
+        setContentView(R.layout.cfuturewealth_daily_article_list_new);
 
         initView();
 
@@ -37,18 +38,32 @@ public class DailyArticleListActivity extends AppCompatActivity {
 
         loadData();
 
-        refreshLayout.setOnRefreshListener(
-            () -> {
-                page++;
-                loadData();
+
+        onScrollListener = new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                //获得recyclerView的线性布局管理器
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                //获取到第一个item的显示的下标  不等于0表示第一个item处于不可见状态 说明列表没有滑动到顶部 显示回到顶部按钮
+                int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
+                if (firstVisibleItemPosition == 0) {
+                    //TODO 滑动头部
+                    loadMoreData();
+                }
             }
-        );
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        };
+        recyclerView.addOnScrollListener(onScrollListener);
     }
 
     private void initView() {
         headerView = LayoutInflater.from(this).inflate(R.layout.item_listview_popwin, null);
 
-        refreshLayout = findViewById(R.id.refreshLayout);
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -64,16 +79,21 @@ public class DailyArticleListActivity extends AppCompatActivity {
         TextView empty = new TextView(this);
         empty.setText("数据已经空啦");
         empty.setGravity(Gravity.CENTER);
-        empty.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        empty.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         listAdapter.setEmptyView(empty);
         listAdapter.getEmptyView().setOnClickListener(v -> {
             Toast.makeText(DailyArticleListActivity.this, "empty", Toast.LENGTH_LONG).show();
         });
     }
 
+    private void loadMoreData() {
+        page++;
+        loadData();
+    }
+
     private void loadData() {
 
-        Log.d("loadData", "loadData:" + page);
+        Log.d("xxxxxxx", "loadData：" + page);
 
         List<DailyArticleData> tempList = new ArrayList<>();
         tempList.add(new DailyArticleData(page, "title1", "content1"));
@@ -81,26 +101,26 @@ public class DailyArticleListActivity extends AppCompatActivity {
         tempList.add(new DailyArticleData(page, "title3", "content3"));
         tempList.add(new DailyArticleData(page, "title4", "content4"));
         tempList.add(new DailyArticleData(page, "title5", "content5"));
+        tempList.add(new DailyArticleData(page, "title6", "content6"));
+        tempList.add(new DailyArticleData(page, "title7", "content7"));
 
         if (page == 1) {
             if (tempList != null && tempList.size() > 0) {
                 listAdapter.setNewData(tempList);
             } else {
                 listAdapter.setNewData(null);
-                refreshLayout.setEnabled(false);
+                //TODO 加载完成
+                recyclerView.removeOnScrollListener(onScrollListener);
             }
         } else {
-            if (page == 4) {
-                //终止加载更多数据
+            if (page == 9) {
+                //TODO 加载完成
+                recyclerView.removeOnScrollListener(onScrollListener);
+
                 headerView.setVisibility(View.VISIBLE);
                 listAdapter.addHeaderView(headerView);
-                refreshLayout.setOnRefreshListener(null);
-                refreshLayout.setRefreshing(false);
-                refreshLayout.setEnabled(false);
-                listAdapter.notifyDataSetChanged();
             } else {
                 listAdapter.addData(0, tempList);
-                refreshLayout.setRefreshing(false);
             }
         }
     }
