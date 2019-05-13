@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -19,13 +20,13 @@ import com.zhxh.xcomponent.R
  */
 class DailyArticleGuideView : LinearLayout {
 
-    private var ctx: Context? = null
+    private lateinit var ctx: Context
 
     private var tv_daily_article_guide_read: TextView? = null
     private var tv_daily_article_card_title: TextView? = null
     private var tv_daily_article_card_num: TextView? = null
     private var tv_daily_article_card_day: TextView? = null
-    private var iv_daily_article_card_right: ImageView? = null
+    private lateinit var iv_daily_article_card_right: ImageView
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -73,10 +74,10 @@ class DailyArticleGuideView : LinearLayout {
             val roundedCorners = RoundedCorners(6)
             //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
             val options = RequestOptions.bitmapTransform(roundedCorners).override(120, 120)
-            Glide.with(ctx).load(R.mipmap.ic_reclogo).apply(options).into(iv_daily_article_card_right)
+            ctx.let { Glide.with(it).load(R.mipmap.ic_reclogo).apply(options).into(iv_daily_article_card_right) }
 
             this.setOnClickListener { v ->
-                ctx!!.startActivity(Intent(ctx, DailyArticleListActivity::class.java))
+                ctx.startActivity(Intent(ctx, DailyArticleListActivity::class.java))
                 //ctx.startActivity(new Intent(ctx, DailyArticleCommonActivity.class));
             }
         } else {
