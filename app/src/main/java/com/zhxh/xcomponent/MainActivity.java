@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.zhxh.xcomponentlib.TimeTextView;
 import com.zhxh.xcomponentlib.XEditText;
 import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
 
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -104,14 +106,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showDataTime() {
-        System.out.println("xxxxx " + getFormatDate("2019-05-16 00:00:01"));
-        System.out.println("xxxxx " + "xxxxx");
-
+        System.out.println("xxxxx " + getFormatDate("2019-05-16"));
+        System.out.println("xxxxx " + "xx1xx");
         System.out.println("xxxxx " + getFormatDate("2019-05-16 12:59:59"));
+        System.out.println("xxxxx " + "xx2xx");
         System.out.println("xxxxx " + getFormatDate("2019-05-16 13:59:59"));
-        System.out.println("xxxxx " + getFormatDate("2019-05-15 23:59:50"));
-        System.out.println("xxxxx " + getFormatDate("2019-05-15 23:59:59"));
+        System.out.println("xxxxx " + "xx3xx");
+        System.out.println("xxxxx " + getFormatDate("2019/05/15 23:59:50"));
+        System.out.println("xxxxx " + "xx4xx");
         System.out.println("xxxxx " + getFormatDate("2019-05-17 23:59:59"));
+
+        System.out.println("xxxxx " + "xx5xx");
+
+        System.out.println("xxxxx " + strToTimeStamp("2019-05-17 23:59:59", 0));
+        System.out.println("xxxxx " + strToTimeStamp("2019-05-17 23:59:59", 0));
     }
 
     public class HomeAdapters extends RecyclerView.Adapter<HomeAdapters.ViewHolder> {
@@ -139,19 +147,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * yyyy-MM-dd HH:mm:ss
+     * yyyy/MM/dd HH:mm:ss
+     *
      * @param s
      * @param offset
      * @return 判断是否为
      */
     public static Long strToTimeStamp(String s, int offset) {
+        //数据长度验证
+        if (TextUtils.isEmpty(s) || s.length() < 10) {
+            throw new RuntimeException("不合法日期");
+        }
+        //修正数据
+        if (!isValidDate(s)) {
+            throw new RuntimeException("不合法日期");
+        }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ParsePosition pos = new ParsePosition(0);
         Date date = simpleDateFormat.parse(s, pos);
         return date.getTime() + offset * 24 * 60 * 60 * 1000;
     }
 
+    /**
+     * yyyy-MM-dd HH:mm:ss
+     * yyyy/MM/dd HH:mm:ss
+     *
+     * @return 判断是否为
+     */
+    public static boolean isValidDate(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return false;
+        }
+        String s = str.replace("/", "-");
 
-    public static String getFormatDate(String s) {
+        boolean isValid = true;
+        // 指定日期格式为四位年-两位月份-两位日期，注意yyyy-MM-dd区分大小写；
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            //设置lenient为false. 否则SimpleDateFormat会比较宽松地验证日期，比如2019/02/29会被接受，并转换成比如2019/03/01
+            format.setLenient(false);
+            format.parse(s);
+        } catch (ParseException e) {
+            //如果throw java.text.ParseException或者NullPointerException，就说明格式不对
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    public static String getFormatDate(String str) {
+        if (TextUtils.isEmpty(str) || str.length() < 10) {
+            return "";
+        }
+        String s = str.replace("/", "-");
         if (DateUtils.isToday(strToTimeStamp(s, -1))) {
             return "明天";
         } else if (DateUtils.isToday(strToTimeStamp(s, 0))) {
