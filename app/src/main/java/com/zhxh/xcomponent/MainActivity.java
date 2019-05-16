@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,10 @@ import com.zhxh.xcomponentlib.SlideSwitch;
 import com.zhxh.xcomponentlib.TimeTextView;
 import com.zhxh.xcomponentlib.XEditText;
 import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer;
+
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by zhxh on 2018/6/3
@@ -93,6 +98,20 @@ public class MainActivity extends AppCompatActivity {
         DailyArticleGuideView dailyLayout = findViewById(R.id.dailyLayout);
         dailyLayout.show(new DailyArticleData(1, "标题", "内容"));
 
+
+        showDataTime();
+
+    }
+
+    private void showDataTime() {
+
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 12:59:59", 0)));
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 13:59:59", 0)));
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 00:00:01", 0)));
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-15 23:59:59", 1)));
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-15 23:59:59", 0)));
+        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-17 23:59:59", -1)));
+
     }
 
 
@@ -118,5 +137,17 @@ public class MainActivity extends AppCompatActivity {
                 super(view);
             }
         }
+    }
+
+    /**
+     * @param s
+     * @param offset
+     * @return
+     */
+    public static Long dateToStamp(String s, int offset) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ParsePosition pos = new ParsePosition(0);
+        Date date = simpleDateFormat.parse(s, pos);
+        return date.getTime() + offset * 24 * 60 * 60 * 1000;
     }
 }

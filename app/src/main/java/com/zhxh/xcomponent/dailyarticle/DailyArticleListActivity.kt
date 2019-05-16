@@ -19,11 +19,11 @@ import java.util.ArrayList
 class DailyArticleListActivity : AppCompatActivity() {
 
     internal var page = 1
-    internal var recyclerView: RecyclerView
-    internal var listAdapter: DailyArticleListAdapter
+    internal lateinit var recyclerView: RecyclerView
+    internal lateinit var listAdapter: DailyArticleListAdapter
     private var headerView: View? = null
 
-    internal var onScrollListener: RecyclerView.OnScrollListener
+    internal lateinit var onScrollListener: RecyclerView.OnScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
