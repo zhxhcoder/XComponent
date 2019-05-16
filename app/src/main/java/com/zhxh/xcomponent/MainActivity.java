@@ -104,16 +104,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showDataTime() {
+        System.out.println("xxxxx " + getFormatDate("2019-05-16 00:00:01"));
+        System.out.println("xxxxx " + "xxxxx");
 
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 12:59:59", 0)));
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 13:59:59", 0)));
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-16 00:00:01", 0)));
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-15 23:59:59", 1)));
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-15 23:59:59", 0)));
-        System.out.println("xxxxx " + DateUtils.isToday(dateToStamp("2019-05-17 23:59:59", -1)));
-
+        System.out.println("xxxxx " + getFormatDate("2019-05-16 12:59:59"));
+        System.out.println("xxxxx " + getFormatDate("2019-05-16 13:59:59"));
+        System.out.println("xxxxx " + getFormatDate("2019-05-15 23:59:50"));
+        System.out.println("xxxxx " + getFormatDate("2019-05-15 23:59:59"));
+        System.out.println("xxxxx " + getFormatDate("2019-05-17 23:59:59"));
     }
-
 
     public class HomeAdapters extends RecyclerView.Adapter<HomeAdapters.ViewHolder> {
         @Override
@@ -142,12 +141,25 @@ public class MainActivity extends AppCompatActivity {
     /**
      * @param s
      * @param offset
-     * @return
+     * @return 判断是否为
      */
-    public static Long dateToStamp(String s, int offset) {
+    public static Long strToTimeStamp(String s, int offset) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ParsePosition pos = new ParsePosition(0);
         Date date = simpleDateFormat.parse(s, pos);
         return date.getTime() + offset * 24 * 60 * 60 * 1000;
+    }
+
+
+    public static String getFormatDate(String s) {
+        if (DateUtils.isToday(strToTimeStamp(s, -1))) {
+            return "明天";
+        } else if (DateUtils.isToday(strToTimeStamp(s, 0))) {
+            return "今天";
+        } else if (DateUtils.isToday(strToTimeStamp(s, 1))) {
+            return "昨天";
+        } else {
+            return s.substring(0, 10);
+        }
     }
 }
