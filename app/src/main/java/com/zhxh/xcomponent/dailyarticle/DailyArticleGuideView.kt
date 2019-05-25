@@ -40,7 +40,6 @@ class DailyArticleGuideView : LinearLayout {
         init(context)
     }
 
-
     /**
      * 方法描述：初始化
      *
