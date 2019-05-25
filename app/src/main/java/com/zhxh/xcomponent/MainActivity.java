@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.zhxh.xcomponent.dailyarticle.DailyArticleData;
 import com.zhxh.xcomponent.dailyarticle.DailyArticleGuideView;
 import com.zhxh.xcomponent.xmenu.MainMenuActivity;
+import com.zhxh.xcomponentlib.CTextView;
 import com.zhxh.xcomponentlib.ExpansionFrame;
 import com.zhxh.xcomponentlib.SlideSwitch;
 import com.zhxh.xcomponentlib.TimeTextView;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        TextView tiltText = findViewById(R.id.tiltText);
+        CTextView tiltText = findViewById(R.id.tiltText);
 
         tiltText.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, MainMenuActivity.class));
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        tiltText.setText("开始%");
 
 
         DailyArticleGuideView dailyLayout = findViewById(R.id.dailyLayout);
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         showDataTime();
 
     }
+
 
     private void showDataTime() {
         System.out.println("xxxxx " + getFormatDate("2019-05-16"));
