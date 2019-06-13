@@ -54,10 +54,8 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     private var drawableWidth: Int = 0
     private var position: DrawablePosition? = null
 
-    internal var bounds: Rect? = null
+    private var bounds: Rect? = null
     private var drawablePadding = 0
-
-    internal var isTouchPass = true
 
     private var degrees: Int = 0
 
@@ -239,7 +237,6 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     //处理按钮点击事件无效
     override fun setOnClickListener(l: View.OnClickListener?) {
         super.setOnClickListener(l)
-        isTouchPass = false
     }
 
     //处理按下去的颜色 区分solid和stroke模式
@@ -259,7 +256,7 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
             }
         }
 
-        return isTouchPass
+        return false
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -273,6 +270,7 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
         super.onDraw(canvas)
     }
+
     //根据正则来 处理特殊字符串的特殊颜色或大小
     fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int) {
         setSpecialText(srcStr, specialTextReg, valueColor, size, null)
@@ -308,17 +306,17 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
             if (size != 0) {
                 resultSpan.setSpan(AbsoluteSizeSpan(size, true), it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
-
-
             if (cb != null) {
                 resultSpan.setSpan(object : ClickableSpan() {
                     override fun updateDrawState(ds: TextPaint) {
                         super.updateDrawState(ds)
                         ds.color = valueColor
                         ds.isUnderlineText = false
+                        ds.clearShadowLayer()
                     }
 
                     override fun onClick(widget: View) {
+                        this@CTextView.highlightColor = Color.TRANSPARENT
                         cb.invoke()
                     }
                 }, it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -360,7 +358,15 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         }
 
         resultSpan.setSpan(object : ClickableSpan() {
+            override fun updateDrawState(ds: TextPaint) {
+                super.updateDrawState(ds)
+                ds.color = valueColor
+                ds.isUnderlineText = false
+                ds.clearShadowLayer()
+            }
+
             override fun onClick(widget: View) {
+
                 cb.invoke()
             }
         }, startIndex, startIndex + rangeLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -369,6 +375,7 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         this.text = resultSpan
         return
     }
+
     fun setMaxLineText(srcStr: String, maxLines: Int, greater: () -> Unit, lesser: () -> Unit) {
         this.text = srcStr
         this.maxLines = maxLines

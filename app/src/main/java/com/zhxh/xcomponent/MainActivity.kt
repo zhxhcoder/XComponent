@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        ctvClickText.setSpecialText("我是谁我要点击点击什么吗", "点击", Color.RED, 0) {
+        ctvClickText.setSpecialText("我是谁我要点击点击什么吗", "点击点击", Color.RED, 0) {
             Toast.makeText(this, "gogogo", Toast.LENGTH_LONG).show()
         }
 
