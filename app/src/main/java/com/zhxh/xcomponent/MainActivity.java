@@ -11,11 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhxh.xcomponent.dailyarticle.DailyArticleData;
-import com.zhxh.xcomponent.dailyarticle.DailyArticleGuideView;
 import com.zhxh.xcomponent.xmenu.MainMenuActivity;
 import com.zhxh.xcomponentlib.CTextView;
 import com.zhxh.xcomponentlib.ExpansionFrame;
@@ -94,15 +91,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ScrollPopActivity.class));
         });
 
-
-
-
-        DailyArticleGuideView dailyLayout = findViewById(R.id.dailyLayout);
-        dailyLayout.show(new DailyArticleData(1, "标题", "内容"));
-
-
         showDataTime();
-
     }
 
 
