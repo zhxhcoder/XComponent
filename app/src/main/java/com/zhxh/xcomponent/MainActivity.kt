@@ -1,18 +1,14 @@
 package com.zhxh.xcomponent
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 
 import com.zhxh.xcomponent.xmenu.MainMenuActivity
-import com.zhxh.xcomponentlib.CTextView
-import com.zhxh.xcomponentlib.ExpansionFrame
 import com.zhxh.xcomponentlib.SlideSwitch
-import com.zhxh.xcomponentlib.XEditText
-import com.zhxh.xcomponentlib.xstickyhorizon.XStickyNavContainer
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -32,21 +28,15 @@ class MainActivity : AppCompatActivity() {
 
         tv_countdown_time.setOnClickListener { v -> startActivity(Intent(this@MainActivity, GalleryActivity::class.java)) }
 
-        val layout = findViewById<XStickyNavContainer>(R.id.head_home_layout)
-
-        layout.setOnStartActivity { startActivity(Intent(this@MainActivity, TabHomeActivity::class.java)) }
-        val mHeadRecyclerView = findViewById<RecyclerView>(R.id.head_home_recyclerview)
+        head_home_layout.setOnStartActivity { startActivity(Intent(this@MainActivity, TabHomeActivity::class.java)) }
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        mHeadRecyclerView.layoutManager = layoutManager
+        head_home_recyclerview.layoutManager = layoutManager
 
-        val xEditText = findViewById<XEditText>(R.id.xEditText)
         xEditText.setDrawableClickListener { target -> Toast.makeText(this@MainActivity, "点击的是右面的眼睛", Toast.LENGTH_LONG).show() }
 
-        val expansionFrame = findViewById<ExpansionFrame>(R.id.expansionFrame)
         expansionFrame.setOnExpansionUpdateListener { expansionFraction -> expand_arrow.rotation = expansionFraction * 180 }
 
-        val slideSwitch = findViewById<SlideSwitch>(R.id.slideSwitch)
         slideSwitch.setSlideListener(object : SlideSwitch.SlideListener {
             override fun open() {
                 expansionFrame.toggle()
@@ -57,7 +47,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val tiltText = findViewById<CTextView>(R.id.tiltText)
+        ctvClickText.setSpecialText("我是谁我要点击点击什么吗", "点击", Color.RED, 0) {
+            Toast.makeText(this, "gogogo", Toast.LENGTH_LONG).show()
+        }
 
         tiltText.setOnClickListener { v ->
             startActivity(Intent(this@MainActivity, MainMenuActivity::class.java))
