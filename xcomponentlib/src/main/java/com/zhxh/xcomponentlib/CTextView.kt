@@ -271,13 +271,42 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         super.onDraw(canvas)
     }
 
+    private var richTextSrc: String = ""
+    private var richTextReg: String = ""
+    private var richValueColor: Int = 0
+    private var richValueSize: Int = 0
+
+    fun withText(richTextSrc: String): CTextView {
+        this.richTextSrc = richTextSrc
+        return this
+    }
+
+    fun withRegex(richTextReg: String): CTextView {
+        this.richTextReg = richTextReg
+        return this
+    }
+
+    fun withColor(richValueColor: Int): CTextView {
+        this.richValueColor = richValueColor
+        return this
+    }
+
+    fun withSize(richValueSize: Int): CTextView {
+        this.richValueSize = richValueSize
+        return this
+    }
+
+    fun withBack(cb: ((String) -> Unit)?) {
+        setSpecialText(richTextSrc, richTextReg, richValueColor, richValueSize, cb)
+    }
+
     //根据正则来 处理特殊字符串的特殊颜色或大小
     fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int) {
         setSpecialText(srcStr, specialTextReg, valueColor, size, null)
     }
 
     //根据正则用来 处理特殊字符串的特殊颜色或大小及点击事件
-    fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int, cb: (() -> Unit)?) {
+    fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int, cb: ((String) -> Unit)?) {
         var valueColor = valueColor
 
         if (TextUtils.isEmpty(srcStr) || TextUtils.isEmpty(specialTextReg)) {
@@ -317,7 +346,7 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
                     override fun onClick(widget: View) {
                         this@CTextView.highlightColor = Color.TRANSPARENT
-                        cb.invoke()
+                        cb(it.value)
                     }
                 }, it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
