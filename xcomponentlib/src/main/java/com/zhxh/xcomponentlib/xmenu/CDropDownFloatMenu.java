@@ -114,7 +114,7 @@ public class CDropDownFloatMenu {
             textView.setText(stringList.get(i));
 
             if (selectIndex == i) {
-                textView.setBtnAttr(
+                textView.initBtnAttr(
                     selectSolidColor
                     , selectTextColor
                     , selectSolidColor
@@ -123,7 +123,7 @@ public class CDropDownFloatMenu {
                     , dip2px(1));
                 textView.setTextColor(selectTextColor);
             } else {
-                textView.setSolidAttr(defaultSolidColor, defaultSolidColor, dip2px(2));
+                textView.initStrokeAttr(defaultSolidColor, defaultSolidColor, dip2px(2));
                 textView.setTextColor(defaultTextColor);
             }
 
