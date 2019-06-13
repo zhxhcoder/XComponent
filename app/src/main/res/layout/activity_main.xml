@@ -171,15 +171,5 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/expand_arrow" />
 
-
-        <com.zhxh.xcomponent.dailyarticle.DailyArticleGuideView
-            android:id="@+id/dailyLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tiltText" />
-
-
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
