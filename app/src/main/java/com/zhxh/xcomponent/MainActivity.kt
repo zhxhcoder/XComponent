@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tiltText.setOnClickListener { v ->
+            Toast.makeText(this, "gogogo", Toast.LENGTH_LONG).show()
             startActivity(Intent(this@MainActivity, MainMenuActivity::class.java))
             startActivity(Intent(this@MainActivity, MainPopActivity::class.java))
             startActivity(Intent(this@MainActivity, ScrollPopActivity::class.java))

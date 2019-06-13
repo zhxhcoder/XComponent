@@ -273,44 +273,13 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
         super.onDraw(canvas)
     }
-
     //根据正则来 处理特殊字符串的特殊颜色或大小
     fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int) {
-        var valueColor = valueColor
-
-        if (TextUtils.isEmpty(srcStr) || TextUtils.isEmpty(specialTextReg)) {
-            this.text = srcStr
-            return
-        }
-
-        if (valueColor == 0) {
-            valueColor = this.currentTextColor
-        }
-
-        val resultSpan = SpannableString(srcStr)
-
-        val s = Regex(specialTextReg).findAll(srcStr).toList()
-
-        if (s.isNullOrEmpty()) {
-            this.text = srcStr
-            return
-        }
-
-        s.forEach {
-            resultSpan.setSpan(
-                ForegroundColorSpan(valueColor),
-                it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            if (size != 0) {
-                resultSpan.setSpan(AbsoluteSizeSpan(size, true), it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }
-        }
-        this.text = resultSpan
-        return
+        setSpecialText(srcStr, specialTextReg, valueColor, size, null)
     }
 
     //根据正则用来 处理特殊字符串的特殊颜色或大小及点击事件
-    fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int, cb: () -> Unit) {
+    fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int, cb: (() -> Unit)?) {
         var valueColor = valueColor
 
         if (TextUtils.isEmpty(srcStr) || TextUtils.isEmpty(specialTextReg)) {
@@ -340,20 +309,25 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
                 resultSpan.setSpan(AbsoluteSizeSpan(size, true), it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
 
-            resultSpan.setSpan(object : ClickableSpan() {
-                override fun updateDrawState(ds: TextPaint) {
-                    super.updateDrawState(ds)
-                    ds.color = valueColor
-                    ds.isUnderlineText = false
-                }
 
-                override fun onClick(widget: View) {
-                    cb.invoke()
-                }
-            }, it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if (cb != null) {
+                resultSpan.setSpan(object : ClickableSpan() {
+                    override fun updateDrawState(ds: TextPaint) {
+                        super.updateDrawState(ds)
+                        ds.color = valueColor
+                        ds.isUnderlineText = false
+                    }
+
+                    override fun onClick(widget: View) {
+                        cb.invoke()
+                    }
+                }, it.range.start, it.range.endInclusive + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
         }
 
-        this.movementMethod = LinkMovementMethod.getInstance()
+        if (cb != null) {
+            this.movementMethod = LinkMovementMethod.getInstance()
+        }
         this.text = resultSpan
         return
     }
@@ -395,8 +369,6 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         this.text = resultSpan
         return
     }
-
-
     fun setMaxLineText(srcStr: String, maxLines: Int, greater: () -> Unit, lesser: () -> Unit) {
         this.text = srcStr
         this.maxLines = maxLines
