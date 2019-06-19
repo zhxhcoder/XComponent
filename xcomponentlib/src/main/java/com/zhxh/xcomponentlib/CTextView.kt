@@ -300,6 +300,13 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         setSpecialText(richTextSrc, richTextReg, richValueColor, richValueSize, cb)
     }
 
+
+    fun setKeyValueText(key: String, value: String) {
+
+
+        return
+    }
+
     //根据正则来 处理特殊字符串的特殊颜色或大小
     fun setSpecialText(srcStr: String, specialTextReg: String, valueColor: Int, size: Int) {
         setSpecialText(srcStr, specialTextReg, valueColor, size, null)
