@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 
-import com.zhxh.xcomponent.xmenu.MainMenuActivity
+import com.zhxh.xcomponentlib.AlwaysShowToast
 import com.zhxh.xcomponentlib.SlideSwitch
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         tiltText.setOnClickListener { v ->
             Toast.makeText(this, "gogogo", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this@MainActivity, MainMenuActivity::class.java))
-            startActivity(Intent(this@MainActivity, MainPopActivity::class.java))
             startActivity(Intent(this@MainActivity, ScrollPopActivity::class.java))
         }
         ctvClickText.setSpecialText("我是谁我要点击点击什么吗", "点击点击", Color.RED, 0) {
@@ -66,6 +64,11 @@ class MainActivity : AppCompatActivity() {
             }
 
         ctvKeyValueText.text = "应收本金    890元"
+
+        ctvKeyValueText.setOnClickListener {
+            val toast = AlwaysShowToast(this)
+            toast.setView(tiltText)
+        }
     }
 
 }
