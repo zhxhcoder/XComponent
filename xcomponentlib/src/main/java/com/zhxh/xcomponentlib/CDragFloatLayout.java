@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 
-public class CDragFloatButton extends android.support.v7.widget.AppCompatImageView {
+public class CDragFloatLayout extends android.support.v7.widget.AppCompatImageView {
 
     private int parentHeight;
     private int parentWidth;
@@ -27,15 +27,15 @@ public class CDragFloatButton extends android.support.v7.widget.AppCompatImageVi
     private boolean isDrag;
     private ViewGroup parent;
 
-    public CDragFloatButton(Context context) {
+    public CDragFloatLayout(Context context) {
         super(context);
     }
 
-    public CDragFloatButton(Context context, AttributeSet attrs) {
+    public CDragFloatLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CDragFloatButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CDragFloatLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
