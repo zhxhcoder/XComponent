@@ -3,13 +3,17 @@ package com.zhxh.xcomponentlib;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Handler;
+import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 
-public class CDragFloatLayout extends android.support.v7.widget.AppCompatImageView {
+public class CDragFloatLayout extends NestedScrollView {
+    private Context context;
 
     private int parentHeight;
     private int parentWidth;
@@ -29,14 +33,26 @@ public class CDragFloatLayout extends android.support.v7.widget.AppCompatImageVi
 
     public CDragFloatLayout(Context context) {
         super(context);
+        this.context = context;
+        init();
     }
 
     public CDragFloatLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
+        init();
     }
 
     public CDragFloatLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.context = context;
+        init();
+    }
+
+    private void init() {
+
+        LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View floatView = inflate.inflate(R.layout.cdrag_float_layout, null);
     }
 
     @Override

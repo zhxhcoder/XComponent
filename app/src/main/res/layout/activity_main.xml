@@ -10,6 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.zhxh.xcomponentlib.CDragFloatButton
+            android:id="@+id/cDragFloatButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.zhxh.xcomponentlib.CDragFloatLayout
+            android:id="@+id/cDragFloatLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.zhxh.xcomponentlib.TimeTextView
             android:id="@+id/tv_countdown_time"
             android:layout_width="289dp"
@@ -193,18 +215,6 @@
             app:CStrokeColor="@color/colorAccent"
             app:layout_constraintTop_toBottomOf="@+id/ctvClickText" />
 
-        <com.zhxh.xcomponentlib.CDragFloatButton
-            android:id="@+id/cDragFloatButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:clickable="true"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
