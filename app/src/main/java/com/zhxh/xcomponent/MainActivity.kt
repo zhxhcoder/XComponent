@@ -69,6 +69,10 @@ class MainActivity : AppCompatActivity() {
             val toast = AlwaysShowToast(this)
             toast.setView(tiltText)
         }
+
+
+        raImageView.setImageResource(R.mipmap.ic_default_banner)
+        raImageView.setCorners(20, 20)
     }
 
 }

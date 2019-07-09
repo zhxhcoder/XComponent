@@ -198,4 +198,9 @@
         <attr name="lineSpacing" format="dimension" />
         <attr name="itemSpacing" format="dimension" />
     </declare-styleable>
+    <!--圆角ImageView-->
+    <declare-styleable name="CAngleImageView">
+        <attr name="roundAngleWidth" format="dimension" />
+        <attr name="roundAngleHeight" format="dimension" />
+    </declare-styleable>
 </resources>

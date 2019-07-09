@@ -215,6 +215,15 @@
             app:CStrokeColor="@color/colorAccent"
             app:layout_constraintTop_toBottomOf="@+id/ctvClickText" />
 
-
+        <com.zhxh.xcomponentlib.CAngleImageView
+            android:id="@+id/raImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@+id/ctvKeyValueText"
+            app:roundAngleHeight="0dp"
+            app:roundAngleWidth="0dp" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
