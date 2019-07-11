@@ -141,4 +141,8 @@ public class CAngleImageView extends AppCompatImageView {
         canvas.drawPath(path, paint);
     }
 
+    public void dp2px() {
+
+    }
+
 }
