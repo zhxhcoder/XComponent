@@ -1,15 +1,19 @@
 package com.zhxh.xcomponent;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.zhxh.xcomponent.dummy.ChartData;
 import com.zhxh.xchartlib.LineChart;
+import com.zhxh.xcomponent.dummy.ChartData;
+import com.zhxh.xcomponentlib.CTextView;
 
 import java.util.List;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
 
@@ -24,14 +28,19 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+            .inflate(R.layout.fragment_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.content.setText(mValues.get(position).getName());
+
+        holder.content
+            .withText(mValues.get(position).getName())
+            .withRegex("^.")
+            .withColor(Color.RED)
+            .withBack(s -> null);
         holder.lineChart.bindData(mValues.get(position).getList());
         holder.lineChart.bindAnimTime(50);
         holder.lineChart.show();
@@ -40,8 +49,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
+
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
@@ -55,15 +63,15 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView content;
+        public final CTextView content;
         public final LineChart lineChart;
         public ChartData mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            content = (TextView) view.findViewById(R.id.content);
-            lineChart = (LineChart) view.findViewById(R.id.lineChart);
+            content = view.findViewById(R.id.content);
+            lineChart = view.findViewById(R.id.lineChart);
         }
 
         @Override

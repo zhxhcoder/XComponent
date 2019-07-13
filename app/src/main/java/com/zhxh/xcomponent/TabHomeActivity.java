@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.zhxh.xcomponent.dummy.ChartData;
 import com.zhxh.xcomponentlib.XPagerTabStrip;
@@ -94,6 +95,8 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
     @Override
     public void onListFragmentInteraction(ChartData item) {
+
+        Toast.makeText(this,item.getName(),Toast.LENGTH_LONG).show();
 
     }
 
