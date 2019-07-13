@@ -114,7 +114,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
         @Override
         public Fragment getItem(int position) {
-            return position == 1 ? ItemListFragment.newInstance() : ItemFragment.newInstance(position % 2 + 1);
+            return position == 0 ? ItemListFragment.newInstance() : ItemFragment.newInstance(position % 2 + 1);
         }
 
         @Override
