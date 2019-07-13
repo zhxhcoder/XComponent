@@ -24,14 +24,7 @@ import java.util.List;
 
 public class TabHomeActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
@@ -94,7 +87,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
         tabLayout2.post(() -> {
             //通过反射方法改变
-            setIndicator(tabLayout2, 10, 10);
+            //setIndicator(tabLayout2, 10, 10);
         });
 
     }

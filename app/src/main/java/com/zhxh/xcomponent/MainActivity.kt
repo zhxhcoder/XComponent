@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         slideSwitch.setSlideListener(object : SlideSwitch.SlideListener {
             override fun open() {
+                startActivity(Intent(this@MainActivity, TabHomeActivity::class.java))
                 expansionFrame.toggle()
             }
 

@@ -23,13 +23,6 @@ public class ScrollPopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll_pop);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show());
-
 
         List<String> strings = Arrays.asList("首页全部", "平安银行-已开通", "百信银行", "众邦银行", "全部银行", "平安银行-已开通", "百信银行", "众邦银行", "全部", "平安银行-已开通", "测试数据", "众邦银行");
         TextView tvPopOut = findViewById(R.id.tvPopOut);
@@ -55,7 +48,6 @@ public class ScrollPopActivity extends AppCompatActivity {
             downMenu.showAsDropDown(tvPopOut);
 
         });
-
 
         TextView tvShapeDrawable = findViewById(R.id.tvShapeDrawable);
         ShadowDrawable.setShadowDrawable(tvShapeDrawable, new int[]{
