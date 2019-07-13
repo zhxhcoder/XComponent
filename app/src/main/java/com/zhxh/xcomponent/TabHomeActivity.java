@@ -96,7 +96,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
     @Override
     public void onListFragmentInteraction(ChartData item) {
 
-        Toast.makeText(this,item.getName(),Toast.LENGTH_LONG).show();
+        Toast.makeText(this, item.getName(), Toast.LENGTH_LONG).show();
 
     }
 
@@ -114,7 +114,7 @@ public class TabHomeActivity extends AppCompatActivity implements ItemFragment.O
 
         @Override
         public Fragment getItem(int position) {
-            return ItemFragment.newInstance(position % 2 + 1);
+            return position == 1 ? ItemListFragment.newInstance() : ItemFragment.newInstance(position % 2 + 1);
         }
 
         @Override
