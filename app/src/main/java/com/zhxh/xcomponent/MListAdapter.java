@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Toast;
 
 import com.zhxh.xcomponent.dummy.ChartData;
 import com.zhxh.xcomponentlib.CTextView;
@@ -44,22 +43,13 @@ public class MListAdapter extends BaseAdapter {
         } else {
             viewHold = (MViewHolder) convertView.getTag();
         }
-
         viewHold.mContentView
             .withText(mValues.get(position).getName())
             .withRegex("^.")
             .withColor(Color.RED)
             .withBack(s -> null);
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(parent.getContext(), mValues.get(position).getName(), Toast.LENGTH_LONG).show();
-            }
-        });
         return convertView;
-
-
     }
 
     public class MViewHolder {

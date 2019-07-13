@@ -73,6 +73,9 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     @SuppressLint("ClickableViewAccessibility")
     private fun init(context: Context, attrs: AttributeSet?) {
+
+        this.isEnabled = false
+
         val a = context.obtainStyledAttributes(attrs, R.styleable.CTextView)
         pressedColor = a.getColor(R.styleable.CTextView_CPressedColor, pressedColor)
         pressedTextColor = a.getColor(R.styleable.CTextView_CPressedTextColor, pressedTextColor)
@@ -128,9 +131,12 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     //过滤频繁点击
     override fun performClick(): Boolean {
+
         return if (isQuickClick()) {
             true
-        } else super.performClick()
+        } else {
+            super.performClick()
+        }
     }
 
     private var lastClickTime: Long = 0
@@ -234,8 +240,8 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
 
-    //处理按钮点击事件无效
     override fun setOnClickListener(l: View.OnClickListener?) {
+        this.isEnabled = true
         super.setOnClickListener(l)
     }
 
@@ -297,6 +303,7 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     fun withBack(cb: ((String) -> Unit)?) {
+        this.isEnabled = true
         setSpecialText(richTextSrc, richTextReg, richValueColor, richValueSize, cb)
     }
 
