@@ -73,7 +73,6 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     @SuppressLint("ClickableViewAccessibility")
     private fun init(context: Context, attrs: AttributeSet?) {
-
         this.isEnabled = false
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.CTextView)
@@ -309,7 +308,6 @@ class CTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
 
     fun setKeyValueText(key: String, value: String) {
-
 
         return
     }
