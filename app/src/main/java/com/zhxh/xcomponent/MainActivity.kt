@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.zhxh.xcomponent.widget.PagerTabDialog
 
 import com.zhxh.xcomponentlib.AlwaysShowToast
 import com.zhxh.xcomponentlib.SlideSwitch
@@ -61,8 +64,18 @@ class MainActivity : AppCompatActivity() {
             .withColor(Color.RED)
             .withSize(20)
             .withBack {
-                //TODO
-                Toast.makeText(this, "我点击了：$it", Toast.LENGTH_LONG).show()
+
+                val resultStrMap =
+                    """["11111111","22222222","33333333"]"""
+                val typeMap =
+                    object : TypeToken<List<String>>() {}.type
+                val resp = Gson().fromJson<List<String>>(
+                    resultStrMap,
+                    typeMap
+                )
+
+                val dialog = PagerTabDialog(this, null)
+                dialog.show(resp)
             }
 
         ctvKeyValueText.text = "应收本金    890元"
