@@ -37,6 +37,16 @@ class PagerTabDialog(ctx: Context?, attrs: AttributeSet?) : RelativeLayout(ctx, 
     }
 
     fun show(list: List<String>) {
+        if (list.isNullOrEmpty()) {
+            return
+        }
+
+        if (list.size <= 1) {
+            indexContainer.visibility = View.GONE
+        } else {
+            indexContainer.visibility = View.VISIBLE
+        }
+
         //内容区域点击无效
         contentLayout.setOnClickListener {}
         viewpager.adapter = MViewAdapter(list)
