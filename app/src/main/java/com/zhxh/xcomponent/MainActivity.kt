@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -68,14 +69,17 @@ class MainActivity : AppCompatActivity() {
                 val resultStrMap =
                     """["11111111","22222222","33333333"]"""
                 val typeMap =
-                    object : TypeToken<List<String>>() {}.type
-                val resp = Gson().fromJson<List<String>>(
+                    object : TypeToken<Object>() {}.type
+                val resp = Gson().fromJson<Object>(
                     resultStrMap,
                     typeMap
                 )
 
+                Log.d("xxxxxxxxx",resp.toString())
+                Log.d("xxxxxxxxx",resultStrMap)
+
                 val dialog = PagerTabDialog(this, null)
-                dialog.show(resp)
+                dialog.show(resp as List<String>)
             }
 
         ctvKeyValueText.text = "应收本金    890元"
