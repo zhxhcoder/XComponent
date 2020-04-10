@@ -232,10 +232,16 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/raImageView">
 
-
-            <com.zhxh.xcomponentlib.CArcProgress
+            <com.zhxh.xcomponentlib.arcibrary.ArcProgress
+                android:id="@+id/myProgress03"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:radius="90dp"
+                app:arcCapRound="true"
+                app:degree="80"
+                app:progressStyle="tick"
+                app:tickDensity="3" />
+
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
