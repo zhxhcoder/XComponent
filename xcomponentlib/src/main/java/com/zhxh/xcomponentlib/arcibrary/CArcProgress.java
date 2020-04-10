@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import com.zhxh.xcomponentlib.R;
 
 
-public class ArcProgress extends ProgressBar {
+public class CArcProgress extends ProgressBar {
     public static final int STYLE_TICK = 1;
     public static final int STYLE_ARC = 0;
     private final int DEFAULT_LINEHEIGHT = dp2px(15);
@@ -45,15 +45,15 @@ public class ArcProgress extends ProgressBar {
     private Canvas mCenterCanvas;
     private OnCenterDraw mOnCenter;
 
-    public ArcProgress(Context context) {
+    public CArcProgress(Context context) {
         this(context, null);
     }
 
-    public ArcProgress(Context context, AttributeSet attrs) {
+    public CArcProgress(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ArcProgress(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CArcProgress(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         final TypedArray attributes = getContext().obtainStyledAttributes(
                 attrs, R.styleable.CArcProgress);

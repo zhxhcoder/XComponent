@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 
 
-public class OnTextCenter implements ArcProgress.OnCenterDraw {
+public class OnTextCenter implements CArcProgress.OnCenterDraw {
     private int textColor = Color.GRAY;
     private int textSize = 50;
 

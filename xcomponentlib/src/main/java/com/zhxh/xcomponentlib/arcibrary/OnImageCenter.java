@@ -9,12 +9,12 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 
-public class onImageCenter implements ArcProgress.OnCenterDraw {
+public class OnImageCenter implements CArcProgress.OnCenterDraw {
     private Context context;
     private int rid;
     private Bitmap mBmp, mTarget;
 
-    public onImageCenter(Context context, int rid) {
+    public OnImageCenter(Context context, int rid) {
         this.context = context;
         this.rid = rid;
         mBmp = BitmapFactory.decodeResource(context.getResources(), rid);

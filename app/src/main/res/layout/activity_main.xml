@@ -232,7 +232,7 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/raImageView">
 
-            <com.zhxh.xcomponentlib.arcibrary.ArcProgress
+            <com.zhxh.xcomponentlib.arcibrary.CArcProgress
                 android:id="@+id/myProgress03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
