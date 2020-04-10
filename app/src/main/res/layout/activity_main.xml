@@ -225,5 +225,19 @@
             app:layout_constraintTop_toBottomOf="@+id/ctvKeyValueText"
             app:roundAngleHeight="0dp"
             app:roundAngleWidth="0dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/raImageView">
+
+
+            <com.zhxh.xcomponentlib.CArcProgress
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </android.support.constraint.ConstraintLayout>
+
+
 </android.support.v4.widget.NestedScrollView>
