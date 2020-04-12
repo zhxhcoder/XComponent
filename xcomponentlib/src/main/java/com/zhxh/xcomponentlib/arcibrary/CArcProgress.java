@@ -185,24 +185,18 @@ public class CArcProgress extends ProgressBar {
             mCenterBitmap.recycle();
             mCenterBitmap = null;
         }
-
     }
 
-
     public void runProgress(int progress, long itemDuration) {
-
         ValueAnimator va = ValueAnimator.ofInt(0, progress);
         va.setDuration(itemDuration * progress);
-        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                Integer p = (Integer) valueAnimator.getAnimatedValue();
+        va.addUpdateListener(valueAnimator -> {
+            Integer p = (Integer) valueAnimator.getAnimatedValue();
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    CArcProgress.this.setProgress(p, true);
-                } else {
-                    CArcProgress.this.setProgress(p);
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                CArcProgress.this.setProgress(p, true);
+            } else {
+                CArcProgress.this.setProgress(p);
             }
         });
         va.start();

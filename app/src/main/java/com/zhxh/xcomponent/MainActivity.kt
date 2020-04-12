@@ -98,14 +98,12 @@ class MainActivity : AppCompatActivity() {
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
         raImageView.setOnClickListener {
-            Toast.makeText(this, "xxx", Toast.LENGTH_LONG).show()
-            myProgress.runProgress(60,50)
+            myProgress.runProgress(60, 50)
         }
         myProgress.setOnCenterDraw(object : CArcProgress.OnCenterDraw {
             override fun draw(canvas: Canvas, rectF: RectF?, x: Float, y: Float, storkeWidth: Float, progress: Int) {
                 val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-                textPaint.strokeWidth = 35f
-                textPaint.color = resources.getColor(R.color.main_color)
+                textPaint.color = resources.getColor(R.color.colorPrimary)
                 textPaint.textSize = 36f
 
                 val progressStr = "$progress%"
@@ -115,6 +113,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }

@@ -236,11 +236,13 @@
                 android:id="@+id/myProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:radius="90dp"
                 app:arcCapRound="true"
                 app:degree="80"
+                app:progressColor="@color/colorPrimary"
                 app:progressStyle="tick"
-                app:tickDensity="3" />
+                app:radius="90dp"
+                app:tickDensity="3"
+                app:unprogresColor="#eaeaea" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
