@@ -99,8 +99,11 @@ class MainActivity : AppCompatActivity() {
         raImageView.setCorners(20, 20)
 
         myProgress.visibility = View.VISIBLE
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             myProgress.setProgress(50, true)
+        } else {
+            myProgress.progress = 50
         }
 
         myProgress.setOnCenterDraw(object : CArcProgress.OnCenterDraw {
@@ -108,6 +111,8 @@ class MainActivity : AppCompatActivity() {
                 val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
                 textPaint.strokeWidth = 35f
                 textPaint.color = resources.getColor(R.color.main_color)
+                textPaint.textSize = 36f
+
                 val progressStr = "$progress%"
                 val textX = x - textPaint.measureText(progressStr) / 2
                 val textY = y - (textPaint.descent() + textPaint.ascent()) / 2
