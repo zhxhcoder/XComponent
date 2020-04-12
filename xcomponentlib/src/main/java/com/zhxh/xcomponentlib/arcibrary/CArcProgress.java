@@ -1,5 +1,6 @@
 package com.zhxh.xcomponentlib.arcibrary;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -15,6 +17,9 @@ import android.widget.ProgressBar;
 
 import com.zhxh.xcomponentlib.R;
 
+/**
+ * Created by zhxh on 2020/4/11
+ */
 
 public class CArcProgress extends ProgressBar {
     public static final int STYLE_TICK = 1;
@@ -181,5 +186,25 @@ public class CArcProgress extends ProgressBar {
             mCenterBitmap = null;
         }
 
+    }
+
+
+    public void runProgress(int progress, long itemDuration) {
+
+        ValueAnimator va = ValueAnimator.ofInt(0, progress);
+        va.setDuration(itemDuration * progress);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                Integer p = (Integer) valueAnimator.getAnimatedValue();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    CArcProgress.this.setProgress(p, true);
+                } else {
+                    CArcProgress.this.setProgress(p);
+                }
+            }
+        });
+        va.start();
     }
 }

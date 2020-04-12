@@ -97,15 +97,10 @@ class MainActivity : AppCompatActivity() {
 
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
-
-        myProgress.visibility = View.VISIBLE
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            myProgress.setProgress(50, true)
-        } else {
-            myProgress.progress = 50
+        raImageView.setOnClickListener {
+            Toast.makeText(this, "xxx", Toast.LENGTH_LONG).show()
+            myProgress.runProgress(60,50)
         }
-
         myProgress.setOnCenterDraw(object : CArcProgress.OnCenterDraw {
             override fun draw(canvas: Canvas, rectF: RectF?, x: Float, y: Float, storkeWidth: Float, progress: Int) {
                 val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
