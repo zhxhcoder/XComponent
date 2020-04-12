@@ -237,10 +237,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:arcCapRound="true"
-                app:degree="80"
+                app:bgShow="false"
+                app:degree="90"
                 app:progressColor="@color/colorPrimary"
                 app:progressStyle="tick"
-                app:radius="90dp"
+                app:radius="80dp"
                 app:tickDensity="3"
                 app:unprogresColor="#eaeaea" />
 

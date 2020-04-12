@@ -129,7 +129,7 @@ public class CArcProgress extends ProgressBar {
             //绘制未完成部分
             mArcPaint.setColor(mUnmProgressColor);
             canvas.drawArc(mArcRectf, 90 + angle + targetmDegree, 360 - mDegree - targetmDegree, false, mArcPaint);
-        } else {
+        } else {//钟表模式
             if (mBgShow)
                 canvas.drawArc(mArcRectf, 90 + angle, 360 - mDegree, false, mArcPaint);
             canvas.rotate(180 + angle, x, y);
