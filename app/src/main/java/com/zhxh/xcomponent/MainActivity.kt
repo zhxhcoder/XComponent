@@ -1,18 +1,23 @@
 package com.zhxh.xcomponent
 
 import android.content.Intent
+import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.zhxh.xcomponent.widget.PagerTabDialog
-
 import com.zhxh.xcomponentlib.AlwaysShowToast
 import com.zhxh.xcomponentlib.SlideSwitch
+import com.zhxh.xcomponentlib.arcibrary.CArcProgress
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -60,27 +65,27 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "我点击了：$it", Toast.LENGTH_LONG).show()
         }
         ctvClickText
-            .withText("我是谁我要点击点击什么吗")
-            .withRegex("点击点击")
-            .withColor(Color.RED)
-            .withSize(20)
-            .withBack {
+                .withText("我是谁我要点击点击什么吗")
+                .withRegex("点击点击")
+                .withColor(Color.RED)
+                .withSize(20)
+                .withBack {
 
-                val resultStrMap =
-                    """["11111111","22222222","33333333"]"""
-                val typeMap =
-                    object : TypeToken<Object>() {}.type
-                val resp = Gson().fromJson<Object>(
-                    resultStrMap,
-                    typeMap
-                )
+                    val resultStrMap =
+                            """["11111111","22222222","33333333"]"""
+                    val typeMap =
+                            object : TypeToken<Object>() {}.type
+                    val resp = Gson().fromJson<Object>(
+                            resultStrMap,
+                            typeMap
+                    )
 
-                Log.d("xxxxxxxxx",resp.toString())
-                Log.d("xxxxxxxxx",resultStrMap)
+                    Log.d("xxxxxxxxx", resp.toString())
+                    Log.d("xxxxxxxxx", resultStrMap)
 
-                val dialog = PagerTabDialog(this, null)
-                dialog.show(resp as List<String>)
-            }
+                    val dialog = PagerTabDialog(this, null)
+                    dialog.show(resp as List<String>)
+                }
 
         ctvKeyValueText.text = "应收本金    890元"
 
@@ -92,6 +97,24 @@ class MainActivity : AppCompatActivity() {
 
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
+
+        myProgress.visibility = View.VISIBLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            myProgress.setProgress(50, true)
+        }
+
+        myProgress.setOnCenterDraw(object : CArcProgress.OnCenterDraw {
+            override fun draw(canvas: Canvas, rectF: RectF?, x: Float, y: Float, storkeWidth: Float, progress: Int) {
+                val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+                textPaint.strokeWidth = 35f
+                textPaint.color = resources.getColor(R.color.main_color)
+                val progressStr = "$progress%"
+                val textX = x - textPaint.measureText(progressStr) / 2
+                val textY = y - (textPaint.descent() + textPaint.ascent()) / 2
+                canvas.drawText(progressStr, textX, textY, textPaint)
+            }
+        })
     }
+
 
 }

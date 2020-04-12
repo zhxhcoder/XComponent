@@ -233,7 +233,7 @@
             app:layout_constraintTop_toBottomOf="@+id/raImageView">
 
             <com.zhxh.xcomponentlib.arcibrary.CArcProgress
-                android:id="@+id/myProgress03"
+                android:id="@+id/myProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:radius="90dp"
