@@ -76,10 +76,10 @@ public class CArcProgress extends ProgressBar {
         mBgShow = attributes.getBoolean(R.styleable.CArcProgress_bgShow, false);
         mDegree = attributes.getFloat(R.styleable.CArcProgress_degree, DEFAULT_OFFSETDEGREE);
         mStyleProgress = attributes.getInt(R.styleable.CArcProgress_progressStyle, STYLE_ARC);
-        boolean capRount = attributes.getBoolean(R.styleable.CArcProgress_arcCapRound, false);
+        boolean capRound = attributes.getBoolean(R.styleable.CArcProgress_arcCapRound, false);
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcPaint.setColor(mArcbgColor);
-        if (capRount)
+        if (capRound)
             mArcPaint.setStrokeCap(Paint.Cap.ROUND);
         mArcPaint.setStrokeWidth(mBoardWidth);
         mArcPaint.setStyle(Paint.Style.STROKE);
@@ -93,6 +93,22 @@ public class CArcProgress extends ProgressBar {
 
     public void setOnCenterDraw(OnCenterDraw mOnCenter) {
         this.mOnCenter = mOnCenter;
+    }
+
+
+    public void initDataDraw(int progress, String plus, String rate, String defeat) {
+
+        setOnCenterDraw(new OnCenterDraw() {
+            @Override
+            public void draw(Canvas canvas, RectF rectF, float x, float y, float strokeWidth, int progress) {
+
+                Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                textPaint.setColor(Color.parseColor("#999999"));
+                textPaint.setTextSize(24f);
+
+            }
+        });
+
     }
 
     @Override

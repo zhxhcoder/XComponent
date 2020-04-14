@@ -94,39 +94,12 @@ class MainActivity : AppCompatActivity() {
             toast.setView(tiltText)
         }
 
-
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
         myProgress.setOnClickListener {
             myProgress.runProgress(60, 50)
         }
-        myProgress.setOnCenterDraw { canvas, rectF, x, y, _, progress ->
-            val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-
-            textPaint.color = Color.parseColor("#999999")
-            textPaint.textSize = 24f
-            val plusStr = "+3"
-            canvas.drawText(plusStr, x - textPaint.measureText(plusStr) / 2, rectF.top + 120, textPaint)
-
-            textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
-            textPaint.color = Color.parseColor("#333333")
-            textPaint.textSize = 66f
-            val progressStr = "$progress%"
-            canvas.drawText(progressStr, x - textPaint.measureText(progressStr) / 2, rectF.top + 200, textPaint)
-
-            textPaint.color = Color.parseColor("#333333")
-            textPaint.textSize = 46f
-            val priceStr = "-良好-"
-            canvas.drawText(priceStr, x - textPaint.measureText(priceStr) / 2, rectF.top + 320, textPaint)
-
-
-            textPaint.flags = Paint.ANTI_ALIAS_FLAG
-            textPaint.color = Color.parseColor("#999999")
-            textPaint.textSize = 36f
-            val percentStr = "-打败了66.8%的在投用户-"
-            canvas.drawText(percentStr, x - textPaint.measureText(percentStr) / 2, rectF.bottom - 10, textPaint)
-
-        }
+        myProgress.initDataDraw("+3", "-良好-", "65.6%")
         myProgress.runProgress(85, 50)
     }
 }
