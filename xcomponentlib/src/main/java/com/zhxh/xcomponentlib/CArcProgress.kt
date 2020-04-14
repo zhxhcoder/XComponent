@@ -42,7 +42,7 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
         this.mOnCenter = mOnCenter
     }
 
-    fun initDataDraw(plus: String?, rate: String?, defeat: String?) {
+    fun initDataDraw(plus: String?, rate: String?, defeat: String) {
         setOnCenterDraw(object : OnCenterDraw {
             override fun draw(canvas: Canvas?, rectF: RectF?, x: Float, y: Float, strokeWidth: Float, progress: Int) {
                 if (canvas == null) {
@@ -75,8 +75,19 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 textPaint.flags = Paint.ANTI_ALIAS_FLAG
                 textPaint.color = Color.parseColor("#999999")
                 textPaint.textSize = 36f
-                val percentStr = "-打败了${defeat}的在投用户-"
-                canvas.drawText(percentStr, x - textPaint.measureText(percentStr) / 2, rectF.bottom - 10, textPaint)
+
+                val start = "- 打败了"
+                val end = "的在投用户 -"
+                val percentStr = "$start$defeat$end"
+
+                val start1X = x - textPaint.measureText(percentStr) / 2
+                val start2X = start1X + textPaint.measureText(start)
+                val start3X = start2X + textPaint.measureText(defeat)
+
+                canvas.drawText(start, start1X, rectF.bottom - 10, textPaint)
+                canvas.drawText(end, start3X, rectF.bottom - 10, textPaint)
+                textPaint.color = Color.parseColor("#FF403B")
+                canvas.drawText(defeat, start2X, rectF.bottom - 10, textPaint)
             }
         })
     }
