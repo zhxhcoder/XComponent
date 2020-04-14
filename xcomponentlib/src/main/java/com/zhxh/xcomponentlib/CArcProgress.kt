@@ -5,12 +5,11 @@ import android.content.Context
 import android.graphics.*
 import android.os.Build
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.widget.ProgressBar
 
 /**
- * Created by zhxh on 2020/4/11
+ * Created by zhxh on 2020/4/14
  */
 class CArcProgress @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ProgressBar(context, attrs, defStyleAttr) {
     private val DEFAULT_LINEHEIGHT = dp2px(15)
@@ -159,7 +158,6 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 mBoardWidth.toFloat(),
                 mRadius * 2 - mBoardWidth,
                 mRadius * 2 - mBoardWidth)
-        Log.e("DEMO", "right == " + mArcRectF!!.right + "   mRadius == " + mRadius * 2)
     }
 
     /**
