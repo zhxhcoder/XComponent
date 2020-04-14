@@ -119,6 +119,6 @@ class MainActivity : AppCompatActivity() {
             val priceStr = "-良好-"
             canvas.drawText(priceStr, x - textPaint.measureText(priceStr) / 2, rectF.top + 320, textPaint)
         }
+        myProgress.runProgress(85, 50)
     }
-
 }
