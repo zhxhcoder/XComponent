@@ -144,9 +144,12 @@ public class CArcProgress extends ProgressBar {
                 String text = String.valueOf(i);
                 Rect textBound = new Rect();
                 mTextPaint.getTextBounds(text, 0, text.length(), textBound);
-                canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.width(), mTextPaint);
+                canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.height() * 2, mTextPaint);
                 canvas.rotate(mTickDensity * 10, x, y);
             }
+
+            //绘制自定义线帽
+
         } else {//钟表模式
             if (mBgShow)
                 canvas.drawArc(mArcRectF, 90 + angle, 360 - mDegree, false, mArcPaint);
