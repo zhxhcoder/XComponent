@@ -208,7 +208,7 @@
         <attr name="unprogresColor" format="color"></attr>
         <attr name="progressColor" format="color"></attr>
         <attr name="tickWidth" format="dimension"></attr>
-        <attr name="tickDensity" format="integer"></attr>
+        <attr name="tickDensity" format="float"></attr>
         <attr name="bgShow" format="boolean"></attr>
         <attr name="radius" format="dimension"></attr>
         <attr name="arcbgColor" format="color"></attr>

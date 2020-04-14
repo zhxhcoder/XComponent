@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -39,13 +40,15 @@ public class CArcProgress extends ProgressBar {
     private int mArcbgColor;
     private int mBoardWidth;
     private int mDegree = DEFAULT_OFFSETDEGREE;
-    private RectF mArcRectf;
+    private RectF mArcRectF;
     private Paint mLinePaint;
     private Paint mArcPaint;
+    private Paint mTextPaint;
+
     private int mUnmProgressColor;
     private int mProgressColor;
     private int mTickWidth;
-    private int mTickDensity;
+    private float mTickDensity;
     private Bitmap mCenterBitmap;
     private Canvas mCenterCanvas;
     private OnCenterDraw mOnCenter;
@@ -66,7 +69,7 @@ public class CArcProgress extends ProgressBar {
         mUnmProgressColor = attributes.getColor(R.styleable.CArcProgress_unprogresColor, DEFAULT_mUnmProgressColor);
         mProgressColor = attributes.getColor(R.styleable.CArcProgress_progressColor, DEFAULT_mProgressColor);
         mTickWidth = attributes.getDimensionPixelOffset(R.styleable.CArcProgress_tickWidth, DEFAULT_mTickWidth);
-        mTickDensity = attributes.getInt(R.styleable.CArcProgress_tickDensity, DEFAULT_DENSITY);
+        mTickDensity = attributes.getFloat(R.styleable.CArcProgress_tickDensity, DEFAULT_DENSITY);
         mRadius = attributes.getDimensionPixelOffset(R.styleable.CArcProgress_radius, DEFAULT_mRadius);
         mArcbgColor = attributes.getColor(R.styleable.CArcProgress_arcbgColor, DEFAULT_mUnmProgressColor);
         mTickDensity = Math.max(Math.min(mTickDensity, MAX_DENSITY), MIN_DENSITY);
@@ -82,6 +85,10 @@ public class CArcProgress extends ProgressBar {
         mArcPaint.setStyle(Paint.Style.STROKE);
         mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mLinePaint.setStrokeWidth(mTickWidth);
+
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mTextPaint.setTextSize(10);
+        mTextPaint.setColor(Color.BLACK);
     }
 
     public void setOnCenterDraw(OnCenterDraw mOnCenter) {
@@ -106,32 +113,45 @@ public class CArcProgress extends ProgressBar {
     @Override
     protected synchronized void onDraw(Canvas canvas) {
         canvas.save();
-        float roate = getProgress() * 1.0f / getMax();
-        float x = mArcRectf.right / 2 + mBoardWidth / 2;
-        float y = mArcRectf.right / 2 + mBoardWidth / 2;
+        float rotate = getProgress() * 1.0f / getMax();
+        float x = mArcRectF.right / 2 + mBoardWidth / 2;
+        float y = mArcRectF.right / 2 + mBoardWidth / 2;
         if (mOnCenter != null) {
             if (mCenterCanvas == null) {
                 mCenterBitmap = Bitmap.createBitmap((int) mRadius * 2, (int) mRadius * 2, Bitmap.Config.ARGB_8888);
                 mCenterCanvas = new Canvas(mCenterBitmap);
             }
             mCenterCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            mOnCenter.draw(mCenterCanvas, mArcRectf, x, y, mBoardWidth, getProgress());
+            mOnCenter.draw(mCenterCanvas, mArcRectF, x, y, mBoardWidth, getProgress());
             canvas.drawBitmap(mCenterBitmap, 0, 0, null);
         }
         int angle = mDegree / 2;
-        int count = (360 - mDegree) / mTickDensity;
-        int target = (int) (roate * count);
+        int count = (int) ((360 - mDegree) / mTickDensity);
+        int target = (int) (rotate * count);
         if (mStyleProgress == STYLE_ARC) {
-            float targetmDegree = (360 - mDegree) * roate;
+            float targetDegree = (360 - mDegree) * rotate;
             //绘制完成部分
             mArcPaint.setColor(mProgressColor);
-            canvas.drawArc(mArcRectf, 90 + angle, targetmDegree, false, mArcPaint);
+
+            canvas.drawArc(mArcRectF, 90 + angle, targetDegree, false, mArcPaint);
             //绘制未完成部分
             mArcPaint.setColor(mUnmProgressColor);
-            canvas.drawArc(mArcRectf, 90 + angle + targetmDegree, 360 - mDegree - targetmDegree, false, mArcPaint);
+            canvas.drawArc(mArcRectF, 90 + angle + targetDegree, 360 - mDegree - targetDegree, false, mArcPaint);
+
+            //绘制文字
+            for (int i = 0; i < count; i++) {
+                String text = "" + i;
+                Rect textBound = new Rect();
+                mTextPaint.getTextBounds(text, 0, text.length(), textBound);
+
+                if ((rotate * 100) / 10 > 0) {
+                    canvas.drawText(text, mArcRectF.left, mArcRectF.bottom, mTextPaint);
+                }
+                canvas.rotate(mTickDensity, x, y);
+            }
         } else {//钟表模式
             if (mBgShow)
-                canvas.drawArc(mArcRectf, 90 + angle, 360 - mDegree, false, mArcPaint);
+                canvas.drawArc(mArcRectF, 90 + angle, 360 - mDegree, false, mArcPaint);
             canvas.rotate(180 + angle, x, y);
             for (int i = 0; i < count; i++) {
                 if (i < target) {
@@ -149,11 +169,11 @@ public class CArcProgress extends ProgressBar {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mArcRectf = new RectF(mBoardWidth,
+        mArcRectF = new RectF(mBoardWidth,
                 mBoardWidth,
                 mRadius * 2 - mBoardWidth,
                 mRadius * 2 - mBoardWidth);
-        Log.e("DEMO", "right == " + mArcRectf.right + "   mRadius == " + mRadius * 2);
+        Log.e("DEMO", "right == " + mArcRectF.right + "   mRadius == " + mRadius * 2);
     }
 
     /**
