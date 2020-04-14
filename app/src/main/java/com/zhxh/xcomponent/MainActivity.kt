@@ -118,6 +118,14 @@ class MainActivity : AppCompatActivity() {
             textPaint.textSize = 46f
             val priceStr = "-良好-"
             canvas.drawText(priceStr, x - textPaint.measureText(priceStr) / 2, rectF.top + 320, textPaint)
+
+
+            textPaint.flags = Paint.ANTI_ALIAS_FLAG
+            textPaint.color = Color.parseColor("#999999")
+            textPaint.textSize = 36f
+            val percentStr = "-打败了66.8%的在投用户-"
+            canvas.drawText(percentStr, x - textPaint.measureText(percentStr) / 2, rectF.bottom - 10, textPaint)
+
         }
         myProgress.runProgress(85, 50)
     }
