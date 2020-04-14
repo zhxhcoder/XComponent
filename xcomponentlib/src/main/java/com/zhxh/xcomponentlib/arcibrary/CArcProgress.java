@@ -87,7 +87,7 @@ public class CArcProgress extends ProgressBar {
         mLinePaint.setStrokeWidth(mTickWidth);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setTextSize(12);
+        mTextPaint.setTextSize(14);
         mTextPaint.setColor(Color.parseColor("#999999"));
     }
 
@@ -130,13 +130,14 @@ public class CArcProgress extends ProgressBar {
         int target = (int) (rotate * count);
         if (mStyleProgress == STYLE_ARC) {
             float targetDegree = (360 - mDegree) * rotate;
-            //绘制完成部分
-            mArcPaint.setColor(mProgressColor);
 
-            canvas.drawArc(mArcRectF, 90 + angle, targetDegree, false, mArcPaint);
             //绘制未完成部分
             mArcPaint.setColor(mUnmProgressColor);
             canvas.drawArc(mArcRectF, 90 + angle + targetDegree, 360 - mDegree - targetDegree, false, mArcPaint);
+
+            //绘制完成部分
+            mArcPaint.setColor(mProgressColor);
+            canvas.drawArc(mArcRectF, 90 + angle, targetDegree, false, mArcPaint);
 
             //绘制文字
             canvas.rotate(180 + angle, x, y);
