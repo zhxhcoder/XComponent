@@ -87,7 +87,7 @@ public class CArcProgress extends ProgressBar {
         mLinePaint.setStrokeWidth(mTickWidth);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setTextSize(14);
+        mTextPaint.setTextSize(dp2px(8));
         mTextPaint.setColor(Color.parseColor("#999999"));
     }
 
@@ -145,7 +145,7 @@ public class CArcProgress extends ProgressBar {
                 String text = String.valueOf(i);
                 Rect textBound = new Rect();
                 mTextPaint.getTextBounds(text, 0, text.length(), textBound);
-                canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.height() * 2, mTextPaint);
+                canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.height() * 1.5f, mTextPaint);
                 canvas.rotate(mTickDensity * 10, x, y);
             }
 

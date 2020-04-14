@@ -97,21 +97,28 @@ class MainActivity : AppCompatActivity() {
 
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
-        raImageView.setOnClickListener {
+        myProgress.setOnClickListener {
             myProgress.runProgress(60, 50)
         }
-        myProgress.setOnCenterDraw(object : CArcProgress.OnCenterDraw {
-            override fun draw(canvas: Canvas, rectF: RectF?, x: Float, y: Float, storkeWidth: Float, progress: Int) {
-                val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-                textPaint.color = resources.getColor(R.color.colorPrimary)
-                textPaint.textSize = 36f
+        myProgress.setOnCenterDraw { canvas, rectF, x, y, _, progress ->
+            val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-                val progressStr = "$progress%"
-                val textX = x - textPaint.measureText(progressStr) / 2
-                val textY = y - (textPaint.descent() + textPaint.ascent()) / 2
-                canvas.drawText(progressStr, textX, textY, textPaint)
-            }
-        })
+            textPaint.color = Color.parseColor("#999999")
+            textPaint.textSize = 24f
+            val plusStr = "+3"
+            canvas.drawText(plusStr, x - textPaint.measureText(plusStr) / 2, rectF.top + 120, textPaint)
+
+            textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
+            textPaint.color = Color.parseColor("#333333")
+            textPaint.textSize = 66f
+            val progressStr = "$progress%"
+            canvas.drawText(progressStr, x - textPaint.measureText(progressStr) / 2, rectF.top + 200, textPaint)
+
+            textPaint.color = Color.parseColor("#333333")
+            textPaint.textSize = 46f
+            val priceStr = "-良好-"
+            canvas.drawText(priceStr, x - textPaint.measureText(priceStr) / 2, rectF.top + 320, textPaint)
+        }
     }
 
 }
