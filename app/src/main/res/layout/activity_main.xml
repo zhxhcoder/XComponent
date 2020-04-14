@@ -239,9 +239,9 @@
                 android:layout_gravity="center_horizontal"
                 app:arcCapRound="true"
                 app:bgShow="false"
-                app:degree="90"
+                app:degree="120"
                 app:progressColor="@color/colorPrimary"
-                app:progressStyle="tick"
+                app:progressStyle="arc"
                 app:radius="80dp"
                 app:tickDensity="3"
                 app:unprogresColor="#eaeaea" />
