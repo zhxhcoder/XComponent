@@ -100,6 +100,6 @@ class MainActivity : AppCompatActivity() {
             myProgress.runProgress(60, 50)
         }
         myProgress.initDataDraw("+3", "-良好-", "65.6%")
-        myProgress.runProgress(85, 50)
+        myProgress.runProgress(85, 30)
     }
 }

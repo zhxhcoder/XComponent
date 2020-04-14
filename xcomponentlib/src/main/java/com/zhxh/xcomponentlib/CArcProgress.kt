@@ -12,7 +12,7 @@ import android.widget.ProgressBar
  * Created by zhxh on 2020/4/14
  */
 class CArcProgress @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ProgressBar(context, attrs, defStyleAttr) {
-    private val DEFAULT_LINEHEIGHT = dp2px(15)
+    private val DEFAULT_LINEHEIGHT = dp2px(12)
     private val DEFAULT_mTickWidth = dp2px(2)
     private val DEFAULT_mRadius = dp2px(72)
     private val DEFAULT_mUnmProgressColor = -0x151516
@@ -53,28 +53,28 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 }
                 val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-
                 if (!plus.isNullOrEmpty()) {
                     textPaint.color = Color.parseColor("#999999")
-                    textPaint.textSize = 24f
-                    canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + 120, textPaint)
+                    textPaint.textSize = dp2px(12).toFloat()
+                    canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), textPaint)
                 }
 
                 textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
                 textPaint.color = Color.parseColor("#333333")
-                textPaint.textSize = 66f
+                textPaint.textSize = dp2px(28).toFloat()
                 val progressStr = "${progress}分"
-                canvas.drawText(progressStr, x - textPaint.measureText(progressStr) / 2, rectF.top + 200, textPaint)
+                canvas.drawText(progressStr, x - textPaint.measureText(progressStr) / 2, rectF.top + dp2px(80), textPaint)
 
                 if (!rate.isNullOrEmpty()) {
+                    textPaint.flags = Paint.ANTI_ALIAS_FLAG
                     textPaint.color = Color.parseColor("#333333")
-                    textPaint.textSize = 46f
-                    canvas.drawText(rate, x - textPaint.measureText(rate) / 2, rectF.top + 320, textPaint)
+                    textPaint.textSize = dp2px(18).toFloat()
+                    canvas.drawText(rate, x - textPaint.measureText(rate) / 2, rectF.top + dp2px(120), textPaint)
                 }
 
                 textPaint.flags = Paint.ANTI_ALIAS_FLAG
                 textPaint.color = Color.parseColor("#999999")
-                textPaint.textSize = 36f
+                textPaint.textSize = dp2px(15).toFloat()
 
                 val start = "- 打败了"
                 val end = "的在投用户 -"
@@ -144,7 +144,7 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 mTextPaint.getTextBounds(text, 0, text.length, textBound)
                 canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.height() * 1.5f, mTextPaint)
                 canvas.rotate(mTickDensity * 10, x, y)
-                i = i + 10
+                i += 10
             }
             //绘制自定义线帽
         } else { //钟表模式
@@ -176,7 +176,7 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
      *
      * @param dpVal
      */
-    protected fun dp2px(dpVal: Int): Int {
+    private fun dp2px(dpVal: Int): Int {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dpVal.toFloat(), resources.displayMetrics).toInt()
     }
