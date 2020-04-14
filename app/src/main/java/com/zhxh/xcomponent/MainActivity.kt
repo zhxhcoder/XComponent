@@ -97,9 +97,9 @@ class MainActivity : AppCompatActivity() {
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
         myProgress.setOnClickListener {
-            myProgress.runProgress(60, 50)
+            myProgress.runProgress(85, 30)
         }
         myProgress.initDataDraw("+3", "-良好-", "65.6%")
-        myProgress.runProgress(85, 30)
+        myProgress.runProgress(60, 30)
     }
 }

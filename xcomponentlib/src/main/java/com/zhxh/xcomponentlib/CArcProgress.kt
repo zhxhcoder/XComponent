@@ -146,7 +146,13 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 canvas.rotate(mTickDensity * 10, x, y)
                 i += 10
             }
-            //绘制自定义线帽
+            //绘制自定义线帽 while多旋转了20度
+            val pointPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+            pointPaint.strokeWidth = mBoardWidth.toFloat()
+            pointPaint.color = Color.WHITE
+            canvas.rotate(180 + mTickDensity * target - angle - 20, x, y)
+            canvas.drawCircle(x, (mBoardWidth).toFloat(), mBoardWidth.toFloat() / 3, pointPaint)
+
         } else { //钟表模式
             if (mBgShow) canvas.drawArc(mArcRectF, 90 + angle, 360 - mDegree, false, mArcPaint)
             canvas.rotate(180 + angle, x, y)
