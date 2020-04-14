@@ -33,7 +33,7 @@ public class CArcProgress extends ProgressBar {
     private final int DEFAULT_DENSITY = 4;
     private final int MIN_DENSITY = 2;
     private final int MAX_DENSITY = 8;
-    private int mStylePogress = STYLE_TICK;
+    private int mStyleProgress = STYLE_ARC;
     private boolean mBgShow;
     private float mRadius;
     private int mArcbgColor;
@@ -72,7 +72,7 @@ public class CArcProgress extends ProgressBar {
         mTickDensity = Math.max(Math.min(mTickDensity, MAX_DENSITY), MIN_DENSITY);
         mBgShow = attributes.getBoolean(R.styleable.CArcProgress_bgShow, false);
         mDegree = attributes.getInt(R.styleable.CArcProgress_degree, DEFAULT_OFFSETDEGREE);
-        mStylePogress = attributes.getInt(R.styleable.CArcProgress_progressStyle, STYLE_TICK);
+        mStyleProgress = attributes.getInt(R.styleable.CArcProgress_progressStyle, STYLE_ARC);
         boolean capRount = attributes.getBoolean(R.styleable.CArcProgress_arcCapRound, false);
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcPaint.setColor(mArcbgColor);
@@ -121,7 +121,7 @@ public class CArcProgress extends ProgressBar {
         int angle = mDegree / 2;
         int count = (360 - mDegree) / mTickDensity;
         int target = (int) (roate * count);
-        if (mStylePogress == STYLE_ARC) {
+        if (mStyleProgress == STYLE_ARC) {
             float targetmDegree = (360 - mDegree) * roate;
             //绘制完成部分
             mArcPaint.setColor(mProgressColor);
@@ -172,10 +172,10 @@ public class CArcProgress extends ProgressBar {
          * @param rectF       圆弧的Rect
          * @param x           圆弧的中心x
          * @param y           圆弧的中心y
-         * @param storkeWidth 圆弧的边框宽度
+         * @param strokeWidth 圆弧的边框宽度
          * @param progress    当前进度
          */
-        public void draw(Canvas canvas, RectF rectF, float x, float y, float storkeWidth, int progress);
+        public void draw(Canvas canvas, RectF rectF, float x, float y, float strokeWidth, int progress);
     }
 
     @Override
@@ -192,7 +192,6 @@ public class CArcProgress extends ProgressBar {
         va.setDuration(itemDuration * progress);
         va.addUpdateListener(valueAnimator -> {
             Integer p = (Integer) valueAnimator.getAnimatedValue();
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 CArcProgress.this.setProgress(p, true);
             } else {

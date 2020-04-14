@@ -240,11 +240,9 @@
                 app:arcCapRound="true"
                 app:bgShow="false"
                 app:degree="120"
-                app:progressColor="@color/colorPrimary"
-                app:progressStyle="arc"
+                app:progressColor="#FB8C00"
                 app:radius="80dp"
-                app:tickDensity="3"
-                app:unprogresColor="#eaeaea" />
+                app:unprogresColor="#E9E9E9" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
