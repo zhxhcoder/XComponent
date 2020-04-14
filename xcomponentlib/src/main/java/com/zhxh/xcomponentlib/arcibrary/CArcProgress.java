@@ -30,7 +30,7 @@ public class CArcProgress extends ProgressBar {
     private final int DEFAULT_mRadius = dp2px(72);
     private final int DEFAULT_mUnmProgressColor = 0xffeaeaea;
     private final int DEFAULT_mProgressColor = Color.YELLOW;
-    private final int DEFAULT_OFFSETDEGREE = 60;
+    private final float DEFAULT_OFFSETDEGREE = 60;
     private final int DEFAULT_DENSITY = 4;
     private final int MIN_DENSITY = 2;
     private final int MAX_DENSITY = 8;
@@ -39,7 +39,7 @@ public class CArcProgress extends ProgressBar {
     private float mRadius;
     private int mArcbgColor;
     private int mBoardWidth;
-    private int mDegree = DEFAULT_OFFSETDEGREE;
+    private float mDegree = DEFAULT_OFFSETDEGREE;
     private RectF mArcRectF;
     private Paint mLinePaint;
     private Paint mArcPaint;
@@ -74,7 +74,7 @@ public class CArcProgress extends ProgressBar {
         mArcbgColor = attributes.getColor(R.styleable.CArcProgress_arcbgColor, DEFAULT_mUnmProgressColor);
         mTickDensity = Math.max(Math.min(mTickDensity, MAX_DENSITY), MIN_DENSITY);
         mBgShow = attributes.getBoolean(R.styleable.CArcProgress_bgShow, false);
-        mDegree = attributes.getInt(R.styleable.CArcProgress_degree, DEFAULT_OFFSETDEGREE);
+        mDegree = attributes.getFloat(R.styleable.CArcProgress_degree, DEFAULT_OFFSETDEGREE);
         mStyleProgress = attributes.getInt(R.styleable.CArcProgress_progressStyle, STYLE_ARC);
         boolean capRount = attributes.getBoolean(R.styleable.CArcProgress_arcCapRound, false);
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -87,8 +87,8 @@ public class CArcProgress extends ProgressBar {
         mLinePaint.setStrokeWidth(mTickWidth);
 
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setTextSize(10);
-        mTextPaint.setColor(Color.BLACK);
+        mTextPaint.setTextSize(12);
+        mTextPaint.setColor(Color.parseColor("#999999"));
     }
 
     public void setOnCenterDraw(OnCenterDraw mOnCenter) {
@@ -125,7 +125,7 @@ public class CArcProgress extends ProgressBar {
             mOnCenter.draw(mCenterCanvas, mArcRectF, x, y, mBoardWidth, getProgress());
             canvas.drawBitmap(mCenterBitmap, 0, 0, null);
         }
-        int angle = mDegree / 2;
+        float angle = mDegree / 2;
         int count = (int) ((360 - mDegree) / mTickDensity);
         int target = (int) (rotate * count);
         if (mStyleProgress == STYLE_ARC) {
@@ -139,15 +139,13 @@ public class CArcProgress extends ProgressBar {
             canvas.drawArc(mArcRectF, 90 + angle + targetDegree, 360 - mDegree - targetDegree, false, mArcPaint);
 
             //绘制文字
-            for (int i = 0; i < count; i++) {
-                String text = "" + i;
+            canvas.rotate(180 + angle, x, y);
+            for (int i = 0; i <= count + 1; i = i + 10) {
+                String text = String.valueOf(i);
                 Rect textBound = new Rect();
                 mTextPaint.getTextBounds(text, 0, text.length(), textBound);
-
-                if ((rotate * 100) / 10 > 0) {
-                    canvas.drawText(text, mArcRectF.left, mArcRectF.bottom, mTextPaint);
-                }
-                canvas.rotate(mTickDensity, x, y);
+                canvas.drawText(text, x, mBoardWidth + mBoardWidth / 2 + textBound.width(), mTextPaint);
+                canvas.rotate(mTickDensity * 10, x, y);
             }
         } else {//钟表模式
             if (mBgShow)
