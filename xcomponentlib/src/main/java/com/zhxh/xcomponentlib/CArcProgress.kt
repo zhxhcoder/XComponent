@@ -47,6 +47,11 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
         startRun(progress, 30)
     }
 
+    fun runProgress(progress: Int, rate: String?, defeat: String) {
+        initDataDraw("", rate, defeat)
+        startRun(progress, 30)
+    }
+
     private fun initDataDraw(plus: String?, rate: String?, defeat: String) {
         setOnCenterDraw(object : OnCenterDraw {
             override fun draw(canvas: Canvas?, rectF: RectF?, x: Float, y: Float, strokeWidth: Float, progress: Int) {
