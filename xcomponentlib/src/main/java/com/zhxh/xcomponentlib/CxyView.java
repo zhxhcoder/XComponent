@@ -16,9 +16,8 @@ import android.view.View;
 public final class CxyView extends View {
 
     private Path mLinePath;
-    private Paint mBelowWavePaint;
+    private Paint mPaint;
     private DrawFilter mDrawFilter;
-    private float φ;
 
     public CxyView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,11 +26,11 @@ public final class CxyView extends View {
         mLinePath = new Path();
 
         //初始化画笔
-        mBelowWavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBelowWavePaint.setAntiAlias(true);
-        mBelowWavePaint.setStyle(Paint.Style.FILL);
-        mBelowWavePaint.setColor(Color.DKGRAY);
-        mBelowWavePaint.setAlpha(80);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setAntiAlias(true);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setColor(Color.RED);
+        mPaint.setAlpha(80);
 
         //画布抗锯齿
         mDrawFilter = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
@@ -44,26 +43,17 @@ public final class CxyView extends View {
 
         mLinePath.reset();
 
-        φ-=0.1f;
-        float y,y2;
-        double ω = 2*Math.PI / getWidth();//角速度
+        float y;
 
         mLinePath.moveTo(getLeft(),getBottom());
 
-        for (float x = 0; x <= getWidth(); x += 20) {
-            /**
-             *  y=Asin(ωx+φ)+k
-             *  A—振幅越大，波形在y轴上最大与最小值的差值越大
-             *  ω—角速度， 控制正弦周期(单位角度内震动的次数)
-             *  φ—初相，反映在坐标系上则为图像的左右移动。这里通过不断改变φ,达到波浪移动效果
-             *  k—偏距，反映在坐标系上则为图像的上移或下移。
-             */
-            y2 = (float) (15 * Math.sin(ω * x + φ) + 15);
-            mLinePath.lineTo(x, y2);
+        for (float x = 0; x <= getWidth(); x += 10) {
+            y = x*x;
+            mLinePath.lineTo(x, y);
         }
 
         mLinePath.lineTo(getRight(),getBottom());
-        canvas.drawPath(mLinePath,mBelowWavePaint);
+        canvas.drawPath(mLinePath, mPaint);
 
         //20毫秒后会重新调用onDraw()方法
         //postInvalidateDelayed(20);
