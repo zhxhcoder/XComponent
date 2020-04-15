@@ -48,7 +48,7 @@ public final class CxyView extends View {
         mLinePath.moveTo(getLeft(),getBottom());
 
         for (float x = 0; x <= getWidth(); x += 10) {
-            y = x*x;
+            y = x*2;
             mLinePath.lineTo(x, y);
         }
 
