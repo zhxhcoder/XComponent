@@ -42,14 +42,33 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
         this.mOnCenter = mOnCenter
     }
 
-    fun runProgress(progress: Int, plus: String?, rate: String?, defeat: String) {
+    /**
+     * progress 表示进度 0-100
+     * plus增加了多少 例如 +3
+     * rate 表示分数 例如 85分
+     * defeat 例如 65.5%
+     * itemDuration 速度 默认25ms
+     */
+    private fun runProgress(progress: Int, plus: String?, rate: String?, defeat: String, itemDuration: Long) {
         initDataDraw(plus, rate, defeat)
-        startRun(progress, 30)
+        startRun(progress, itemDuration)
     }
 
+    /**
+     * progress 表示进度 0-100
+     * plus增加了多少 例如 +3
+     * rate 表示分数 例如 85分
+     * defeat 例如 65.5%
+     */
+    fun runProgress(progress: Int, plus: String?, rate: String?, defeat: String) {
+        runProgress(progress, plus, rate, defeat, 25)
+    }
+
+    /**
+     * 改函数适用当没有plus情况
+     */
     fun runProgress(progress: Int, rate: String?, defeat: String) {
-        initDataDraw("", rate, defeat)
-        startRun(progress, 30)
+        runProgress(progress, "", rate, defeat)
     }
 
     private fun initDataDraw(plus: String?, rate: String?, defeat: String) {
