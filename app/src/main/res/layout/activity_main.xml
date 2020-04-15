@@ -28,14 +28,16 @@
                 app:tickDensity="2.4"
                 app:unprogresColor="#E9E9E9" />
 
-
         </RelativeLayout>
 
+        <com.zhxh.xcomponentlib.CxyView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
 
             <com.zhxh.xcomponentlib.CDragFloatButton
                 android:id="@+id/cDragFloatButton"
@@ -87,12 +89,14 @@
                 android:id="@+id/head_home_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/sineView">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/head_home_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="visible"
                     android:background="#ffffff"
                     android:overScrollMode="never"
                     android:scrollbars="none" />
