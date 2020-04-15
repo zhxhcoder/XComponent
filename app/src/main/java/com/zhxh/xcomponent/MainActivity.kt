@@ -1,23 +1,17 @@
 package com.zhxh.xcomponent
 
 import android.content.Intent
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.zhxh.xcomponent.widget.PagerTabDialog
 import com.zhxh.xcomponentlib.AlwaysShowToast
 import com.zhxh.xcomponentlib.SlideSwitch
-import com.zhxh.xcomponentlib.arcibrary.CArcProgress
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -97,9 +91,8 @@ class MainActivity : AppCompatActivity() {
         raImageView.setImageResource(R.mipmap.ic_default_banner)
         raImageView.setCorners(20, 20)
         myProgress.setOnClickListener {
-            myProgress.runProgress(85, 30)
+            myProgress.runProgress(70, "+3", "-良好-", "65.6%")
         }
-        myProgress.initDataDraw("+3", "-良好-", "65.6%")
-        myProgress.runProgress(60, 30)
+        myProgress.runProgress(60, "+3", "-良好-", "65.6%")
     }
 }

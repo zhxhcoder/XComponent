@@ -42,7 +42,12 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
         this.mOnCenter = mOnCenter
     }
 
-    fun initDataDraw(plus: String?, rate: String?, defeat: String) {
+    fun runProgress(progress: Int, plus: String?, rate: String?, defeat: String) {
+        initDataDraw(plus, rate, defeat)
+        startRun(progress, 30)
+    }
+
+    private fun initDataDraw(plus: String?, rate: String?, defeat: String) {
         setOnCenterDraw(object : OnCenterDraw {
             override fun draw(canvas: Canvas?, rectF: RectF?, x: Float, y: Float, strokeWidth: Float, progress: Int) {
                 if (canvas == null) {
@@ -207,7 +212,7 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
         }
     }
 
-    fun runProgress(progress: Int, itemDuration: Long) {
+    fun startRun(progress: Int, itemDuration: Long) {
         val va = ValueAnimator.ofInt(0, progress)
         va.duration = itemDuration * progress
         va.addUpdateListener { valueAnimator: ValueAnimator ->
