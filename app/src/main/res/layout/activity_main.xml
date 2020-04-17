@@ -21,7 +21,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 app:arcCapRound="true"
-                app:bgShow="false"
                 app:degree="120"
                 app:progressColor="#FB8C00"
                 app:radius="100dp"
