@@ -86,6 +86,12 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                     textPaint.color = Color.parseColor("#999999")
                     textPaint.textSize = dp2px(12).toFloat()
                     canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), textPaint)
+
+                    handler.postDelayed({
+                        val paint = Paint()
+                        paint.color = Color.WHITE
+                        canvas.drawRect(x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), x + textPaint.measureText(plus) / 2, rectF.top + dp2px(35), paint)
+                    }, 500)
                 }
 
                 textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
