@@ -38,6 +38,8 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
     private var mCenterBitmap: Bitmap? = null
     private var mCenterCanvas: Canvas? = null
     private var mOnCenter: OnCenterDraw? = null
+
+    private var animTim = 0L
     fun setOnCenterDraw(mOnCenter: OnCenterDraw?) {
         this.mOnCenter = mOnCenter
     }
@@ -80,20 +82,28 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                 if (rectF == null) {
                     return
                 }
-                val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-                if (!plus.isNullOrEmpty()) {
-                    textPaint.color = Color.parseColor("#999999")
-                    textPaint.textSize = dp2px(12).toFloat()
-                    canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), textPaint)
-
-                    handler.postDelayed({
-                        val paint = Paint()
-                        paint.color = Color.WHITE
-                        canvas.drawRect(x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), x + textPaint.measureText(plus) / 2, rectF.top + dp2px(35), paint)
-                    }, 500)
+                run {
+                    val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+                    if (!plus.isNullOrEmpty()) {
+                        textPaint.color = Color.parseColor("#999999")
+                        textPaint.textSize = dp2px(12).toFloat()
+                        canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), textPaint)
+                    }
                 }
 
+                val cancelRun = Runnable {
+                    val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+                    textPaint.textSize = dp2px(12).toFloat()
+
+                    val paint = Paint()
+                    paint.color = Color.WHITE
+                    canvas.drawRect(x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), x + textPaint.measureText(plus) / 2, rectF.top + dp2px(35), paint)
+                }
+
+                handler.postDelayed(cancelRun, animTim + 250)
+
+                val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
                 textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
                 textPaint.color = Color.parseColor("#333333")
                 textPaint.textSize = dp2px(28).toFloat()
@@ -244,7 +254,8 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
 
     fun startRun(progress: Int, itemDuration: Long) {
         val va = ValueAnimator.ofInt(0, progress)
-        va.duration = itemDuration * progress
+        animTim = itemDuration * progress
+        va.duration = animTim
         va.addUpdateListener { valueAnimator: ValueAnimator ->
             val p = valueAnimator.animatedValue as Int
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
