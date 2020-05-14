@@ -83,14 +83,14 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                     return
                 }
 
-                run {
+                handler.postDelayed({
                     val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
                     if (!plus.isNullOrEmpty()) {
                         textPaint.color = Color.parseColor("#999999")
                         textPaint.textSize = dp2px(12).toFloat()
                         canvas.drawText(plus, x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), textPaint)
                     }
-                }
+                }, animTim + 200)
 
                 val cancelRun = Runnable {
                     val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -101,7 +101,7 @@ class CArcProgress @JvmOverloads constructor(context: Context?, attrs: Attribute
                     canvas.drawRect(x - textPaint.measureText(plus) / 2, rectF.top + dp2px(50), x + textPaint.measureText(plus) / 2, rectF.top + dp2px(35), paint)
                 }
 
-                handler.postDelayed(cancelRun, animTim + 250)
+                //handler.postDelayed(cancelRun, animTim + 250)
 
                 val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
                 textPaint.flags = Paint.FAKE_BOLD_TEXT_FLAG
